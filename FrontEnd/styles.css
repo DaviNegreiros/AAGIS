@@ -11,11 +11,36 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 header {
-    padding: 12px;
+    padding-bottom: 8px;
     background: #041024;
     text-align: center;
 }
 #HOME {
     font-family: 'Orbitron';
     font-size: 60px;
+}
+.home img { 
+    border-radius: 5px;
+    height: 46px;
+}
+#imgPadding {
+    padding-left: 8px;
+    padding-top: 16px;
+}
+.home {
+    display: flex;
+    justify-content: center;
+}
+header .icons {
+    border-radius: 300px;
+    background-color: white;
+    height: 46px;
+}
+.iconsPadding {
+    padding: 16px;
+}
+header .HeaderRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
