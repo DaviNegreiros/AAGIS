@@ -6,3 +6,4 @@ AAGIS é um site de notícias focado na parte eventos, palestras e etc para estu
 - JavaScript
 - MySQL
 - NodeJS
+- Sequelize
