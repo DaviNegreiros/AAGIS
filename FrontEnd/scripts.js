@@ -13,3 +13,10 @@ function nextImage(){
     document.getElementById("radio"+count).checked = true;
 
 }
+const button = document.querySelector("button")
+const modal = document.querySelector("dialog")
+
+button.onclick = function(){
+modal.showModal()
+
+}
