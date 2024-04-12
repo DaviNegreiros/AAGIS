@@ -9,6 +9,8 @@ body {
     background: white;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+    /*=== HEADER ===*/
 header {
     color: white;
     padding-bottom: 8px;
@@ -44,13 +46,14 @@ header .HeaderRow {
     flex-direction: row;
     justify-content: space-between;
 }
+    /*=== FIM HEADER ===*/
 
 
 
 
 
 
-
+    /*=== SLIDES ===*/
 .SliderDefiner{
     margin: 0;
     padding: 0;
@@ -145,4 +148,5 @@ width: 800px;
 #radio4:checked ~ .navigation-auto .auto-btn4{
     background-color: #FFF;
 }
+    /*=== FIM SLIDES ===*/
 
