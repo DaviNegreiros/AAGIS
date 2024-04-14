@@ -4,29 +4,72 @@
     <head>
        <title>AAGIS</title>
        <link rel="stylesheet" href="styles.css">
+       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
 
     <body>
-        <header>
-            <div class="HeaderRow">
-                <div class="iconsPadding">
-                    <img class="icons" src="imagens/menu3.0.jpg" alt="Menu">
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <i class='bx bx-home-alt-2'></i>
+                    <span>AAGIS</span>
                 </div>
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <div class="user">
+                <img src="imagens/profile_10693213.png" alt="me" class="user-img">
+                <div>
+                    <p class="bold">User</p>
+                    <p>Admin</p>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="bx bxs-grid-alt"></i>
+                        <span class="nav-item">Calendario</span>
+                    </a>
+                    <span class="tooltip">Calendario</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-list-check"></i>
+                        <span class="nav-item">Categorias</span>
+                    </a>
+                    <span class="tooltip">Categorias</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-cog"></i>
+                        <span class="nav-item">Settings</span>
+                    </a>
+                    <span class="tooltip">Settings</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-log-out"></i>
+                        <span class="nav-item">Logout</span>
+                    </a>
+                    <span class="tooltip">Logout</span>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="header">
+            <div class="HeaderRow">
                 <div class="home">
                     <h1 id="HOME">AAGIS</h1>
                     <div id="imgPadding">
                         <img src="imagens/unb_logo.png" alt="Logo UnB">
                     </div>
                 </div>
-                <div class="iconsPadding">
-                    <img class="icons" src="imagens/profile_10693213.png" alt="Profile">
-                </div>
             </div>
 
             <a id="slogan">Atualizações Acadêmicas Gerais, Indispensáveis e Sucintas</a>
 
 
-        </header>
+        </div>
         <div class="SliderDefiner">
         <div class="slider">
             
