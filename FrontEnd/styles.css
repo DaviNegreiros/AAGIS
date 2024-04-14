@@ -207,12 +207,14 @@ header .HeaderRow {
     height: 450px;
     display: flex;
     justify-content: center;
+    padding-top: 16px;
 }
 .slider {
     margin: 0 auto;
     width: 800px;
     height: 400px;
     overflow: hidden;
+    border-radius: 25px;
 }
 
 .slides {
