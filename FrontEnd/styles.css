@@ -308,6 +308,7 @@ height: 450px;
         align-items: center;
         justify-content: center;
         height: 400px;
+        margin-left: 80px;
 
         
     }
@@ -335,7 +336,7 @@ height: 450px;
     }
     .intro{
         height:50px;
-        width: 270px;
+        width: 250px;
         padding: 6px;
         border: 1px;
         bottom:-175px;
@@ -349,7 +350,7 @@ height: 450px;
     }
     .intro2{
         height: 50px;
-        width: 270px;
+        width: 250px;
         padding: 6px;
         border: 1px;
         bottom: -575px;
@@ -415,10 +416,12 @@ height: 450px;
     }
     .info1 img{
        width: 25px;
+
     }
     footer .info1{
         display: flex;
         color: white;
+        margin-left: 35px;
     }
     footer .info1 ul{
         width:25%;
