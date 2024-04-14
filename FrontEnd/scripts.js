@@ -1,3 +1,4 @@
+/*--slides show--*/
 let count = 1;
 document.getElementById("radio1").checked = true;
 
@@ -13,10 +14,4 @@ function nextImage(){
     document.getElementById("radio"+count).checked = true;
 
 }
-const button = document.querySelector("button")
-const modal = document.querySelector("dialog")
-
-button.onclick = function(){
-modal.showModal()
-
-}
+/*-- FIM slides show--*/

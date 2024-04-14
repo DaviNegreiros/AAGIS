@@ -6,7 +6,7 @@
     border:0;
 }
 body {
-    background: white;
+    background: rgb(196, 221, 250);
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -86,7 +86,6 @@ header .HeaderRow {
 .slide img {
 width: 100%;
 height: 400px;
-margin-left: 0%;
 
 
 
@@ -167,11 +166,15 @@ margin-left: 0%;
     }
     
     .card-img{
-        height:300px;
-        width: 300px;
+        height:350px;
+        width: 350px;
+        max-width: 100%;
         border-radius: 3px;
         transition: .5s;
-        
+        object-fit: cover;
+    }
+    .card img{
+        object-fit: cover;
     }
     .card{
         height: 300px;
@@ -179,6 +182,7 @@ margin-left: 0%;
         margin: 50px;
         box-shadow: 5px 5px 20px black;
         overflow: hidden;
+        min-width: 300px, 100vw;
     }
     .intro{
         height:50px;
@@ -190,7 +194,21 @@ margin-left: 0%;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
-        border-radius: 6px;
+        border-radius: 3px;
+        transition: .5s;
+        margin-bottom: 0px;
+    }
+    .intro2{
+        height:50px;
+        width: 270px;
+        padding: 6px;
+        border: 1px;
+        bottom:-550px;
+        box-sizing: border-box;
+        position: absolute;
+        background: rgb(27, 27, 27, .5);
+        color: white;
+        border-radius: 3px;
         transition: .5s;
         margin-bottom: 0px;
     }
@@ -206,6 +224,18 @@ margin-left: 0%;
         opacity: 0;
         color: aliceblue;
     }
+    .intro2 h2 {
+        margin: 10px;
+        font-size: min(25px, 3vw);
+    
+    }
+    .intro2 p{
+        font-size: min(20px, 3vw);
+        margin:20px;
+        visibility: visible;
+        opacity: 0;
+        color: aliceblue;
+    }
     .card:hover{
         cursor: pointer;
     }
@@ -213,7 +243,10 @@ margin-left: 0%;
         height: 200px;
         background: black;
     }
-    
+    .card:hover .intro2{
+        height: 200px;
+        background: black;
+    }
     .card:hover p{
         opacity: 1;
         visibility: visible;
@@ -223,5 +256,59 @@ margin-left: 0%;
     
     transform: scale(1.1) ;
     }
+    /*== FIM cards ==*/
+
+    /*== inicio Footer==*/
+    footer{
+        background-color: #041024;
+        font-size: 15px;
+    }
+    .info1 img{
+       width: 25px;
+    }
+    footer .info1{
+        display: flex;
+        color: white;
+    }
+    footer .info1 ul{
+        width:25%;
+
+    }
+    footer  h3{
+        margin-top: 10px;
+        margin-bottom: 16px;
+        font-weight: 600;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    footer .redes-sociais img{
+        margin-left: 10px;
+    }
+    footer ul{
+        margin-bottom: 8px;
+        margin-left: 10px;
+    }
+    footer .info1 ul > p{
+      margin-bottom: 40px;
+      margin-left: 10px;
+      
+    }
+    footer .info1 li{
+        margin: 10px 0;
+    }
+    footer .info1 a{
+        color: white;
+    }
+    footer .info1 ul{
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    footer li{
+        list-style-type: none;
+    }
+    /*== FINAL FOOTER==*/
+    
     
   
