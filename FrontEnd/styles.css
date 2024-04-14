@@ -23,11 +23,12 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 1375px;
         width: 80px;
         background-color: #041024;
         padding: 0.4rem 0.8rem;
         transition: all 0.5s ease;
+        z-index:999;
     }
 
     .sidebar.active {
@@ -306,6 +307,8 @@ height: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 400px;
+
         
     }
     
@@ -320,20 +323,22 @@ height: 450px;
     .card img{
         object-fit: cover;
     }
+    
     .card{
-        height: 300px;
+        height: 270px;
         width:300px;
         margin: 50px;
         box-shadow: 5px 5px 20px black;
         overflow: hidden;
         min-width: 300px, 100vw;
+       
     }
     .intro{
         height:50px;
         width: 270px;
         padding: 6px;
         border: 1px;
-        bottom:-150px;
+        bottom:-175px;
         box-sizing: border-box;
         position: absolute;
         background: rgb(27, 27, 27, .5);
@@ -343,17 +348,17 @@ height: 450px;
         margin-bottom: 0px;
     }
     .intro2{
-        height:50px;
+        height: 50px;
         width: 270px;
         padding: 6px;
         border: 1px;
-        bottom:-550px;
+        bottom: -575px;
         box-sizing: border-box;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
         border-radius: 3px;
-        transition: .5s;
+        transition: .3s;
         margin-bottom: 0px;
     }
      .intro h2 {
@@ -384,11 +389,11 @@ height: 450px;
         cursor: pointer;
     }
     .card:hover .intro{
-        height: 200px;
+        height: 120px;
         background: black;
     }
     .card:hover .intro2{
-        height: 200px;
+        height: 120px;
         background: black;
     }
     .card:hover p{
@@ -406,6 +411,7 @@ height: 450px;
     footer{
         background-color: #041024;
         font-size: 15px;
+        height: 250px;
     }
     .info1 img{
        width: 25px;
@@ -416,11 +422,15 @@ height: 450px;
     }
     footer .info1 ul{
         width:25%;
-
+        margin-top: 20px;
     }
+    footer div{
+      margin-top: 20px;
+    }
+   
     footer  h3{
         margin-top: 10px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         font-weight: 600;
     }
     a{
@@ -437,10 +447,12 @@ height: 450px;
     footer .info1 ul > p{
       margin-bottom: 40px;
       margin-left: 10px;
+      margin-top: 20px;
       
     }
     footer .info1 li{
         margin: 10px 0;
+        margin-top: 20px;
     }
     footer .info1 a{
         color: white;
