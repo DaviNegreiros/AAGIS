@@ -24,3 +24,22 @@ function nextImage(){
         slidebar.classList.toggle('active');
     };
     /*--FIM SIDEBAR--*/
+
+    /*--INICIO MODAL--*/
+    function abrirModal() {
+        document.getElementById('modal').style.display = 'block';
+    }
+    
+    function fecharModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+    function abrirModal() {
+        document.getElementById('modal').classList.add('modal-aberto');
+        document.getElementById('overlay').classList.add('overlay-aberto');
+    }
+    
+    function fecharModal() {
+        document.getElementById('modal').classList.remove('modal-aberto');
+        document.getElementById('overlay').classList.remove('overlay-aberto');
+    }
+    /*--FIM MODAL--*/
