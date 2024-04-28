@@ -346,7 +346,6 @@ height: 450px;
         justify-content: center;
         height: 400px;
         margin-left: 80px;
-
         
     }
     
@@ -354,7 +353,7 @@ height: 450px;
         height:350px;
         width: 350px;
         max-width: 100%;
-        border-radius: 3px;
+        border-radius: 8px;
         transition: .5s;
         object-fit: cover;
         position: relative;
@@ -362,6 +361,7 @@ height: 450px;
     .card img{
         object-fit: cover;
         width: 100%;
+        border-radius: 8px;
        
 
     }
@@ -373,6 +373,8 @@ height: 450px;
         box-shadow: 5px 5px 20px black;
         overflow: hidden;
         min-width: 300px, 100vw;
+        border-radius: 8px;
+
        
     }
     .intro{
@@ -385,7 +387,7 @@ height: 450px;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
-        border-radius: 3px;
+        border-radius: 8px;
         transition: .5s;
         margin-bottom: 0px;
     }
@@ -399,7 +401,7 @@ height: 450px;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
-        border-radius: 3px;
+        border-radius: 8px;
         transition: .3s;
         margin-bottom: 0px;
     }
@@ -449,30 +451,34 @@ height: 450px;
     /*== Inicio Modal ==*/
     
     .modal {
-        display: none;
+        display: none; 
         position: fixed;
         z-index: 1000;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%); /* Adjust the transform values if needed */
+        transform: translate(-50%, -50%);
         width: 900px;
-        height: 650px;
+        height: 610px;
+        z-index: 9999;
+        overflow-y: auto;
+       
     }
      .modal p{
         color: white;
      }
     .modal-conteudo {
-        background-color: #041024;
+        background-color:rgb(196, 221, 250);
+        color: black;
         position: absolute;
+        overflow-y: auto;
+        overflow-x: hidden;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 20px;
-        border-radius: 5px;
         width: 900px;
         height: 650px;
         border-radius: 20px;
-
     }
     .modal-aberto {
         display: block;
@@ -509,23 +515,182 @@ height: 450px;
     }
     .modal1{
         text-align: center;
-        width: 450px;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+
     }
     .modal1 img{
-        width: 640px;
+        width: 800px;
         height:350px;
-        margin-left: 110px;
-        margin-top: 2px;
-        margin-bottom: 5px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
 
     }
     .modal h2{
-        text-align: center;
-        color: white;
+        padding-top: 8px;
+        padding-left: 15px;
+        text-align: left;
+        color: #041024;
         font-size: 35px;
     }
     .modal p{
-        font-size: 20px;
+        padding-top: 8px;
+        padding-left: 15px;
+        font-size: 18px;
+        color:#041024;
+    }
+    .modal::-webkit-scrollbar {
+        width: 12px;
+    }
+    .modal::-webkit-scrollbar-track {
+        background:rgb(158, 200, 248) ;
+        border-radius: 6px;
+    }
+    .modal::-webkit-scrollbar-thumb {
+        background: #babcbe;
+    }
+
+    .modal2{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal2 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }
+    .modal3{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal3 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }
+    .modal4{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal4 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }.modal5{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal5 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }.modal6{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal6 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }.modal7{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal7 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }.modal8{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modal8 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin: top 0;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    
+    }
+    @media screen and (max-width: 900px) {
+        .modal-conteudo {
+            width: 90%;
+        }
+        
+        .modal img{
+            width: 300px;
+            height: 350px;
+            margin-right: 0; 
+            margin-bottom: 40px;
+        }
+        .modal h2{
+            margin-top: 40px;
+        }
     }
     /*==FIM modal==*
 
