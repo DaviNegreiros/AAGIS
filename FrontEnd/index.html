@@ -82,29 +82,86 @@
                     <!--Fim Radio Butons -->
 
                     <!--Slide Images-->
-                    <div class="slide first s1">
-                        <div class="slideTxt">
+                    <div class="slide first s1" >
+                        <div class="slideTxt" onclick="abrirModalS1()">
                         <h3 class="slideTitulo">Grupo tira SS+ em DS</h3>
-                        <a class="slideText">Alunos do grupo laranja fizeram o melhor site do mundo. E ganharam  o premio nobel de melhor frontend ja feito na historia!</a>
+                        <a class="slideText">Alunos do grupo laranja fizeram o melhor site do mundo. E ganharam  o premio nobel de melhor frontend ja feito na historia!</a> <!--comentário ao backend: quando forem implantar o banco de dados nessa div "a" usem um limitador de caracteres pra nao ficar feio :) ass: Davidros-->
                         </div>
+                        <div id="modalS1" class="modal">
+                            <div class="modal-conteudo">
+                                <span class="fechar" onclick="fecharModalS1()">&times;</span>
+                                <div class="modalS1">
+                                    <img src="https://noticias.unb.br/images/Noticias/2024/04-Abr/11042024_RankingQS_29052017_icc_aulaanfiteatro60_betomonteiro-2.jpg"> </div>
+                                    <h2>Grupo tira SS+ em DS</h2>
+                                    <p>
+                                        Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e e mais fotos
+                                        --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                    </p>
+                            </div>
+                           </div>
+                        
+                           <div id="overlayS1" class="overlay" onclick="fecharModalS1()"></div>
+                        
                     </div>
                     <div class="slide s2">
-                        <div class="slideTxt">
+                        <div class="slideTxt" onclick="abrirModalS2()">
                             <h3 class="slideTitulo">Greve cancelada!</h3>
                             <a class="slideText">Alunos do grupo branco acharam uma tonelada de dinheiro e deram aos professores.</a>
                             </div>
+                            <div id="modalS2" class="modal">
+                                <div class="modal-conteudo">
+                                    <span class="fechar" onclick="fecharModalS2()">&times;</span>
+                                    <div class="modalS2">
+                                        <img src="https://noticias.unb.br/images/Noticias/2024/04-Abr/10abr2024_GersonJanczura_5_LGPrado.jpg"> </div>
+                                        <h2>Greve cancelada!</h2>
+                                        <p>
+                                            Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e e mais fotos
+                                            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                        </p>
+                                </div>
+                               </div>
+                           <div id="overlayS2" class="overlay" onclick="fecharModalS2()"></div>
+                            
                     </div>
                     <div class="slide s3">
-                        <div class="slideTxt">
+                        <div class="slideTxt" onclick="abrirModalS3()">
                             <h3 class="slideTitulo">Verão FGA</h3>
                             <a class="slideText">Alunos do grupo roxo encheram a piscina da FGA com fanta-uva para fugir do calor!</a>
                             </div>
+                            <div id="modalS3" class="modal">
+                                <div class="modal-conteudo">
+                                    <span class="fechar" onclick="fecharModalS3()">&times;</span>
+                                    <div class="modalS3">
+                                        <img src="https://noticias.unb.br/images/Noticias/2024/04-Abr/20240405_consuni_betomonteiro_4.jpg"> </div>
+                                        <h2>Verão FGA</h2>
+                                        <p>
+                                            Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e e mais fotos
+                                            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                        </p>
+                                </div>
+                               </div>
+                           <div id="overlayS3" class="overlay" onclick="fecharModalS3()"></div>
+
                     </div>
                     <div class="slide s4">
-                        <div class="slideTxt">
+                        <div class="slideTxt" onclick="abrirModalS4()">
                             <h3 class="slideTitulo">Monarca em apuros!</h3>
                             <a class="slideText">Alunos do grupo preto sequestraram o Monarca e estão negociando patacas com a Guarda Real.</a>
                             </div>
+                            <div id="modalS4" class="modal">
+                                <div class="modal-conteudo">
+                                    <span class="fechar" onclick="fecharModalS4()">&times;</span>
+                                    <div class="modalS4">
+                                        <img src="https://noticias.unb.br/images/Noticias/2024/04-Abr/20240404_reuniao-ibama_betomonteiro_1.jpg"> </div>
+                                        <h2>Monarca em apuros!</h2>
+                                        <p>
+                                            Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e e mais fotos
+                                            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                        </p>
+                                </div>
+                               </div>
+                           <div id="overlayS4" class="overlay" onclick="fecharModalS4()"></div>
+
                     </div>
                     <!--Fim Slide Images-->
 
@@ -150,7 +207,7 @@
                 </div>
                </div>
            </div>
-           <div id="overlay" class="overlay" onclick="fecharModal()"></div>
+           <div id="overlay1" class="overlay" onclick="fecharModal1()"></div>
            <script src="scripts.js"></script>
 
 
@@ -173,6 +230,8 @@
                     </div>
                    </div>
             </div> 
+           <div id="overlay2" class="overlay" onclick="fecharModal2()"></div>
+
         <div class="card">
             <img src="imagens/noticia6.webp" class="card-img" alt="noticia3" onclick="abrirModal3()">
             <div class="intro" onclick="abrirModal3()">
@@ -192,6 +251,8 @@
                 </div>
                </div>
         </div>
+        <div id="overlay3" class="overlay" onclick="fecharModal3()"></div>
+
         <div class="card">
             <img src="imagens/noticia7.webp" class="card-img" alt="noticia4" onclick="abrirModal4()">
             <div class="intro" onclick="abrirModal4()">
@@ -210,6 +271,8 @@
                         </p>
                 </div>
                </div>
+           <div id="overlay4" class="overlay" onclick="fecharModal4()"></div>
+
         </div>
            </div>
            <div class="container">
@@ -232,6 +295,8 @@
                 </div>
                </div>
            </div>
+           <div id="overlay5" class="overlay" onclick="fecharModal5()"></div>
+
            <div class="card">
             <img src="imagens/noticia9.png" class="card-img"  alt="noticia6" onclick="abrirModal6()">
             <div class="intro2" onclick="abrirModal6()">
@@ -250,6 +315,8 @@
                         </p>
                 </div>
                </div>
+           <div id="overlay6" class="overlay" onclick="fecharModal6()"></div>
+
         </div> <div class="card">
             <img src="imagens/noticia10.png" class="card-img" alt="noticia7" onclick="abrirModal7()">
             <div class="intro2" onclick="abrirModal7()">
@@ -269,6 +336,8 @@
                 </div>
                </div>
         </div>
+        <div id="overlay7" class="overlay" onclick="fecharModal7()"></div>
+
         <div class="card">
             <img src="imagens/noticia11.jpg" class="card-img" alt="noticia8" onclick="abrirModal8()">
             <div class="intro2" onclick="abrirModal8()">
@@ -288,6 +357,8 @@
                 </div>
                </div>
         </div>
+        <div id="overlay8" class="overlay" onclick="fecharModal8()"></div>
+
            </div>
             <!--FIM div cards-->
 
