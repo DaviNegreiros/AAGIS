@@ -23,7 +23,7 @@ function nextImage(){
     btn.onclick = function() {
         slidebar.classList.toggle('active');
     };
-    /*--FIM SIDEBAR--*/
+    /*--FIM  SIDEBAR--*/   
 
     /*--INICIO MODAL--*/
     function abrirModalS1() {

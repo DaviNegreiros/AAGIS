@@ -12,6 +12,10 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.main{
+    padding-top: 105px;
+}
+
     /*=== SIDEBAR ===*/
     .user-img {
         width: 50px;
@@ -20,7 +24,7 @@ body {
     }
 
     .sidebar {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         height: 1375px;
@@ -156,10 +160,13 @@ body {
 
     /*=== HEADER ===*/
 .header {
+    position: fixed;
+    width: 100%;
     color: white;
     padding-bottom: 8px;
     background: #041024;
     text-align: center;
+    z-index: 998;
 
 }
 #HOME {
@@ -342,11 +349,12 @@ height: 450px;
 
     .container{
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
-        height: 400px;
+        gap: 20px;
+        padding: 20px;
         margin-left: 80px;
-        
+        margin-left: 0;
     }
     
     .card-img{
@@ -367,9 +375,11 @@ height: 450px;
     }
     
     .card{
+        width: calc(33% - 40px);
         height: 270px;
-        width:300px;
-        margin: 50px;
+        max-width: 300px;
+        min-width: 250px;
+        margin: 20px;
         box-shadow: 5px 5px 20px black;
         overflow: hidden;
         min-width: 300px, 100vw;
@@ -378,8 +388,9 @@ height: 450px;
        
     }
     .intro{
+        text-align: center;
         height:50px;
-        width: 250px;
+        width: 300px;
         padding: 6px;
         border: 1px;
         bottom: -19.5%;
@@ -390,10 +401,11 @@ height: 450px;
         border-radius: 8px;
         transition: .5s;
         margin-bottom: 0px;
-    }
+    } 
     .intro2{
+        text-align: center;
         height: 50px;
-        width: 250px;
+        width: 300px;
         padding: 6px;
         border: 1px;
         bottom: -73%;
@@ -405,6 +417,7 @@ height: 450px;
         transition: .3s;
         margin-bottom: 0px;
     }
+    
      .intro h2 {
         margin: 10px;
         font-size: min(25px, 3vw);
@@ -694,12 +707,15 @@ height: 450px;
     }
     /*==FIM modal==*
 
-    /*== inicio Footer==*/
+    /*== inicio Footer==*/ 
     footer{
         background-color: #041024;
         font-size: 15px;
         height: 250px;
-    }
+        bottom: 0;
+        z-index: 9999;
+        position: relative;
+    } 
     .info1 img{
        width: 25px;
 
