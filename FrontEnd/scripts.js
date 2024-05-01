@@ -199,3 +199,10 @@ function nextImage(){
         document.getElementById('overlay8').classList.remove('overlay-aberto');
     }
     /*--FIM MODAL--*/
+
+    /*-- BOTAO HOME --*/
+    function homeFunction() {
+        window.location.href = '/Frontend/'; // Redirect to homepage URL
+    }
+
+    /*-- FIM BOTAO HOME--*/
