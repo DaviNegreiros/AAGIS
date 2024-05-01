@@ -184,6 +184,9 @@ body {
 .home {
     display: flex;
     justify-content: center;
+    margin-left:50%;
+    margin-right: 50%;
+    cursor: pointer;
 }
 header .icons {
     border-radius: 300px;
