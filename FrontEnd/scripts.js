@@ -24,6 +24,14 @@ function nextImage(){
         slidebar.classList.toggle('active');
     };
     /*--FIM  SIDEBAR--*/   
+/*--FILTRO--*/
+let btnFiltro = document.querySelector('#btnFiltro');
+let filtro = document.querySelector('.filtro');
+
+btnFiltro.onclick = function() {
+    filtro.classList.toggle('activeFiltro');
+};
+/*--FIM  FILTRO--*/   
 
     /*--INICIO MODAL--*/
     function abrirModalS1() {

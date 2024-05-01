@@ -16,6 +16,16 @@ body {
     padding-top: 105px;
 }
 
+    /*== FILTRO ==*/
+    .filtro {
+        display: none;
+    }
+    .activeFiltro {
+        display: block;
+    }
+
+    /*== FIM FILTRO ==*/
+
     /*=== SIDEBAR ===*/
     .user-img {
         width: 50px;
