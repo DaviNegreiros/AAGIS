@@ -1,0 +1,268 @@
+@import 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap';
+
+* {
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: rgb(196, 221, 250);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.main{
+    padding-top: 105px;
+}
+
+    /*=== SIDEBAR ===*/
+    .user-img {
+        width: 50px;
+        border-radius: 100%;
+        border: 1px solid #eee;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 1375px;
+        width: 80px;
+        background-color: #041024;
+        padding: 0.4rem 0.8rem;
+        transition: all 0.5s ease;
+        z-index:999;
+    }
+
+    .sidebar.active {
+        width: 250px;
+    }
+
+    .sidebar #btn {
+        position: absolute;
+        color: #FFF;
+        top: .4rem;
+        left: 50%;
+        font-size: 1.2rem;
+        line-height: 50px;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+
+    .sidebar.active #btn {
+        left: 90%;
+    }
+
+    .sidebar .top .logo {
+        color: #FFF;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        align-items: center;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .sidebar.active .top .logo {
+        opacity: 1;
+    }
+
+    .top .logo i {
+        font-size: 2rem;
+        margin-right: 5px;
+        font-family: 'Orbitron';
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .user p {
+        color: #FFF;
+        opacity: 1;
+        margin-left: 1rem;
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
+    .sidebar p {
+        opacity: 0;
+    }
+
+    .sidebar.active p {
+        opacity: 1;
+    }
+
+    .sidebar ul li {
+        position: relative;
+        list-style-type: none;
+        height: 50px;
+        width: 90%;
+        margin: 0.8rem auto;
+        line-height: 50px;
+    }
+
+    .sidebar ul li a {
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        border-radius: 0.8rem;
+    }
+
+    .sidebar ul li a:hover {
+        background-color: #FFF;
+        color: #041024;
+    }
+
+    .sidebar ul li a i {
+        min-width: 50px;
+        text-align: center;
+        height: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+    }
+
+    .sidebar .nav-item {
+        opacity: 0;
+    }
+
+    .sidebar.active .nav-item {
+        opacity: 1;
+    }
+
+    .sidebar ul li .tooltip {
+        position: absolute;
+        left: 125px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+        border-radius: .6rem;
+        padding: .4rem 1.2rem;
+        line-height: 1.8rem;
+        z-index: 20;
+        opacity: 0;
+    }
+
+    .sidebar ul li:hover .tooltip {
+        opacity: 1;
+    }
+
+    .sidebar.active ul li:hover .tooltip {
+        display: none;
+    }
+    /*=== FIM SIDEBAR ===*/
+
+    /*=== HEADER ===*/
+.header {
+    width: 100%;
+    color: white;
+    padding-bottom: 8px;
+    background: #041024;
+    text-align: center;
+    z-index: 998;
+
+}
+#HOME {
+    font-family: 'Orbitron';
+    font-size: 60px;
+}
+.home img { 
+    border-radius: 5px;
+    height: 46px;
+}
+#imgPadding {
+    padding-left: 8px;
+    padding-top: 16px;
+}
+.home {
+    display: flex;
+    justify-content: center;
+    margin-left:50%;
+    margin-right: 50%;
+    cursor: pointer;
+}
+header .icons {
+    border-radius: 300px;
+    background-color: white;
+    height: 46px;
+}
+.iconsPadding {
+    padding: 14px;
+    padding-top: 25px;
+}
+header .HeaderRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+ /*== inicio Footer==*/ 
+ footer{
+    background-color: #041024;
+    font-size: 15px;
+    height: 250px;
+    bottom: 0;
+    z-index: 9999;
+    position: relative;
+} 
+.info1 img{
+   width: 25px;
+
+}
+footer .info1{
+    display: flex;
+    color: white;
+    margin-left: 35px;
+}
+footer .info1 ul{
+    width:25%;
+    margin-top: 20px;
+}
+footer div{
+  margin-top: 20px;
+}
+
+footer  h3{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+a{
+    text-decoration: none;
+}
+
+footer .redes-sociais img{
+    margin-left: 10px;
+}
+footer ul{
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+footer .info1 ul > p{
+  margin-bottom: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+  
+}
+footer .info1 li{
+    margin: 10px 0;
+    margin-top: 20px;
+}
+footer .info1 a{
+    color: white;
+}
+footer .info1 ul{
+  width: 100%;
+  margin-bottom: 30px;
+}
+footer li{
+    list-style-type: none;
+}
+/*== FINAL FOOTER==*/
