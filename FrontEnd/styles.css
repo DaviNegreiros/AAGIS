@@ -393,7 +393,7 @@ height: 450px;
         width: 300px;
         padding: 6px;
         border: 1px;
-        bottom: -21%;
+        bottom: -19.5%;
         box-sizing: border-box;
         position: absolute;
         background: rgb(27, 27, 27, .5);
@@ -408,7 +408,7 @@ height: 450px;
         width: 300px;
         padding: 6px;
         border: 1px;
-        bottom: -70%;
+        bottom: -73%;
         box-sizing: border-box;
         position: absolute;
         background: rgb(27, 27, 27, .5);
@@ -700,7 +700,7 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS2 img{
+    .modalS1 img{
         width: 800px;
         height:350px;
         margin-left:15px;
@@ -710,7 +710,7 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS3 img{
+    .modalS1 img{
         width: 800px;
         height:350px;
         margin-left:15px;
@@ -720,7 +720,7 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS4 img{
+    .modalS4img{
         width: 800px;
         height:350px;
         margin-left:15px;
