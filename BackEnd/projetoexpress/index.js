@@ -3,6 +3,9 @@ const app = express()
 const handlebars = require("express-handlebars")
 const bodyParser = require('body-parser')
 const Post = require("./models/Post")
+const path = require('path');
+const fileupload = require('express-fileupload')//npm i express-fileupload
+
 
 app.use(express.static('views'))
 
@@ -24,14 +27,14 @@ app.use(bodyParser.json())
 
 //Rotas
 app.get('/', function (req, res) {
-    Post.findAll({ order: [['id', 'DESC']], //ordenando por id, do maior para o menor
-    limit: 4 //limitando a quantidade de noticias que aparecerão
-}).then(function (posts){
-    // Adicionando 1 ao índice de cada post
-    const postsWithIndex = posts.map((post, index) => {
-        post.indexPlusOne = index + 1;
-        return post;
-    })
+    Post.findAll({
+        order: [['id', 'DESC']], //ordenando por id, do maior para o menor
+    }).then(function (posts) {
+        // Adicionando 1 ao índice de cada post
+        const postsWithIndex = posts.map((post, index) => {
+            post.indexPlusOne = index + 1;
+            return post;
+        })
         res.render('frontaagis', { posts: posts })//printando os posts na tela
     })
 })
@@ -131,11 +134,18 @@ app.get("/post", function (req, res) {
 
 app.post('/add', function (req, res) {
 
+    const titulo = req.body.titulopost
+    const conteudo = req.body.conteudopost
+    const curso = req.body.curso
+    const idconta = req.body.idconta
+    const ref_imagem = req.file ? req.file.path : null //verifica se uma imagem foi enviada
+
     Post.create({
-        titulopost: req.body.titulopost,
-        conteudopost: req.body.conteudopost,
-        curso: req.body.curso,
-        idconta: req.body.idconta
+        titulopost: titulo,
+        conteudopost: conteudo,
+        curso: curso,
+        idconta: idconta,
+        ref_imagem: ref_imagem
     }).then(function () {
         res.redirect('/')
     }).catch(function (erro) {
