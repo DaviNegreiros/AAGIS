@@ -387,17 +387,18 @@ height: 450px;
         overflow: hidden;
         min-width: 300px, 100vw;
         border-radius: 8px;
+        position: relative;
 
        
     }
     .intro{
         text-align: center;
         height:50px;
-        width: 300px;
+        max-width: 300px;
+        min-width: 250px;
         padding: 6px;
         border: 1px;
-        bottom: -21%;
-        box-sizing: border-box;
+        bottom: 0px;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
@@ -408,16 +409,16 @@ height: 450px;
     .intro2{
         text-align: center;
         height: 50px;
-        width: 300px;
+        max-width: 300px;
+        min-width: 250px;
         padding: 6px;
         border: 1px;
-        bottom: -70%;
-        box-sizing: border-box;
+        bottom: 0px;
         position: absolute;
         background: rgb(27, 27, 27, .5);
         color: white;
         border-radius: 8px;
-        transition: .3s;
+        transition: .5s;
         margin-bottom: 0px;
     }
     
