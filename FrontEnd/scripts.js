@@ -225,3 +225,27 @@ btnFiltro.onclick = function() {
     }
 
     /*-- FIM BOTAO HOME--*/
+
+    /*== JS LOGIN E CADASTRO ==*/
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        // Validar campos de login aqui
+        var email = document.getElementById("loginEmail").value;
+        var password = document.getElementById("loginPassword").value;
+
+        if (!email || !password) {
+            alert("Por favor, preencha todos os campos do formulário de login.");
+            event.preventDefault(); // Impede o envio do formulário
+        }
+    });
+
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        // Validar campos de cadastro aqui
+        var name = document.getElementById("signupName").value;
+        var email = document.getElementById("signupEmail").value;
+        var password = document.getElementById("signupPassword").value;
+
+        if (!name || !email || !password) {
+            alert("Por favor, preencha todos os campos do formulário de cadastro.");
+            event.preventDefault(); // Impede o envio do formulário
+        }
+    });
