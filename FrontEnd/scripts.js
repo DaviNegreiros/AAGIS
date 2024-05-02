@@ -22,6 +22,9 @@ function nextImage(){
 
     btn.onclick = function() {
         slidebar.classList.toggle('active');
+        if(filtro.classList.contains('activeFiltro')){
+            filtro.classList.toggle('activeFiltro');
+        }
     };
     /*--FIM  SIDEBAR--*/   
 /*--FILTRO--*/
@@ -29,7 +32,15 @@ let btnFiltro = document.querySelector('#btnFiltro');
 let filtro = document.querySelector('.filtro');
 
 btnFiltro.onclick = function() {
+    if(slidebar.classList.contains('active')){
     filtro.classList.toggle('activeFiltro');
+    } else {
+        slidebar.classList.toggle('active');
+        setTimeout(function(){
+            filtro.classList.toggle('activeFiltro');
+        }, 300);
+ 
+    }
 };
 /*--FIM  FILTRO--*/   
 
