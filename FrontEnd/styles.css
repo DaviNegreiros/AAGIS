@@ -742,6 +742,13 @@ height: 450px;
         margin-bottom: 0;
         border-radius: 35px;
         box-shadow:5px 5px 20px black ;
+    }
+    .modalS2{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
     
     }
     .modalS3 img{
@@ -754,6 +761,14 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
+    .modalS3{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
     .modalS4 img{
         width: 800px;
         height:350px;
@@ -762,6 +777,14 @@ height: 450px;
         margin-bottom: 0;
         border-radius: 35px;
         box-shadow:5px 5px 20px black ;
+    
+    }
+    .modalS4{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
     
     }
     @media screen and (max-width: 900px) {
