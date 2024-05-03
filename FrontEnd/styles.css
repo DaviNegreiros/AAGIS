@@ -166,6 +166,64 @@ body {
     .sidebar.active ul li:hover .tooltip {
         display: none;
     }
+
+    .filtro {
+        padding-left: 30px;
+        margin-top: 20px;
+    }
+    .filtro1 {
+        display: block;
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        color:#FFF;
+        font-size: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }     
+      .filtro1 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      .checkmark {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+        height: 15px;
+        width: 15px;
+        background-color: #eee;
+      }
+      .filtro1:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+      .filtro1 input:checked ~ .checkmark {
+        background-color:#041024;
+      }
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      .filtro1 input:checked ~ .checkmark:after {
+        display: block;
+      }
+      .filtro1 .checkmark:after {
+        left: 4px;
+        top: 0px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
     /*=== FIM SIDEBAR ===*/
 
     /*=== HEADER ===*/
