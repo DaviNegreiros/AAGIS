@@ -767,8 +767,9 @@ height: 450px;
         font-size: 15px;
         height: 250px;
         bottom: 0;
-        z-index: 9999;
+        z-index: 998;
         position: relative;
+        padding-left: 100px;
     } 
     .info1 img{
        width: 25px;
