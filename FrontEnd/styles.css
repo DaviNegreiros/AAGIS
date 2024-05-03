@@ -476,6 +476,16 @@ height: 450px;
     /*== FIM cards ==*/
      
     /*== Inicio Modal ==*/
+    .modal-aberto:hover p{
+        color:#041024;
+        cursor:default;
+    }
+    .modal-conteudo:hover {
+        cursor: default;
+    }
+    .overlay:hover {
+        cursor: default;
+    }
     
     .modal {
         display: none; 
@@ -509,6 +519,8 @@ height: 450px;
     }
     .modal-aberto {
         display: block;
+        z-index: 100000;
+        color: #041024;
     }
     
     .overlay {
@@ -519,7 +531,7 @@ height: 450px;
         width: 100%;
         height: 100%;
         background-color: rgba(1, 1, 1, 0.575); 
-        z-index: 999; 
+        z-index: 99999; 
     }
     .overlay-aberto {
         display: block;
@@ -624,7 +636,7 @@ height: 450px;
         height: 350px;
         margin-top: 2px;
         padding-top: 2px;
-    
+        color: #041024;
     }
     .modal4 img{
         width: 800px;
@@ -714,7 +726,32 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS1 img{
+    .modalS1{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modalS2 img{
+        width: 800px;
+        height:350px;
+        margin-left:15px;
+        margin-top: 8px;
+        margin-bottom: 0;
+        border-radius: 35px;
+        box-shadow:5px 5px 20px black ;
+    }
+    .modalS2{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modalS3 img{
         width: 800px;
         height:350px;
         margin-left:15px;
@@ -724,7 +761,15 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS1 img{
+    .modalS3{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
+    
+    }
+    .modalS4 img{
         width: 800px;
         height:350px;
         margin-left:15px;
@@ -734,14 +779,12 @@ height: 450px;
         box-shadow:5px 5px 20px black ;
     
     }
-    .modalS4img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
+    .modalS4{
+        text-align: center;
+        width: 700px;
+        height: 350px;
+        margin-top: 2px;
+        padding-top: 2px;
     
     }
     @media screen and (max-width: 900px) {
