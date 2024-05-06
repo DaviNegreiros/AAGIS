@@ -235,6 +235,8 @@ body {
     background: #041024;
     text-align: center;
     z-index: 998;
+    margin-left: 40px;
+
 
 }
 #HOME {
@@ -270,6 +272,7 @@ header .HeaderRow {
     flex-direction: row;
     justify-content: space-between;
 }
+
     /*=== FIM HEADER ===*/
 
 
@@ -286,6 +289,7 @@ header .HeaderRow {
     display: flex;
     justify-content: center;
     padding-top: 16px;
+    margin-left: 40px;
 }
 .slider {
     margin: 0 auto;
@@ -423,9 +427,10 @@ height: 450px;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        padding: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
         margin-left: 80px;
-        margin-left: 0;
     }
     
     .card-img{
@@ -450,7 +455,7 @@ height: 450px;
         height: 270px;
         max-width: 300px;
         min-width: 250px;
-        margin: 20px;
+        margin: 15px;
         box-shadow: 5px 5px 20px black;
         overflow: hidden;
         min-width: 300px, 100vw;
@@ -629,7 +634,7 @@ height: 450px;
 
     }
     .modal h2{
-        padding-top: 8px;
+        padding-top: 20px;
         padding-left: 15px;
         text-align: left;
         color: #041024;
