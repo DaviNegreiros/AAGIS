@@ -130,8 +130,10 @@ footer li{
   }
   
   .picture {
-    width: 400px;
-    aspect-ratio: 16/9;
+    width: 800px;
+    height: 350px;
+    border-radius: 35px;
+    box-shadow: 5px 5px 20px black;
     background: #ddd;
     display: flex;
     align-items: center;
@@ -159,7 +161,7 @@ footer li{
   .picture:focus {
     color: #777;
     background: #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 20px black;
   }
   
   .picture__img {
