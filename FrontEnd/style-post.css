@@ -15,6 +15,20 @@ body {
 .main{
     padding-top: 105px;
 }
+.Title-box {
+    display: flex;
+    justify-content: center;
+}
+.Title-box h1 {
+    background-color: #112a56;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: whitesmoke;
+    margin-top: 10px;
+}
 
     /*=== HEADER ===*/
 .header {
@@ -198,7 +212,7 @@ footer li{
     color: black;
  }
 .fakeModal-conteudo {
-    margin-top: 100px;
+    margin-top: 155px;
     background-color:rgb(255, 255, 255);
     color: black;
     position: absolute;
