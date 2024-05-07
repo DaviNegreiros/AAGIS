@@ -26,3 +26,15 @@ inputFile.addEventListener("change", function (e) {
     pictureImage.innerHTML = pictureImageTxt;
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var tituloTextarea = document.getElementById("titulo");
+  var textoTextarea = document.getElementById("texto");
+
+  tituloTextarea.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+          event.preventDefault();
+          textoTextarea.focus(); 
+      }
+  });
+});

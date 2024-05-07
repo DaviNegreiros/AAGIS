@@ -212,7 +212,7 @@ footer li{
     color: black;
  }
 .fakeModal-conteudo {
-    margin-top: 155px;
+    margin-top: 185px;
     background-color:rgb(255, 255, 255);
     color: black;
     position: absolute;
@@ -227,3 +227,75 @@ footer li{
     border-radius: 20px;
 }
 /*== FIM fake modal ==*/
+/*==botao texto==*/
+.input-texto{
+    width: 800px;
+    height: 400px;
+    margin-top: 35px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 18px;
+}
+textarea.title{
+    resize: none;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 750px;
+    height:50px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    overflow-wrap: break-word;
+    font-size: 25px;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+input.title:hover {
+    background: #ccc;
+  }
+textarea.text{
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 800px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    text-align: start;
+    resize: none;
+    font-size: 18px;
+    color: black;
+
+
+}
+input.text:hover {
+    background: #ccc;
+  }
+  button{
+    margin-bottom: 15px;
+    margin-left: 350px;
+    margin-top: 18px;
+    font-size:25px;
+    font-family:Arial;
+    width:140px;
+    height:45px;
+    border-width:1px;
+    color:#041024;
+    border-color:#6a80c2;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    text-shadow: 0px 1px 0px #3b5397;
+    background:linear-gradient(rgb(120, 146, 194), #718dec);
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(#476e9e, rgb(120, 146, 194));
+  }
