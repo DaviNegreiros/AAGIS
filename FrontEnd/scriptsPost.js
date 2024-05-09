@@ -38,3 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   });
 });
+
+/*-- BOTAO HOME --*/
+function homeFunction() {
+    window.location.href = '/Frontend/'; // Redirect to homepage URL
+}
+
+/*-- FIM BOTAO HOME--*/
