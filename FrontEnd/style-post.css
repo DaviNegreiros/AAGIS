@@ -256,6 +256,26 @@ textarea.title{
 input.title:hover {
     background: #ccc;
   }
+  textarea.subtitle{
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 800px;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    text-align: start;
+    resize: none;
+    font-size: 18px;
+    color: black;
+
+
+}
+input.subtitle:hover {
+    background: #ccc;
+  }
 textarea.text{
     padding-left: 10px;
     padding-top: 10px;

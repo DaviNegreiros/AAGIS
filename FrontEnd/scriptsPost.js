@@ -30,13 +30,20 @@ inputFile.addEventListener("change", function (e) {
 document.addEventListener("DOMContentLoaded", function() {
   var tituloTextarea = document.getElementById("titulo");
   var textoTextarea = document.getElementById("texto");
+  var subtituloTextarea = document.getElementById("subtitulo");
 
   tituloTextarea.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
           event.preventDefault();
-          textoTextarea.focus(); 
+          subtituloTextarea.focus(); 
       }
   });
+  subtituloTextarea.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        textoTextarea.focus(); 
+    }
+});
 });
 
 /*-- BOTAO HOME --*/
