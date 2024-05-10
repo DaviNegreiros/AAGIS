@@ -289,7 +289,7 @@ header .HeaderRow {
     display: flex;
     justify-content: center;
     padding-top: 16px;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
 }
 .slider {
     margin: 0 auto;
