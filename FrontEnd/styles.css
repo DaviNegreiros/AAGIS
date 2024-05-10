@@ -292,7 +292,7 @@ header .HeaderRow {
     /*margin-left: 40px;*/
 }
 .slider {
-    margin: 0 auto;
+    margin-left: 80px;
     width: 800px;
     height: 400px;
     overflow: hidden;
