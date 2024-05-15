@@ -68,17 +68,17 @@ app.post('/add', function (req, res) {
     let uploadPath// Caminho onde o arquivo será enviado
     let sampleFile// Variável para armazenar o arquivo enviado
 
+    // Verificar se alguma imagem foi enviado
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('Por favor, adicione uma imagem à notícia. Nenhuma imagem foi enviada.')
+    }
+
     // Extrair dados do formulário
     const titulo = req.body.titulopost// Título da notícia
     const subtitulo = req.body.subtitulopost// Subtítulo da notícia
     const conteudo = req.body.conteudopost// Conteúdo da notícia
     const ref_imagem = req.files.picture__input//nome do input é picture__input
     const uploadDir = path.join(__dirname, '/upload')// Diretório de upload
-
-    // Verificar se algum arquivo foi enviado
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('Nenhum arquivo foi enviado.')
-    }
 
     // Verifica se o diretório de upload existe, se não, cria o diretório
     if (!fs.existsSync(uploadDir)) {
@@ -99,7 +99,7 @@ app.post('/add', function (req, res) {
         titulopost: titulo,
         subtitulopost: subtitulo,
         conteudopost: conteudo,
-        ref_imagem:__dirname + '/upload/' + ref_imagem.name // Caminho completo da imagem
+        ref_imagem: __dirname + '/upload/' + ref_imagem.name // Caminho completo da imagem
     }).then(function () {
         // Redireciona para a página inicial após a criação do post
         res.redirect('/home')
