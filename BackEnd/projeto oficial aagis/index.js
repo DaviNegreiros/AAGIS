@@ -37,7 +37,6 @@ app.use(bodyParser.json())
 app.get('/home', function (req, res) {
 
     // Defina o caminho para o arquivo CSS
-    const cssPath = './views/styles.css'
 
     Post.findAll({
         order: [['id', 'DESC']],//ordenando as noticias por id do maior para o menor
