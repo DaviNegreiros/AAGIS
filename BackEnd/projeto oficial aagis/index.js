@@ -62,20 +62,49 @@ app.get('/login', function (req, res) {
 app.get('/post', function (req, res) {
     res.render('pag-post', { style: 'style-post.css' })
 })
-//rota para postar a noticia
+//Rota para postar a noticia
 app.post('/add', function (req, res) {
 
-    const titulo = req.body.titulopost
-    const subtitulo = req.body.subtitulopost
-    const conteudo = req.body.conteudopost
+    let uploadPath// Caminho onde o arquivo será enviado
+    let sampleFile// Variável para armazenar o arquivo enviado
 
+    // Extrair dados do formulário
+    const titulo = req.body.titulopost// Título da notícia
+    const subtitulo = req.body.subtitulopost// Subtítulo da notícia
+    const conteudo = req.body.conteudopost// Conteúdo da notícia
+    const ref_imagem = req.files.picture__input//nome do input é picture__input
+    const uploadDir = path.join(__dirname, '/upload')// Diretório de upload
+
+    // Verificar se algum arquivo foi enviado
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('Nenhum arquivo foi enviado.')
+    }
+
+    // Verifica se o diretório de upload existe, se não, cria o diretório
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir);
+    }
+
+    // Define o caminho completo do arquivo de upload
+    uploadPath = __dirname + '/upload/' + ref_imagem.name
+
+    // Move o arquivo para o diretório de upload que foi selecionado acima
+    ref_imagem.mv(uploadPath, function (err) {
+        if (err) return res.status(500).send(err)
+
+    })
+
+    // Criação do post no banco de dados
     Post.create({
         titulopost: titulo,
         subtitulopost: subtitulo,
-        conteudopost: conteudo
+        conteudopost: conteudo,
+        ref_imagem:__dirname + '/upload/' + ref_imagem.name // Caminho completo da imagem
     }).then(function () {
+        // Redireciona para a página inicial após a criação do post
         res.redirect('/home')
     }).catch(function (erro) {
+        // Se houver algum erro, retorna uma mensagem de erro
         res.send('Ocorreu um erro: ' + erro)
     })
 })
