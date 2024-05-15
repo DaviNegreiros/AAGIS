@@ -62,6 +62,23 @@ app.get('/login', function (req, res) {
 app.get('/post', function (req, res) {
     res.render('pag-post', { style: 'style-post.css' })
 })
+//rota para postar a noticia
+app.post('/add', function (req, res) {
+
+    const titulo = req.body.titulopost
+    const subtitulo = req.body.subtitulopost
+    const conteudo = req.body.conteudopost
+
+    Post.create({
+        titulopost: titulo,
+        subtitulopost: subtitulo,
+        conteudopost: conteudo
+    }).then(function () {
+        res.redirect('/home')
+    }).catch(function (erro) {
+        res.send('Ocorreu um erro: ' + erro)
+    })
+})
 
 app.listen(7071, function () {
     console.log("Server on: http://localhost:7071")

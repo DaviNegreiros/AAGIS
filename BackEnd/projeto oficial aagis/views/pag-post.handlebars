@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Postagem</title>
     <link rel="stylesheet" href="style-post.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
     <script defer src="scriptsPost.js"></script>
     <script async src="scriptsPost.js"></script>
@@ -23,47 +25,52 @@
         <a id="slogan">Atualizações Acadêmicas Gerais, Indispensáveis e Sucintas</a>
 
     </div>
-      <!-- area postagem-->
-       <div class="container">
-        <div class="Title-box"><h1>Área de Postagem</h1></div>
+    <!-- area postagem-->
+    <div class="container">
+        <div class="Title-box">
+            <h1>Área de Postagem</h1>
+        </div>
         <div class="fakeModal">
             <div class="fakeModal-conteudo">
-                <div class="fakeModal1">
-                    <!-- botão imagem -->
-                    <div class="btnImg">
-                        <label class="picture" for="picture__input" tabIndex="0">
-                            <span class="picture__image"></span>
-                        </label>
-                        <input type="file" name="picture__input" id="picture__input">
+                <form action="/add" method="POST" enctype="multipart/form-data">
+                    <div class="fakeModal1">
+                        <!-- botão imagem -->
+                        <div class="btnImg">
+                            <label class="picture" for="picture__input" tabIndex="0">
+                                <span class="picture__image"></span>
+                            </label>
+                            <input type="file" name="picture__input" id="picture__input">
+                        </div>
+                        <!-- FIM botão imagem -->
                     </div>
-                    <!-- FIM botão imagem -->
-                </div>
-               <div class="input-texto">
-                <textarea id="titulo" placeholder="Digite o título..." class="title"></textarea><br>
-                <textarea id="subtitulo" placeholder="Digite o subtítulo..." class="subtitle"></textarea><br>
-                <textarea id="texto" placeholder="Digite o texto..." class="text"></textarea><br>
+                    <div class="input-texto">
+                        <textarea name="titulopost" placeholder="Digite o título..." class="title"></textarea><br>
+                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..."
+                            class="subtitle"></textarea><br>
+                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text"></textarea><br>
 
-                <button type="submit">Enviar</button>
-               </div>
-                    
+                        <button type="submit">Enviar</button>
+                    </div>
+
             </div>
-           </div>
+        </div>
 
-          
-         <!-- botão imagem -->
-         <!--<div class="btnImg">
+
+        <!-- botão imagem -->
+        <!--<div class="btnImg">
             <label class="picture" for="picture__input" tabIndex="0">
                 <span class="picture__image"></span>
             </label>
             <input type="file" name="picture__input" id="picture__input">
         </div>-->
         <!-- FIM botão imagem -->
-        </div>
+    </div>
 
-      <!-- FIM area postagem-->
-      <footer>
+    <!-- FIM area postagem-->
+    <footer>
         <div class="info1">
-            <ul>  <h3>AAGIS</h3>
+            <ul>
+                <h3>AAGIS</h3>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elits!
                 <div class="redes-sociais">
                     <img src="imagens/icon.instagram.png" alt="">
@@ -85,11 +92,18 @@
             </ul>
             <ul>
                 <h3> Fale conosco </h3>
-                <li><p> +55 61 9 8638-7990</p></li>
-                <li><p> aagisnoticias2024@gmail.com</p></li>
-                <li><p> Universidade de Brasília - UnB tararararara</p></li>
+                <li>
+                    <p> +55 61 9 8638-7990</p>
+                </li>
+                <li>
+                    <p> aagisnoticias2024@gmail.com</p>
+                </li>
+                <li>
+                    <p> Universidade de Brasília - UnB tararararara</p>
+                </li>
             </ul>
         </div>
-    </footer>  
+    </footer>
 </body>
+
 </html>
