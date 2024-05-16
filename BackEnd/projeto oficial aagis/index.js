@@ -98,7 +98,7 @@ app.post('/add', function (req, res) {
         titulopost: titulo,
         subtitulopost: subtitulo,
         conteudopost: conteudo,
-        ref_imagem: __dirname + '/upload/' + ref_imagem.name // Caminho completo da imagem
+        ref_imagem: '/upload/' + ref_imagem.name // Caminho completo da imagem
     }).then(function () {
         // Redireciona para a página inicial após a criação do post
         res.redirect('/home')
