@@ -22,7 +22,6 @@ app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
-
         allowProtoMethodsByDefault: true,
     }
 }))
@@ -33,28 +32,50 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //Rotas
-//rota home
-app.get('/home', function (req, res) {
+//rota pagina inicial
+app.get('/', async (req, res) => {
 
-    // Defina o caminho para o arquivo CSS
-    const cssPath = './views/styles.css'
+    // Criar nova noticia para teste:
+    /*const novoPost = await Post.create({
+          titulopost: "Noticia 21",
+          subtitulopost: "Subtitulo da noticia 21", 
+          conteudopost: "Conteudo da noticia",
+          curso: "Eng Software",
+          ref_imagem: "/imagens/noticia1.jpeg",
+          id_conta: 0
+      });*/
 
-    Post.findAll({
-        order: [['id', 'DESC']],//ordenando as noticias por id do maior para o menor
-    }).then(function (posts) {
+    try {
+        // Buscar todos os posts ordenados do mais recente para o mais antigo
+        const posts = await Post.findAll({
+            order: [['id', 'DESC']],
+            limit: 12
+        });
+
+        // Dividir os posts entre os que vao para os sliders e os que vao para os cards
+        const postsSlider = posts.slice(0, 4);  // 4 primeiros posts (ordem decrescente)
+        const postsCard = posts.slice(4);  // Restante dos posts
+
         // Adicionando 1 ao índice de cada post
-        const postsWithIndex = posts.map((post, index) => {
+        const postsCardWithIndex = postsCard.map((post, index) => {
             post.indexPlusOne = index + 1;
             return post;
-        })
-        res.render('index', { posts: posts, style: 'styles.css' })
-    })
-})
+        });
 
+        // Renderizar a página
+        res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, style: 'styles.css'});
+
+    } catch (error) {
+        // Capturando qualquer erro que ocorra durante a consulta ao banco de dados
+        res.send("Erro ao buscar posts: " + error);
+    }
+});
+
+ 
 
 //rota login
 app.get('/login', function (req, res) {
-    res.render('pag-login', { style: 'styleLogin.css' })
+    res.render('pag-login', { style: 'styleLogin.css' }) 
 })
 
 

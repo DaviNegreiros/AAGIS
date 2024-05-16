@@ -312,22 +312,7 @@ header .HeaderRow {
     position: relative;
     transition: 2s;
 }
-.s1{
-    background: url(https://noticias.unb.br/images/Noticias/2024/04-Abr/11042024_RankingQS_29052017_icc_aulaanfiteatro60_betomonteiro-2.jpg);
-    background-size: 800px 450px;
-}  
-.s2{
-    background: url(https://noticias.unb.br/images/Noticias/2024/04-Abr/10abr2024_GersonJanczura_5_LGPrado.jpg);
-    background-size: 800px 450px;
-} 
-.s3{
-    background: url(https://noticias.unb.br/images/Noticias/2024/04-Abr/20240405_consuni_betomonteiro_4.jpg);
-    background-size: 800px 450px;
-}  
-.s4{
-    background: url(https://noticias.unb.br/images/Noticias/2024/04-Abr/20240404_reuniao-ibama_betomonteiro_1.jpg);
-    background-size: 800px 450px;
-} 
+
 .slideTxt{
     background-color: #04102498;
     width: 100%;
@@ -466,8 +451,8 @@ height: 450px;
     }
     .intro{
         text-align: center;
-        height:50px;
-        max-width: 300px;
+        height: 50px;
+        max-width: 100%;
         min-width: 250px;
         padding: 6px;
         border: 1px;
@@ -478,6 +463,7 @@ height: 450px;
         border-radius: 8px;
         transition: .5s;
         margin-bottom: 0px;
+        object-fit: cover;
     } 
     .intro2{
         text-align: center;

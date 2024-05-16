@@ -3,8 +3,26 @@
 
 <head>
     <title>AAGIS</title>
-    <link rel="stylesheet" href="{{cssPath}}">
+    <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style type='text/css'>
+        .s1 {     
+            background-image: url({{postsSlider.[0].ref_imagem}});         
+            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
+        } 
+        .s2 {     
+            background-image: url({{postsSlider.[1].ref_imagem}});         
+            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
+        } 
+        .s3 {     
+            background-image: url({{postsSlider.[2].ref_imagem}});         
+            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
+        } 
+        .s4 {     
+            background-image: url({{postsSlider.[3].ref_imagem}});         
+            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
+        } 
+    </style>
 </head>
 
 <body>
@@ -114,9 +132,8 @@
                     <!--Slide Images-->
                     <div class="slide first s1">
                         <div class="slideTxt" onclick="abrirModalS1()">
-                            <h3 class="slideTitulo">Grupo tira SS+ em DS</h3>
-                            <a class="slideText">Alunos do grupo laranja fizeram o melhor site do mundo. E ganharam o
-                                premio nobel de melhor frontend ja feito na historia!</a>
+                            <h3 class="slideTitulo">{{postsSlider.[0].titulopost}}</h3>
+                            <a class="slideText">{{postsSlider.[0].subtitulopost}}</a>
                             <!--comentário ao backend: quando forem implantar o banco de dados nessa div "a" usem um limitador de caracteres pra nao ficar feio :) ass: Davidros-->
                         </div>
                         <div id="modalS1" class="modal">
@@ -124,12 +141,11 @@
                                 <span class="fechar" onclick="fecharModalS1()">&times;</span>
                                 <div class="modalS1">
                                     <img
-                                        src="https://noticias.unb.br/images/Noticias/2024/04-Abr/11042024_RankingQS_29052017_icc_aulaanfiteatro60_betomonteiro-2.jpg">
+                                        src={{postsSlider.[0].ref_imagem}}>
                                 </div>
-                                <h2>Grupo tira SS+ em DS</h2>
+                                <h2>{{postsSlider.[0].titulopost}}</h2>
                                 <p>
-                                    Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e
-                                    e mais fotos
+                                    {{postsSlider.[0].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -139,21 +155,19 @@
                     </div>
                     <div class="slide s2">
                         <div class="slideTxt" onclick="abrirModalS2()">
-                            <h3 class="slideTitulo">Greve cancelada!</h3>
-                            <a class="slideText">Alunos do grupo branco acharam uma tonelada de dinheiro e deram aos
-                                professores.</a>
+                            <h3 class="slideTitulo">{{postsSlider.[1].titulopost}}</h3>
+                            <a class="slideText">{{postsSlider.[1].subtitulopost}}</a>
                         </div>
                         <div id="modalS2" class="modal">
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS2()">&times;</span>
                                 <div class="modalS2">
                                     <img
-                                        src="https://noticias.unb.br/images/Noticias/2024/04-Abr/10abr2024_GersonJanczura_5_LGPrado.jpg">
+                                        src={{postsSlider.[1].ref_imagem}}>
                                 </div>
-                                <h2>Greve cancelada!</h2>
+                                <h2>{{postsSlider.[1].titulopost}}</h2>
                                 <p>
-                                    Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e
-                                    e mais fotos
+                                   {{postsSlider.[1].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -162,21 +176,19 @@
                     </div>
                     <div class="slide s3">
                         <div class="slideTxt" onclick="abrirModalS3()">
-                            <h3 class="slideTitulo">Verão FGA</h3>
-                            <a class="slideText">Alunos do grupo roxo encheram a piscina da FGA com fanta-uva para fugir
-                                do calor!</a>
+                            <h3 class="slideTitulo">{{postsSlider.[2].titulopost}}</h3>
+                            <a class="slideText">{{postsSlider.[2].subtitulopost}}</a>
                         </div>
                         <div id="modalS3" class="modal">
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS3()">&times;</span>
                                 <div class="modalS3">
                                     <img
-                                        src="https://noticias.unb.br/images/Noticias/2024/04-Abr/20240405_consuni_betomonteiro_4.jpg">
+                                        src={{postsSlider.[2].ref_imagem}}>
                                 </div>
-                                <h2>Verão FGA</h2>
+                                <h2>{{postsSlider.[2].titulopost}}</h2>
                                 <p>
-                                    Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e
-                                    e mais fotos
+                                   {{postsSlider.[2].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -185,21 +197,19 @@
                     </div>
                     <div class="slide s4">
                         <div class="slideTxt" onclick="abrirModalS4()">
-                            <h3 class="slideTitulo">Monarca em apuros!</h3>
-                            <a class="slideText">Alunos do grupo preto sequestraram o Monarca e estão negociando patacas
-                                com a Guarda Real.</a>
+                            <h3 class="slideTitulo">{{postsSlider.[3].titulopost}}</h3>
+                            <a class="slideText">{{postsSlider.[3].subtitulopost}}</a>
                         </div>
                         <div id="modalS4" class="modal">
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS4()">&times;</span>
                                 <div class="modalS4">
                                     <img
-                                        src="https://noticias.unb.br/images/Noticias/2024/04-Abr/20240404_reuniao-ibama_betomonteiro_1.jpg">
+                                        src={{postsSlider.[3].ref_imagem}}>
                                 </div>
-                                <h2>Monarca em apuros!</h2>
+                                <h2>{{postsSlider.[3].titulopost}}</h2>
                                 <p>
-                                    Aqui será onde colocaremos um texto mais detalhado da noticia assim como as fontes e
-                                    e mais fotos
+                                   {{postsSlider.[3].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -230,41 +240,33 @@
 
 
         <!--div cards-->
+
         <div class="container">
+            {{#each postsCard}}
             <div class="card">
-                <img src="imagens/noticia4.jpg" class="card-img" alt="noticia1" onclick="abrirModal1()">
-                <div class="intro" onclick="abrirModal1()">
-                    <h3> Unb </h3>
-                    <p>Universidade de Brasília está entre as melhores da América Latina.</p>
+                <img src={{this.ref_imagem}} class="card-img" alt="noticia{{indexPlusOne}}" onclick="abrirModal{{indexPlusOne}}()">
+                <div class="intro" onclick="abrirModal{{indexPlusOne}}()">
+                    <h3>{{this.titulopost}}</h3>
+                    <p>{{this.subtitulopost}}</p>
                 </div>
-                <div id="modal1" class="modal">
+                <div id="modal{{indexPlusOne}}" class="modal">
                     <div class="modal-conteudo">
-                        <span class="fechar" onclick="fecharModal1()">&times;</span>
-                        <div class="modal1">
-                            <img src="imagens/noticia4.jpg">
+                        <span class="fechar" onclick="fecharModal{{indexPlusOne}}()">&times;</span>
+                        <div class="modal{{indexPlusOne}}">
+                            <img src={{this.ref_imagem}}>
                         </div>
-                        <h2>Ranking internacional aponta UnB como a 3ª melhor federal do Brasil</h2>
+                        <h2>{{this.titulopost}}</h2>
                         <p>
-                            Há 20 anos, o Webometrics classifica as universidades com base em iniciativas de
-                            transparência, excelência e visibilidade, que buscam aprimorar o acesso aberto e eletrônico
-                            a publicações científicas e a outros materiais acadêmicos.
-
-                            Nesta edição, em relação às instituições da América Latina, a UnB subiu para o 11º lugar. Na
-                            última avaliação, a UnB ocupava a 13ª posição. No cenário global, a UnB alcançou a 562ª
-                            posição, subindo 24 posições em comparação com a última avaliação, na qual ocupava a 586ª
-                            colocação.
-
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate architecto velit nemo
-                            iusto magnam non qui expedita ratione. Fuga quis, assumenda quidem minima dignissimos rem
-                            vel ut dolor corrupti corporis?
+                            {{this.conteudopost}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div id="overlay1" class="overlay" onclick="fecharModal1()"></div>
-            <script src="scripts.js"></script>
-
-
+            <div id="overlay{{indexPlusOne}}" class="overlay" onclick="fecharModal{{indexPlusOne}}()"></div>
+            {{/each}}
+        </div>
+        <script src="./scripts.js"></script>
+            <!--
             <div class="card">
                 <img src="imagens/noticia5.jpeg" class="card-img" alt="noticia2" onclick="abrirModal2()">
                 <div class="intro" onclick="abrirModal2()">
@@ -466,8 +468,8 @@
                 </div>
             </div>
             <div id="overlay8" class="overlay" onclick="fecharModal8()"></div>
-
         </div>
+        -->
         <!--FIM div cards-->
     </div>
     <!--Inicio footer-->
