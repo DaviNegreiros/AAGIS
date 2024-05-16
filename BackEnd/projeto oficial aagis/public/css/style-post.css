@@ -231,7 +231,7 @@ footer li{
 /*==botao texto==*/
 .input-texto{
     width: 800px;
-    height: 400px;
+    height: 100px;
     margin-top: 35px;
     background-color: rgb(255, 255, 255);
     margin-left: 18px;
@@ -297,7 +297,7 @@ input.text:hover {
     background: #ccc;
   }
   button{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     margin-left: 350px;
     margin-top: 18px;
     font-size:25px;
@@ -320,3 +320,18 @@ input.text:hover {
   button:hover {
     background: linear-gradient(#476e9e, rgb(120, 146, 194));
   }
+
+  /*==checkbox==*/
+  #checkbox-container {
+    display: flex;
+  }
+  
+  #checkbox-container label {
+    margin-right: 8px; /* Espaçamento entre as checkboxes */
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 12px;
+
+  }
+  
