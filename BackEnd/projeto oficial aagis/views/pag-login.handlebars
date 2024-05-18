@@ -24,21 +24,20 @@
       <!--inicio area login-->
        <div class="container">
          <div class="login">
-            <form  type="submit" action="#">
+            <form id="loginForm" action="/addlogin" method="POST"> 
                 <h2>Login</h2>
-                    <input type="email" id="loginEmail" placeholder="Email" required><br>
-                    <input type="password" id="loginPassword" placeholder="Senha" required><br>
+                    <input type="email" name="email" id="loginEmail" placeholder="Email" required><br>
+                    <input type="password" name="senha" id="loginPassword" placeholder="Senha" required><br>
                     <p><a href="index.html"> Esqueceu sua senha?</a></p>
                    <button type="submit">Entrar</button>
             </form>
          </div>
          <div class="cadastro">
-            <form id="signupForm" action="#">
+            <form id="signupForm" action="/cadastro" method="POST"> 
                 <h2>Cadastre-se</h2>
-            <input type="text" id= " signupName"placeholder="Nome" required><br>
-            <input type="email" id="signupEmail"
-            placeholder="Email" required><br>
-            <input type="password" id="signupPassword" placeholder="Senha" required><br>
+        <input type="text" name="nomeCadastro" id="signupName" placeholder="Nome" required><br>
+        <input type="email" name="emailCadastro" id="signupEmail" placeholder="Email" required><br>
+        <input type="password" name="senhaCadastro" id="signupPassword" placeholder="Senha" required><br>
             <button  type="submit">Cadastrar</button>
             </form>
          </div>
