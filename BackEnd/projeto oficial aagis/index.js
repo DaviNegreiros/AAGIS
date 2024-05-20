@@ -16,6 +16,8 @@ app.use(fileUpload())
 //static files
 app.use(express.static('upload'))
 app.use(express.static('public'))
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
+
 
 //Config
 //Template Engine
@@ -46,7 +48,7 @@ app.get('/', async (req, res) => {
         // Dividir os posts entre os que vao para os sliders e os que vao para os cards
         const postsSlider = posts.slice(0, 4);  // 4 primeiros posts (ordem decrescente)
         const postsCard = posts.slice(4);  // Restante dos posts
-    // Defina o caminho para o arquivo CSS
+        // Defina o caminho para o arquivo CSS
 
 
         // Adicionando 1 ao índice de cada post
@@ -56,7 +58,7 @@ app.get('/', async (req, res) => {
         });
 
         // Renderizar a página
-        res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, style: 'styles.css'});
+        res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, style: 'styles.css' });
 
     } catch (error) {
         // Capturando qualquer erro que ocorra durante a consulta ao banco de dados
@@ -64,30 +66,30 @@ app.get('/', async (req, res) => {
     }
 });
 
- 
+
 
 //rota login
 app.get('/login', function (req, res) {
-    res.render('pag-login', { style: 'styleLogin.css' }) 
+    res.render('pag-login', { style: 'styleLogin.css' })
 })
 
-app.post('/cadastro',  async (req, res) =>{
+app.post('/cadastro', async (req, res) => {
     const email = req.body.emailCadastro
     const nome = req.body.nomeCadastro
     const BDnome = await Usuario.findOne({ where: { email: email } });
     const BDemail = await Usuario.findOne({ where: { nome: nome } });
-    
+
     console.log("checando se existe nome de usuario ou email já existe")
-    if(!BDnome && !BDemail){
+    if (!BDnome && !BDemail) {
         console.log("nome e email ok")
         Usuario.create({
             nome: req.body.nomeCadastro,
             email: req.body.emailCadastro,
             senha: req.body.senhaCadastro
-        }).then(function() {
+        }).then(function () {
             res.redirect('/');
-        }).catch(function(erro) {
-            res.redirect('/login?message=Houve um erro: ' + erro); 
+        }).catch(function (erro) {
+            res.redirect('/login?message=Houve um erro: ' + erro);
         })
     } else {
         console.log('nome ou email já existentes')
@@ -169,7 +171,7 @@ app.post('/add', function (req, res) {
         ref_imagem: '/upload/' + ref_imagem.name // Caminho completo da imagem
     }).then(function () {
         // Redireciona para a página inicial após a criação do post
-        res.redirect('/home')
+        res.redirect('/')
     }).catch(function (erro) {
         // Se houver algum erro, retorna uma mensagem de erro
         res.send('Ocorreu um erro: ' + erro)

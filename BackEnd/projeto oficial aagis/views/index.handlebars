@@ -6,22 +6,29 @@
     <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style type='text/css'>
-        .s1 {     
-            background-image: url({{postsSlider.[0].ref_imagem}});         
-            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
-        } 
-        .s2 {     
-            background-image: url({{postsSlider.[1].ref_imagem}});         
-            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
-        } 
-        .s3 {     
-            background-image: url({{postsSlider.[2].ref_imagem}});         
-            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
-        } 
-        .s4 {     
-            background-image: url({{postsSlider.[3].ref_imagem}});         
-            background-size: 800px 450px;         /* Outras propriedades de estilo aqui, se necessário */ 
-        } 
+        .s1 {
+            background-image: url('{{postsSlider.[0].ref_imagem}}');
+            background-size: 800px 450px;
+            /* Outras propriedades de estilo aqui, se necessário */
+        }
+
+        .s2 {
+            background-image: url('{{postsSlider.[1].ref_imagem}}');
+            background-size: 800px 450px;
+            /* Outras propriedades de estilo aqui, se necessário */
+        }
+
+        .s3 {
+            background-image: url('{{postsSlider.[2].ref_imagem}}');
+            background-size: 800px 450px;
+            /* Outras propriedades de estilo aqui, se necessário */
+        }
+
+        .s4 {
+            background-image: url('{{postsSlider.[3].ref_imagem}}');
+            background-size: 800px 450px;
+            /* Outras propriedades de estilo aqui, se necessário */
+        }
     </style>
 </head>
 
@@ -140,8 +147,7 @@
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS1()">&times;</span>
                                 <div class="modalS1">
-                                    <img
-                                        src={{postsSlider.[0].ref_imagem}}>
+                                    <img src={{postsSlider.[0].ref_imagem}}>
                                 </div>
                                 <h2>{{postsSlider.[0].titulopost}}</h2>
                                 <p>
@@ -162,12 +168,11 @@
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS2()">&times;</span>
                                 <div class="modalS2">
-                                    <img
-                                        src={{postsSlider.[1].ref_imagem}}>
+                                    <img src={{postsSlider.[1].ref_imagem}}>
                                 </div>
                                 <h2>{{postsSlider.[1].titulopost}}</h2>
                                 <p>
-                                   {{postsSlider.[1].conteudopost}}
+                                    {{postsSlider.[1].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -183,12 +188,11 @@
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS3()">&times;</span>
                                 <div class="modalS3">
-                                    <img
-                                        src={{postsSlider.[2].ref_imagem}}>
+                                    <img src={{postsSlider.[2].ref_imagem}}>
                                 </div>
                                 <h2>{{postsSlider.[2].titulopost}}</h2>
                                 <p>
-                                   {{postsSlider.[2].conteudopost}}
+                                    {{postsSlider.[2].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -204,12 +208,11 @@
                             <div class="modal-conteudo">
                                 <span class="fechar" onclick="fecharModalS4()">&times;</span>
                                 <div class="modalS4">
-                                    <img
-                                        src={{postsSlider.[3].ref_imagem}}>
+                                    <img src={{postsSlider.[3].ref_imagem}}>
                                 </div>
                                 <h2>{{postsSlider.[3].titulopost}}</h2>
                                 <p>
-                                   {{postsSlider.[3].conteudopost}}
+                                    {{postsSlider.[3].conteudopost}}
                                 </p>
                             </div>
                         </div>
@@ -244,7 +247,8 @@
         <div class="container">
             {{#each postsCard}}
             <div class="card">
-                <img src={{this.ref_imagem}} class="card-img" alt="noticia{{indexPlusOne}}" onclick="abrirModal{{indexPlusOne}}()">
+                <img src={{this.ref_imagem}} class="card-img" alt="noticia{{indexPlusOne}}"
+                    onclick="abrirModal{{indexPlusOne}}()">
                 <div class="intro" onclick="abrirModal{{indexPlusOne}}()">
                     <h3>{{this.titulopost}}</h3>
                     <p>{{this.subtitulopost}}</p>
@@ -266,7 +270,7 @@
             {{/each}}
         </div>
         <script src="./scripts.js"></script>
-            <!--
+        <!--
             <div class="card">
                 <img src="imagens/noticia5.jpeg" class="card-img" alt="noticia2" onclick="abrirModal2()">
                 <div class="intro" onclick="abrirModal2()">
