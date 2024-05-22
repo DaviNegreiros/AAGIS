@@ -28,7 +28,10 @@
                 <h2>Login</h2>
                     <input type="email" name="email" id="loginEmail" placeholder="Email" required><br>
                     <input type="password" name="senha" id="loginPassword" placeholder="Senha" required><br>
-                    <p><a href="index.html"> Esqueceu sua senha?</a></p>
+                    <p><a href="index.html"> Esqueceu sua senha?</a>
+                    <div id="errom1" class="erroMessage hide">Senha inválida</div>
+                    <div id="errom2" class="erroMessage hide">Usuário inexistente</div>
+                    </p>
                    <button type="submit">Entrar</button>
             </form>
          </div>
@@ -38,6 +41,7 @@
         <input type="text" name="nomeCadastro" id="signupName" placeholder="Nome" required><br>
         <input type="email" name="emailCadastro" id="signupEmail" placeholder="Email" required><br>
         <input type="password" name="senhaCadastro" id="signupPassword" placeholder="Senha" required><br>
+                    <div id="errom3" class="erroMessage hide">Email já cadastrado</div>
             <button  type="submit">Cadastrar</button>
             </form>
          </div>

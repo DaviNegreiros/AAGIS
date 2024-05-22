@@ -269,6 +269,14 @@ header .HeaderRow {
   button:hover {
     background: linear-gradient(#476e9e, rgb(120, 146, 194));
   }
+  .erroMessage {
+    color: rgb(120, 43, 43);
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .hide {
+    display: none;
+  }
   /*==fim area de login==*/
   /*==area cadastro==*/
   .cadastro{

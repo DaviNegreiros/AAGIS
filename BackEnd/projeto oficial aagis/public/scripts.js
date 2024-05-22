@@ -221,7 +221,7 @@ btnFiltro.onclick = function() {
 
     /*-- BOTAO HOME --*/
     function homeFunction() {
-        window.location.href = '/Frontend/'; // Redirect to homepage URL
+        window.location.href = '/'; // Redirect to homepage URL
     }
 
     /*-- FIM BOTAO HOME--*/
@@ -249,3 +249,57 @@ btnFiltro.onclick = function() {
             event.preventDefault(); // Impede o envio do formulário
         }
     });
+
+    //função aparecer mensagem de erro no login
+        let erromsg1 = document.querySelector('#errom1')
+        function erroLSenha() {
+            if(erromsg1.classList.contains('.hide')){
+
+            }else {
+                erromsg1.classList.toggle('.hide');
+            }
+        }
+
+
+    //função aparecer mensagem de erro no login
+    let erromsg2 = document.querySelector('#errom2')
+    function erroLUsuario() {
+        if(erromsg2.classList.contains('.hide')){
+
+        }else {
+            erromsg2.classList.toggle('.hide');
+        }
+    }
+
+
+    //função aparecer mensagem de erro no cadastro
+    let erromsg3 = document.querySelector('#errom3')
+    function erroCEmail() {
+        if(erromsg3.classList.contains('.hide')){
+
+        }else {
+            erromsg3.classList.toggle('.hide');
+        }
+    }
+    //função desaparecer mensagem de erro no login
+    function HIDEerroLSenha() {
+        if(erromsg1.classList.contains('.hide')){
+            erromsg1.classList.toggle('.hide');
+        }
+    }
+
+
+//função desaparecer mensagem de erro no login
+function HIDEerroLUsuario() {
+    if(erromsg2.classList.contains('.hide')){
+        erromsg2.classList.toggle('.hide');
+    }
+}
+
+
+//função desaparecer mensagem de erro no cadastro
+function HIDEerroCEmail() {
+    if(erromsg3.classList.contains('.hide')){
+        erromsg3.classList.toggle('.hide');
+    }
+}
