@@ -322,7 +322,7 @@ input.text:hover {
   }
 
   /*==checkbox==*/
-  #checkbox-container {
+#checkbox-container {
     display: flex;
   }
   
@@ -332,6 +332,11 @@ input.text:hover {
     font-size: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding-top: 12px;
-
+  
+  }
+  .data-hora{
+    padding-left: 500px;
+    color: black;
+    font-size: 18px;
   }
   
