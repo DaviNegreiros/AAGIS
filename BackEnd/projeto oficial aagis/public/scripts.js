@@ -1,4 +1,6 @@
 /*--slides show--*/
+const { us_repetido , email_inexistente, senha_incorreta} = require('../index.js');
+console.log(us_repetido)
 let count = 1;
 document.getElementById("radio1").checked = true;
 
@@ -303,3 +305,4 @@ function HIDEerroCEmail() {
         erromsg3.classList.toggle('.hide');
     }
 }
+
