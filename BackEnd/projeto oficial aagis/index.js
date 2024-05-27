@@ -73,7 +73,7 @@ var senha_incorreta = false
 var email_inexistente = false 
 //rota login 
 app.get('/login', function (req, res) {
-    res.render('pag-login', { style: 'styleLogin.css' },{user_name: user_name}) 
+    res.render('pag-login', { style: 'styleLogin.css' }) 
 })
 
 app.post('/cadastro',  async (req, res) =>{
@@ -178,7 +178,7 @@ app.post('/add', function (req, res) {
         ref_imagem: '/upload/' + ref_imagem.name // Caminho completo da imagem
     }).then(function () {
         // Redireciona para a página inicial após a criação do post
-        res.redirect('/home')
+        res.redirect('/')
     }).catch(function (erro) {
         // Se houver algum erro, retorna uma mensagem de erro
         res.send('Ocorreu um erro: ' + erro)

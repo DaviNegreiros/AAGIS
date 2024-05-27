@@ -1,6 +1,8 @@
-/*--slides show--*/
+/*--mensagem de erro login--*/
 const { us_repetido , email_inexistente, senha_incorreta} = require('../index.js');
-console.log(us_repetido)
+/*--FIM mensagem de erro login--*/
+
+/*--slides show--*/
 let count = 1;
 document.getElementById("radio1").checked = true;
 
@@ -261,6 +263,26 @@ btnFiltro.onclick = function() {
                 erromsg1.classList.toggle('.hide');
             }
         }
+            while(True){
+                if(senha_incorreta){
+                    erroLSenha();
+                } else{
+                    HIDEerroLSenha();
+                }
+                if(us_repetido){
+                    erroLUsuario(); 
+                 }else{
+                    HIDEerroLUsuario();
+                 }
+                 if(email_inexistente){
+                    erroCEmail();
+                }else{
+                    HIDEerroCEmail();
+                }
+            }
+                
+        
+        
 
 
     //função aparecer mensagem de erro no login
@@ -272,7 +294,7 @@ btnFiltro.onclick = function() {
             erromsg2.classList.toggle('.hide');
         }
     }
-
+    
 
     //função aparecer mensagem de erro no cadastro
     let erromsg3 = document.querySelector('#errom3')
@@ -283,6 +305,7 @@ btnFiltro.onclick = function() {
             erromsg3.classList.toggle('.hide');
         }
     }
+    
     //função desaparecer mensagem de erro no login
     function HIDEerroLSenha() {
         if(erromsg1.classList.contains('.hide')){
