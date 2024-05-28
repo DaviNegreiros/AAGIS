@@ -41,6 +41,14 @@ app.use(session({
     cookie: { secure: false } // Defina como true se estiver usando HTTPS
 }));
 
+function isLog(req, res, next) {
+    if (req.session && req.session.user_name) {
+        return next(); // O usuário está autenticado, continuar para a próxima middleware/rota
+    } else {
+        res.redirect('/login'); // O usuário não está autenticado, redirecionar para a página de login
+    }
+}
+
 
 //Rotas
 //rota pagina inicial
@@ -148,11 +156,11 @@ app.post('/addlogin', async (req, res) => {
 
 
 //rota post
-app.get('/post', function (req, res) {
+app.get('/post', isLog, function (req, res) {
     res.render('pag-post', { style: 'style-post.css' })
 })
 //Rota para postar a noticia
-app.post('/add', function (req, res) {
+app.post('/add',isLog, function (req, res) {
 
     let uploadPath// Caminho onde o arquivo será enviado
     let sampleFile// Variável para armazenar o arquivo enviado
