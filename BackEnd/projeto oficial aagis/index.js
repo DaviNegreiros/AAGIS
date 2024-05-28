@@ -7,6 +7,7 @@ const Usuario = require('./models/Usuario')
 const path = require('path') //npm i path
 const fileUpload = require('express-fileupload') //npm i express-fileupload
 const fs = require('fs')
+const session = require('express-session'); 
 //npm install mysql2
 
 //default option
@@ -31,6 +32,15 @@ app.set('view engine', 'handlebars')
 //Body Parser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+// Configurar o middleware de sessão
+app.use(session({
+    secret: 'your_secret_key', // Substitua por uma chave secreta segura
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Defina como true se estiver usando HTTPS
+}));
+
 
 //Rotas
 //rota pagina inicial
@@ -73,7 +83,10 @@ var senha_incorreta = false
 var email_inexistente = false 
 //rota login 
 app.get('/login', function (req, res) {
-    res.render('pag-login', { style: 'styleLogin.css' }) 
+    res.render('pag-login', { 
+        style: 'styleLogin.css',
+        user_name: req.session.user_name
+     }) 
 })
 
 app.post('/cadastro',  async (req, res) =>{
@@ -114,7 +127,7 @@ app.post('/addlogin', async (req, res) => {
             console.log('Usuário encontrado:', usuario);
             if (senha === usuario.senha) {
                 console.log("Senha correta, redirecionando...");
-                user_name = usuario.nome;
+                req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
 
                 res.redirect('/');
             } else {
