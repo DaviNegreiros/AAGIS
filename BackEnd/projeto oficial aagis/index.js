@@ -7,7 +7,7 @@ const Usuario = require('./models/Usuario')
 const path = require('path') //npm i path
 const fileUpload = require('express-fileupload') //npm i express-fileupload
 const fs = require('fs')
-const session = require('express-session'); 
+const session = require('express-session');  //npm i express-session
 //npm install mysql2
 
 //default option
