@@ -1,181 +1,108 @@
 <!DOCTYPE html>
-<html>
-
-    <head>
-       <title>AAGIS</title>
-       <link rel="stylesheet" href="style-calendario.css">
-       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-       <meta
-      name="description"
-      content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!"
-    />
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style-calendario.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
-      name="keywords"
-      content="calendar, events, reminders, javascript, html, css, open source coding"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    </head>
+    name="description"
+    content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!"
+  />
+  <meta
+    name="keywords"
+    content="calendar, events, reminders, javascript, html, css, open source coding"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-    <body>
-        <!--Sidebar-->
-        <div class="sidebar">
-            <div class="top">
-                <div class="logo">
-                    <i class='bx bx-home-alt-2'></i>
-                    <span>AAGIS</span>
-                </div>
-                <i class="bx bx-menu" id="btn"></i>
-            </div>
-            <div class="user"><a href="pag-login.html"><img src="imagens/profile_10693213.png" alt="me" class="user-img">
-            </a>
-                <div>
-                    <p class="bold">User</p>
-                    <p>Admin</p> 
-                </div>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="bx bxs-grid-alt"></i>
-                        <span class="nav-item">Calendario</span>
-                    </a>
-                    <span class="tooltip">Filtro</span>
-                </li>
-                <li id="btnFiltro">
-                    <a href="#">
-                        <i class="bx bx-list-check"></i>
-                        <span class="nav-item">Filtro</span>
-                    </a>
-                    <span class="tooltip" >Filtro</span>
-                </li>
-                
-            </a>
-            <form action="cadastro.php" method=" get" autocomplete="on"></form>
-            <fieldset class="filtro">
-                <label class="filtro1">Engenharias
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="filtro1">Engenharia de Software
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="filtro1">Engenharia De Energia
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="filtro1">Engenharia De Eletrônica
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-
-                  <label class="filtro1">Engenharia Aeroespacial
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-
-                  <label class="filtro1">Engenharia Automotiva
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-            </fieldset>
-
-                <li>
-                    <a href="#">
-                        <i class="bx bx-cog"></i>
-                        <span class="nav-item">Settings</span>
-                    </a>
-                    <span class="tooltip">Settings</span>
-                </li>
-                <li>
-                    <a href="#">  
-                        <i class="bx bx-log-out"></i>
-                        <span class="nav-item">Logout</span>
-                    </a>
-                    <span class="tooltip">Logout</span>
-                </li>
-            </ul>
-        </div>
-        <!--FIM Sidebar-->
-
-        <!--Calendario-->
-        <div class="container">
-            <div class="left">
-              <div class="calendar">
-                <div class="month">
-                  <i class="fas fa-angle-left prev"></i>
-                  <div class="date">december 2015</div>
-                  <i class="fas fa-angle-right next"></i>
-                </div>
-                <div class="weekdays">
-                  <div>Sun</div>
-                  <div>Mon</div>
-                  <div>Tue</div>
-                  <div>Wed</div>
-                  <div>Thu</div>
-                  <div>Fri</div>
-                  <div>Sat</div>
-                </div>
-                <div class="days">
-                    
-                </div>
-                <div class="goto-today">
-                  <div class="goto">
-                    <input type="text" placeholder="mm/yyyy" class="date-input" />
-                    <button class="goto-btn">Go</button>
-                  </div>
-                  <button class="today-btn">Today</button>
-                </div>
+    <title>Calendar with Events</title>
+  </head>
+  <body>
+  <div class="header">
+      <div class="HeaderRow">
+          <div class="home" onclick="homeFunction()">
+              <h1 id="HOME">AAGIS</h1>
+              <div id="imgPadding">
+                  <img src="imagens/unb_logo.png" alt="Logo UnB">
               </div>
-            </div>
-            <div class="right">
-              <div class="today-date">
-                <div class="event-day">wed</div>
-                <div class="event-date">12th december 2022</div>
-              </div>
-              <div class="events"></div>
-              <div class="add-event-wrapper">
-                <div class="add-event-header">
-                  <div class="title">Add Event</div>
-                  <i class="fas fa-times close"></i>
-                </div>
-                <div class="add-event-body">
-                  <div class="add-event-input">
-                    <input type="text" placeholder="Event Name" class="event-name" />
-                  </div>
-                  <div class="add-event-input">
-                    <input
-                      type="text"
-                      placeholder="Event Time From"
-                      class="event-time-from"
-                    />
-                  </div>
-                  <div class="add-event-input">
-                    <input
-                      type="text"
-                      placeholder="Event Time To"
-                      class="event-time-to"
-                    />
-                  </div>
-                </div>
-                <div class="add-event-footer">
-                  <button class="add-event-btn">Add Event</button>
-                </div>
-              </div>
-            </div>
-            <button class="add-event">
-              <i class="fas fa-plus"></i>
-            </button>
           </div>
-          <!--FIM calendario-->
+      </div>
 
-</html>
+      <a id="slogan">Atualizações Acadêmicas Gerais, Indispensáveis e Sucintas</a>
+  </div>
+
+  <div class="tudor"></div>
+  <div class="container">
+    <div class="left">
+      <div class="calendar">
+        <div class="month">
+          <i class="fas fa-angle-left prev"></i>
+          <div class="date">december 2015</div>
+          <i class="fas fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+        <div class="days"></div>
+        <div class="goto-today">
+          <div class="goto">
+            <input type="text" placeholder="mm/yyyy" class="date-input" />
+            <button class="goto-btn">Go</button>
+          </div>
+          <button class="today-btn">Today</button>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="today-date">
+        <div class="event-day">wed</div>
+        <div class="event-date">12th december 2022</div>
+      </div>
+      <div class="events"></div>
+      <div class="add-event-wrapper">
+        <div class="add-event-header">
+          <div class="title">Add Event</div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="add-event-body">
+          <div class="add-event-input">
+            <input type="text" placeholder="Event Name" class="event-name" />
+          </div>
+          <div class="add-event-input">
+            <input
+              type="text"
+              placeholder="Event Time From"
+              class="event-time-from"
+            />
+          </div>
+          <div class="add-event-input">
+            <input
+              type="text"
+              placeholder="Event Time To"
+              class="event-time-to"
+            />
+          </div>
+        </div>
+        <div class="add-event-footer">
+          <button class="add-event-btn">Add Event</button>
+        </div>
+      </div>
+    </div>
+    <button class="add-event">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+
+<script src="scriptcalendario1.js"></script>

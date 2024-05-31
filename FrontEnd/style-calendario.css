@@ -235,8 +235,6 @@ body {
     background: #041024;
     text-align: center;
     z-index: 998;
-    margin-left: 40px;
-
 
 }
 #HOME {
@@ -275,14 +273,16 @@ header .HeaderRow {
 
     /*=== FIM HEADER ===*/
 
-  /*== CALENDARIO ==*/ 
-::-webkit-scrollbar {
-  width: 5px;
+:root {
+  --primary-clr: #041024;
 }
-::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 50px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
+/* nice scroll bar */
 ::-webkit-scrollbar-thumb {
   background: var(--primary-clr);
   border-radius: 50px;
@@ -291,11 +291,15 @@ header .HeaderRow {
 body {
   position: relative;
   min-height: 100vh;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
   background-color: #e2e1dc;
+}
+
+.tudor{
+  padding-top: 110px;
 }
 .container {
   position: relative;
@@ -307,7 +311,7 @@ body {
   display: flex;
 
   border-radius: 10px;
-  background-color: #373c4f;
+  background-color: #041024e8;
 }
 .left {
   width: 60%;
@@ -321,7 +325,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  color: #878895;
+  color: #04102477;
   border-radius: 5px;
   background-color: #fff;
 }
@@ -423,6 +427,7 @@ body {
 }
 .calendar .days .active {
   position: relative;
+  display: block;
   font-size: 2rem;
   color: #fff;
   background-color: var(--primary-clr);
@@ -805,7 +810,25 @@ body {
   }
 }
 
-/*== FIM Calendario==*/ 
+.credits {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #b38add;
+}
+.credits a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.credits a:hover {
+  text-decoration: underline;
+}
 
     /*== inicio Footer==*/ 
     footer{
