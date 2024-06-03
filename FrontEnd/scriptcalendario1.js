@@ -23,18 +23,18 @@ let month = today.getMonth();
 let year = today.getFullYear();
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Augosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
 ];
 
 // const eventsArr = [
@@ -261,7 +261,7 @@ function updateEvents(date) {
   });
   if (events === "") {
     events = `<div class="no-event">
-            <h3>No Events</h3>
+            <h3>Sem eventos</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
@@ -474,3 +474,18 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
+
+
+
+
+
+
+
+
+
+/*-- BOTAO HOME --*/
+function homeFunction() {
+  window.location.href = '/Frontend/'; // Redirect to homepage URL
+}
+
+/*-- FIM BOTAO HOME--*/
