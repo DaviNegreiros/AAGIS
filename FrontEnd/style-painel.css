@@ -1,0 +1,127 @@
+@import 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap';
+
+* {
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: rgb(196, 221, 250);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.main{
+    padding-top: 105px;
+}
+.header {
+    position: fixed;
+    width: 100%;
+    color: white;
+    padding-bottom: 8px;
+    background: #041024;
+    text-align: center;
+    z-index: 998;
+
+
+
+}
+#HOME {
+    font-family: 'Orbitron';
+    font-size: 60px;
+}
+.home img { 
+    border-radius: 5px;
+    height: 46px;
+}
+#imgPadding {
+    padding-left: 8px;
+    padding-top: 16px;
+}
+.home {
+    display: flex;
+    justify-content: center;
+    margin-left:50%;
+    margin-right: 50%;
+    cursor: pointer;
+}
+header .icons {
+    border-radius: 300px;
+    background-color: white;
+    height: 46px;
+}
+.iconsPadding {
+    padding: 14px;
+    padding-top: 25px;
+}
+header .HeaderRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    /*=== FIM HEADER ===*/
+.Container-Painel{
+}
+.Noticia-1{
+    display: flex;
+    gap: 20px;
+    border: 2px solid #000;
+    padding-top:30px;
+    padding-bottom: 25px;
+    width: 1100px;
+    margin-left:200px;
+
+
+}
+.title h1{
+    padding-top: 150px;
+    padding-left: 37%;
+    padding-bottom: 100px;
+}
+.card{
+    width: 70px;
+    height: 60px;
+    margin-left:42px;
+    border-radius: 8px;
+}
+.card img{
+    width: 70px;
+    height: 60px;
+    border-radius: 8px;
+}
+.intro{
+    padding-bottom: 30px;
+    font-size: 12px;
+    margin-right: 250px;
+    width: 270px;
+
+}
+.Admin{
+    padding-top: 20px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+.Admin button{
+    font-size:11px;
+    font-family:Arial;
+    width:100px;
+    height:30px;
+    border-width:1px;
+    color:#041024;
+    border-color:#6a80c2;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    text-shadow: 0px 1px 0px #3b5397;
+    background:linear-gradient(rgb(120, 146, 194), #718dec);
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(#476e9e, rgb(120, 146, 194));
+  }

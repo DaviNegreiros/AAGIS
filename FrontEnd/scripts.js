@@ -16,6 +16,7 @@ function nextImage(){
 }
 /*-- FIM slides show--*/
 
+
 /*--SIDEBAR--*/
     let btn = document.querySelector('#btn');
     let slidebar = document.querySelector('.sidebar');
