@@ -230,6 +230,12 @@ btnFiltro.onclick = function() {
 
     /*-- FIM BOTAO HOME--*/
 
+        /*-- ROTA POST --*/
+        function rotaPost(){
+            window.location.href = '/post'
+        }
+        /*-- FIM ROTA POST --*/
+
     /*== JS LOGIN E CADASTRO ==*/
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         // Validar campos de login aqui
