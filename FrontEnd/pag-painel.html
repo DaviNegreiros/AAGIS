@@ -24,7 +24,8 @@
         <div class="title">
             <h1>Administração de Notícias</h1>
         </div>
-        <div class="Noticia-1">
+    <div class="megadiv">
+        <div class="Noticia">
             <div class="card">
                 <img src="imagens/noticia4.jpg" class="card-img"  alt="noticia1">
             </div>
@@ -33,12 +34,65 @@
                 <p>Universidade de Brasília está entre as melhores da América Latina.</p>
             </div>
             <div class="Admin">
-                <button>Editar imagem</button><br>
-                <button>Editar Titulo ou Texto </button><br>
-                <button> Excluir noticia</button><br>
+                <button id="btn1" onclick="abrirModal()">Editar Notícia</button><br>
+                <button id="btn2"> Excluir noticia</button><br>
             </div>
         </div>
+        <div class="Noticia">
+            <div class="card">
+                <img src="imagens/noticia4.jpg" class="card-img"  alt="noticia1">
+            </div>
+            <div class="intro">
+                <h3> Unb </h3>
+                <p>Universidade de Brasília está entre as melhores da América Latina.</p>
+            </div>
+            <div class="Admin">
+                <button id="btn1" onclick="abrirModal()">Editar Notícia</button><br>
+                <button id="btn2"> Excluir noticia</button><br>
+            </div>
+        </div>
+        </div>
     </div>
+    <div class="fakeModal HIDE" id="fm">
+        <div class="fakeModal-conteudo">
+            <button id="btnClose" onclick="fecharModal()">Fechar</button>
+            <div class="fakeModal1">
+                <!-- botão imagem -->
+                <div class="btnImg">
+                    <label class="picture" for="picture__input" tabIndex="0">
+                        <span class="picture__image"></span>
+                    </label>
+                    <input type="file" name="picture__input" id="picture__input">
+                </div>
+                <!-- FIM botão imagem -->
+            </div>
+           <div class="input-texto">
+            <textarea id="titulo" placeholder="Digite o título..." class="title"></textarea><br>
+        <br>
+            <textarea id="subtitulo" placeholder="Digite o subtítulo..." class="subtitle"></textarea><br>
+            <textarea id="texto" placeholder="Digite o texto..." class="text"></textarea><br>
+            <div id="checkbox-container">
+                <label><input type="checkbox" name="categoria" value="categoria1">
+                Engenharias</label>
+                <label><input type="checkbox" name="categoria" value="categoria2"> Eng. Software</label>
+                <label><input type="checkbox" name="categoria" value="categoria3"> Eng. Automotiva</label>
+                <label><input type="checkbox" name="categoria" value="categoria4"> Eng. Aeroespacial</label>
+                <label><input type="checkbox" name="categoria" value="categoria5"> Eng. Eletrônica</label>
+                <label><input type="checkbox" name="categoria" value="categoria6"> Eng. Energia</label>
+              </div> <br>
+              <div class="data-hora" id="dateTimeForm">
+        
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date">
+        
+                <label for="time">Hora:</label>
+                <input type="time" id="time" name="time"> 
+              </div>
+            <button type="submit">Salvar</button>
+           </div>
+                
+        </div>
+       </div>
     <script src="scriptsPainel.js"></script>
 </body>
 </html>
