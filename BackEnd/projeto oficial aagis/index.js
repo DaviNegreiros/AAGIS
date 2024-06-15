@@ -77,10 +77,12 @@ app.get('/', async (req, res) => {
         // Renderizar a página
         if (req.session.user_name) {  // Verificar se o usuário está logado
             res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
+                                  user_logado: true,
                                   user_name: req.session.user_name, user_tipo: 'Professor',
                                   style: 'styles.css'})
         } else {
             res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, 
+                                  user_logado: false,
                                   user_name: 'Usuário', user_tipo: 'Aluno', 
                                   style: 'styles.css'});
         }
@@ -122,7 +124,7 @@ app.post('/cadastro',  async (req, res) =>{
             email: req.body.emailCadastro,
             senha: req.body.senhaCadastro
         }).then(function() {
-            res.redirect('/');
+            res.redirect('/login');
         }).catch(function(erro) {
             res.redirect('/login?message=Houve um erro: ' + erro); 
         })
