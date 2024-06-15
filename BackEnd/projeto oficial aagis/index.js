@@ -17,6 +17,7 @@ app.use(fileUpload())
 //static files
 app.use(express.static('upload'))
 app.use(express.static('public'))
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 //Config
 //Template Engine
@@ -74,7 +75,15 @@ app.get('/', async (req, res) => {
         });
 
         // Renderizar a página
-        res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, style: 'styles.css'});
+        if (req.session.user_name) {  // Verificar se o usuário está logado
+            res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
+                                  user_name: req.session.user_name, user_tipo: 'Professor',
+                                  style: 'styles.css'})
+        } else {
+            res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, 
+                                  user_name: 'Usuário', user_tipo: 'Aluno', 
+                                  style: 'styles.css'});
+        }
 
     } catch (error) {
         // Capturando qualquer erro que ocorra durante a consulta ao banco de dados
@@ -85,13 +94,15 @@ app.get('/', async (req, res) => {
       };
 });
 
- 
+// Mensagens de erro
 var us_repetido = false
 var senha_incorreta = false 
 var email_inexistente = false 
+ 
 //rota login 
 app.get('/login', function (req, res) {
     res.render('pag-login', { 
+        us_repetido, email_inexistente, senha_incorreta,
         style: 'styleLogin.css',
         user_name: req.session.user_name
      }) 
@@ -118,7 +129,7 @@ app.post('/cadastro',  async (req, res) =>{
     } else {
         console.log('nome ou email já existentes')
         us_repetido = true
-        res.redirect('login')
+        res.redirect('/login')
     }
 })
 
@@ -151,6 +162,21 @@ app.post('/addlogin', async (req, res) => {
     } catch (error) {
         console.log("Erro ao tentar fazer login:", error);
         res.redirect('/login?message=Erro ao tentar fazer login');
+    }
+});
+
+// Rota botão logout
+app.get('/logout', (req, res) => {
+    if (req.session.user_name) {
+        req.session.destroy(err => {
+            if (err) {
+                console.log("Erro ao tentar fazer logout:", err);
+                return res.redirect('/?message=Erro ao tentar fazer logout');
+            }
+            res.redirect('/');
+        });
+    } else {
+        res.redirect('/l?message=Nenhum usuário logado');
     }
 });
 
@@ -205,12 +231,6 @@ app.post('/add',isLog, function (req, res) {
         res.send('Ocorreu um erro: ' + erro)
     })
 })
-
-module.exports = {
-    us_repetido,
-    email_inexistente,
-    senha_incorreta
-};
 
 app.listen(6969, function () {
     console.log("Server on: http://localhost:6969")

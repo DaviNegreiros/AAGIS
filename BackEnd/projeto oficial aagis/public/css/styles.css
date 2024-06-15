@@ -123,11 +123,13 @@ body {
         align-items: center;
         text-decoration: none;
         border-radius: 0.8rem;
+        
     }
 
     .sidebar ul li a:hover {
         background-color: #FFF;
         color: #041024;
+        cursor: pointer;
     }
 
     .sidebar ul li a i {

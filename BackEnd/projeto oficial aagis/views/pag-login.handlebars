@@ -5,6 +5,63 @@
     <link rel="stylesheet" href="styleLogin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="scripts.js"></script>
+    <script>
+        
+        function erroLSenha() {
+            let erromsg1 = document.querySelector('#errom1');
+            erromsg1.classList.remove('.hide');
+        }
+
+        function HIDEerroLSenha() {
+            let erromsg1 = document.querySelector('#errom1');
+            erromsg1.classList.add('.hide');
+        }
+
+        function erroLUsuario() {
+            let erromsg2 = document.querySelector('#errom2');
+            erromsg2.classList.remove('.hide');
+        }
+
+        function HIDEerroLUsuario() {
+            let erromsg2 = document.querySelector('#errom2');
+            erromsg2.classList.add('.hide');
+        }
+
+        function erroCEmail() {
+            let erromsg3 = document.querySelector('#errom3');
+            erromsg3.classList.remove('.hide');
+        }
+
+        function HIDEerroCEmail() {
+            let erromsg3 = document.querySelector('#errom3');
+            erromsg3.classList.add('.hide');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const usRepetido = {{us_repetido}};
+            const emailInexistente = {{email_inexistente}};
+            const senhaIncorreta = {{senha_incorreta}};
+
+            if (senhaIncorreta) {
+                erroLSenha();
+            } else {
+                HIDEerroLSenha();
+            }
+
+            if (usRepetido) {
+                erroLUsuario();
+            } else {
+                HIDEerroLUsuario();
+            }
+
+            if (emailInexistente) {
+                erroCEmail();
+            } else {
+                HIDEerroCEmail();
+            }
+        });
+
+    </script>
 </head>
 <body>
 

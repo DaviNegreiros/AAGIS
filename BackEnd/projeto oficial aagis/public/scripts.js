@@ -1,7 +1,3 @@
-/*--mensagem de erro login--*/
-const { us_repetido , email_inexistente, senha_incorreta} = require('../index.js');
-/*--FIM mensagem de erro login--*/
-
 /*--slides show--*/
 let count = 1;
 document.getElementById("radio1").checked = true;
@@ -260,78 +256,4 @@ btnFiltro.onclick = function() {
         }
     });
 
-    //função aparecer mensagem de erro no login
-        let erromsg1 = document.querySelector('#errom1')
-        function erroLSenha() {
-            if(erromsg1.classList.contains('.hide')){
-
-            }else {
-                erromsg1.classList.toggle('.hide');
-            }
-        }
-            while(True){
-                if(senha_incorreta){
-                    erroLSenha();
-                } else{
-                    HIDEerroLSenha();
-                }
-                if(us_repetido){
-                    erroLUsuario(); 
-                 }else{
-                    HIDEerroLUsuario();
-                 }
-                 if(email_inexistente){
-                    erroCEmail();
-                }else{
-                    HIDEerroCEmail();
-                }
-            }
-                
-        
-        
-
-
-    //função aparecer mensagem de erro no login
-    let erromsg2 = document.querySelector('#errom2')
-    function erroLUsuario() {
-        if(erromsg2.classList.contains('.hide')){
-
-        }else {
-            erromsg2.classList.toggle('.hide');
-        }
-    }
-    
-
-    //função aparecer mensagem de erro no cadastro
-    let erromsg3 = document.querySelector('#errom3')
-    function erroCEmail() {
-        if(erromsg3.classList.contains('.hide')){
-
-        }else {
-            erromsg3.classList.toggle('.hide');
-        }
-    }
-    
-    //função desaparecer mensagem de erro no login
-    function HIDEerroLSenha() {
-        if(erromsg1.classList.contains('.hide')){
-            erromsg1.classList.toggle('.hide');
-        }
-    }
-
-
-//função desaparecer mensagem de erro no login
-function HIDEerroLUsuario() {
-    if(erromsg2.classList.contains('.hide')){
-        erromsg2.classList.toggle('.hide');
-    }
-}
-
-
-//função desaparecer mensagem de erro no cadastro
-function HIDEerroCEmail() {
-    if(erromsg3.classList.contains('.hide')){
-        erromsg3.classList.toggle('.hide');
-    }
-}
 
