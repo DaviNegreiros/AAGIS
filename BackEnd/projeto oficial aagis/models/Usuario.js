@@ -9,6 +9,12 @@ const Usuario = db.sequelize.define('usuarios', {
     },
     senha: {
         type: db.Sequelize.STRING
+    },
+    aprovado: {
+        type: db.Sequelize.BOOLEAN
+    },
+    foto_perfil: {
+        type: db.Sequelize.STRING
     }
 })
 

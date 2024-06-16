@@ -41,13 +41,26 @@
             </div>
             <i class="bx bx-menu" id="btn"></i>
         </div>
-        <div class="user"><a href="/login"><img src="https://static-00.iconduck.com/assets.00/profile-user-icon-2048x2048-m41rxkoe.png" alt="me" class="user-img">
+
+        {{#if user_logado}}
+        <div class="user"><a href="/perfil"><img src={{user_foto}} alt="me" class="user-img">
             </a>
             <div>
                 <p class="bold">{{user_name}}</p>
                 <p>{{user_tipo}}</p>
             </div>
         </div>
+        {{/if}}
+        {{#unless user_logado}}
+        <div class="user"><a href="/perfil"><img src="https://static-00.iconduck.com/assets.00/profile-user-icon-2048x2048-m41rxkoe.png" alt="me" class="user-img">
+            </a>
+            <div>
+                <p class="bold">{{user_name}}</p>
+                <p>{{user_tipo}}</p>
+            </div>
+        </div>
+        {{/unless}}
+
         <ul>
             <li>
                 <a href="#">
@@ -93,6 +106,8 @@
                 </label>
             </fieldset>
 
+            
+
             {{#if user_logado}}
             <li>
                 <a onclick="rotaPost()">
@@ -101,6 +116,24 @@
                 </a>
                 <span class="tooltip">Publicar</span>
             </li>
+
+            {{#if user_adm}}
+            <li>
+                <a href="/controle">
+                    <i class='bx bx-log-in'></i>
+                    <span class="nav-item">Controle</span>
+                </a>
+                <span class="tooltip">Controle</span>
+            </li>
+            <li>
+                <a href="/painel">
+                    <i class='bx bx-log-in'></i>
+                    <span class="nav-item">Painel</span>
+                </a>
+                <span class="tooltip">Painel</span>
+            </li>
+            {{/if}}
+
             <li>
                 <a href="/logout">
                     <i class="bx bx-log-out"></i>
@@ -119,6 +152,8 @@
                 <span class="tooltip">Login</span>
             </li>
             {{/unless}}
+
+            
 
         </ul>
     </div>

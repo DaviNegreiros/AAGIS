@@ -76,10 +76,18 @@ app.get('/', async (req, res) => {
 
         // Renderizar a página
         if (req.session.user_name) {  // Verificar se o usuário está logado
-            res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
-                                  user_logado: true,
-                                  user_name: req.session.user_name, user_tipo: 'Professor',
-                                  style: 'styles.css'})
+            if (req.session.user_email === 'aagisnoticias2024@gmail.com'){  // Verficiar se usuário está na conta de ADM
+                res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
+                                      user_logado: true, user_adm: true,
+                                      user_foto: req.session.user_foto, user_name: req.session.user_name, user_tipo: 'Adm',
+                                      style: 'styles.css'});
+            } else {
+                res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
+                                      user_logado: true,
+                                      user_foto: req.session.user_foto, user_name: req.session.user_name, user_tipo: 'Professor',
+                                      style: 'styles.css'});
+            }
+
         } else {
             res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, 
                                   user_logado: false,
@@ -122,9 +130,11 @@ app.post('/cadastro',  async (req, res) =>{
         Usuario.create({
             nome: req.body.nomeCadastro,
             email: req.body.emailCadastro,
-            senha: req.body.senhaCadastro
+            senha: req.body.senhaCadastro,
+            foto_perfil: "/upload/fotoperfil/profile_10693213.png",
+            aprovado: false
         }).then(function() {
-            res.redirect('/login');
+            res.redirect('/login?message=pedido enviado para analise');
         }).catch(function(erro) {
             res.redirect('/login?message=Houve um erro: ' + erro); 
         })
@@ -135,26 +145,95 @@ app.post('/cadastro',  async (req, res) =>{
     }
 })
 
+// Rota controle
+app.get('/controle', async (req, res) => {
+
+    if (req.session.user_email === "aagisnoticias2024@gmail.com") {
+        try {
+            // Buscar todos usuarios nao aprovados 
+            const usuarios_na = await Usuario.findAll({
+                where: {
+                    aprovado: false
+                },
+                order: [['id', 'DESC']],
+            });
+
+            // Renderizar a pagina
+            res.render('pag-controle', {usuario: usuarios_na, style: 'style-painel.css'});
+
+        } catch(err) {
+            res.send("Erro ao buscar requisições " + err);
+        }
+    } else {
+        res.redirect('/');
+        
+    }
+
+});
+
+// Aprovar usuário
+app.get('/aprovar-usuario/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await Usuario.update(
+            { aprovado: true },
+            { where: { id: id } }
+        );
+        
+        if (result[0] === 1) {
+            res.send('Usuário aprovado com sucesso!');
+        } else {
+            res.send('Usuário não encontrado.');
+        }
+    } catch (err) {
+        console.error('Erro ao aprovar usuário:', err);
+        res.send('Ocorreu um erro ao aprovar o usuário.', err);
+    }
+
+});
+
+// Deletar usuário recusado
+app.delete('/deletar-usuario/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Usuario.destroy({
+            where: { id: id }
+        });
+        res.sendStatus(200); // Sucesso
+    } catch (error) {
+        console.error('Erro ao deletar usuário:', error);
+        res.sendStatus(500); // Erro no servidor
+    }
+});
+
 app.post('/addlogin', async (req, res) => {
     console.log('Requisição recebida no /addlogin'); // Log adicional
     const email = req.body.email;
     const senha = req.body.senha;
+
     try {
         console.log(`Tentativa de login com email: ${email}`); // Log adicional para email
 
         const usuario = await Usuario.findOne({ where: { email: email } }); // Verificação de existência do usuário
 
         if (usuario) {
-            console.log('Usuário encontrado:', usuario);
-            if (senha === usuario.senha) {
-                console.log("Senha correta, redirecionando...");
-                req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
+            console.log('Usuário encontrado:', usuario, '\nStatus:', usuario.aprovado);
+            if (usuario.aprovado === true) {
+                if (senha === usuario.senha) {
+                    console.log("Senha correta, redirecionando...");
+                    req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
+                    req.session.user_email = usuario.email;
+                    req.session.user_foto = usuario.foto_perfil;
 
-                res.redirect('/');
+                    res.redirect('/');
+                } else {
+                    senha_incorreta = true
+                    console.log("Senha incorreta");
+                    res.redirect('/login?message=Credenciais inválidas');
+                }
             } else {
-                senha_incorreta = true
-                console.log("Senha incorreta");
-                res.redirect('/login?message=Credenciais inválidas');
+                console.log("Usuário não aprovado");
+                res.redirect('/login?message=Usuário em análise');
             }
         } else {
             email_inexistente = true
@@ -182,11 +261,82 @@ app.get('/logout', (req, res) => {
     }
 });
 
+// Rota perfil
+app.get('/perfil', isLog, async(req, res) => {
+
+    const email = req.session.user_email;
+
+    const usuario = await Usuario.findOne({ where: { email: email} })
+
+    res.render('pag-perfil', {
+            usuario: usuario,    
+            style: 'style-post.css'});
+});
+
+// Rota atualizar perfil
+app.post('/attperfil/:id', isLog, async(req, res) => {
+    const id = req.params.id;
+    const usuario = await Usuario.findOne({where: {id: id}})
+
+    // Extrair dados do formulário
+    var nomeUsuario = req.body.nomeUsuario;
+    var email = req.body.email;
+
+    // Caso usuário não atualize o nome ou email
+    if(!req.body.nomeUsuario) { nomeUsuario = usuario.nome; }
+    if(!req.body.email) { email = usuario.email; }
+    
+    
+    if (!req.files || !req.files.picture__input) {
+        res.send("Por favor selecione uma foto de perfil");
+        
+    }
+        
+    const foto_perfil = req.files.picture__input; // Nome do input é picture__input
+    
+    const uploadDir = path.join(__dirname, 'upload', 'fotoperfil'); // Diretório de upload
+    
+
+    // Verifica se o diretório de upload existe, se não, cria o diretório
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    // Define o caminho completo do arquivo de upload
+    const uploadPath = path.join(uploadDir, foto_perfil.name);
+
+    // Move o arquivo para o diretório de upload que foi selecionado acima
+    foto_perfil.mv(uploadPath, function (err) {
+        if (err) return res.status(500).send(err);
+
+        // Atualizar dados do usuário
+        Usuario.update(
+            {
+                nome: nomeUsuario,
+                email: email,
+                foto_perfil: path.join('/upload/fotoperfil', foto_perfil.name)
+            },
+            { where: { id: id } }
+        ).then(() => {
+            // Armazenar dados do usuário na sessão
+            req.session.user_name = nomeUsuario;
+            req.session.user_email = email;
+            req.session.user_foto = path.join('/upload/fotoperfil', foto_perfil.name);
+
+            // Redireciona para a página inicial
+            res.redirect('/');
+        }).catch((erro) => {
+            // Se houver algum erro, retorna uma mensagem de erro
+            res.status(500).send('Ocorreu um erro: ' + erro);
+        });
+    });
+});
 
 //rota post
 app.get('/post', isLog, function (req, res) {
-    res.render('pag-post', { style: 'style-post.css' })
-})
+    res.render('pag-post', { style: 'style-post.css' });
+});
+
 //Rota para postar a noticia
 app.post('/add',isLog, function (req, res) {
 
@@ -232,8 +382,8 @@ app.post('/add',isLog, function (req, res) {
         // Se houver algum erro, retorna uma mensagem de erro
         res.send('Ocorreu um erro: ' + erro)
     })
-})
+});
 
 app.listen(6969, function () {
     console.log("Server on: http://localhost:6969")
-})
+});

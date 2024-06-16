@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style-painel.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle</title>
+</head>
+<body>
+    <div class="header">
+        <div class="HeaderRow">
+            <div class="home" onclick="homeFunction()">
+                <h1 id="HOME">AAGIS</h1>
+                <div id="imgPadding">
+                    <img src="imagens/unb_logo.png" alt="Logo UnB">
+                </div>
+            </div>
+        </div>
+
+        <a id="slogan">Atualizações Acadêmicas Gerais, Indispensáveis e Sucintas</a>
+
+    </div>
+    <div class="Container-Painel">
+        <div class="title">
+            <h1>Requisições de Cadastro</h1>
+        </div>
+        <div class="megadiv">
+            {{#each usuario}}
+            <div class="Noticia">
+                <div class="card">
+                    <img src="imagens/profile_10693213.png" class="card-img"  alt="noticia1">
+                </div>
+                <div class="intro">
+                    <h3> {{this.nome}} </h3>
+                    <p> {{this.email}} </p>
+                    <p> {{this.createdAt}} </p>
+                </div>
+                <div class="Admin">
+                    <button id="btn1" onclick="aprovarUsuario({{this.id}})"> Aprovar </button><br>
+                    <button id="btn2" onclick="deletarUsuario({{this.id}})"> Recusar </button><br>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <script src="scriptsControle.js"></script>
+</body>
+</html>
