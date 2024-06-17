@@ -8,6 +8,7 @@ const path = require('path') //npm i path
 const fileUpload = require('express-fileupload') //npm i express-fileupload
 const fs = require('fs')
 const session = require('express-session');  //npm i express-session
+const { Op } = require('sequelize');
 //npm install mysql2
 
 //default option
@@ -17,7 +18,7 @@ app.use(fileUpload())
 //static files
 app.use(express.static('upload'))
 app.use(express.static('public'))
-app.use('/upload', express.static(path.join(__dirname, 'upload')));
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 //Config
 //Template Engine
@@ -57,83 +58,137 @@ function isAdm(req, res, next) {
         res.redirect('/?message=Acesso negado'); // Usuário não está na conta de adm, redirecionar para página inicial
     }
 }
+// Helper para verificar se um valor está presente em um array
+const Handlebars = require('handlebars');
+Handlebars.registerHelper('includes', function (array, value, options) {
+    return (array && array.includes(value)) ? options.fn(this) : options.inverse(this);
+});
 
+// Simulação de dados de cursos selecionados inicialmente
+let curso = ['Todos']; // 'Todos' selecionado por padrão
 
 //Rotas
-//rota pagina inicial
+// Rota da página inicial
 app.get('/', async (req, res) => {
-
     try {
+        // Obter o curso dos parâmetros de consulta
+        let curso = req.query.curso;
+
+        // Verificar se curso é uma string e converter para array se necessário
+        if (typeof curso === 'string') {
+            curso = [curso]; // Converter para array com um único elemento
+        } else if (!Array.isArray(curso)) {
+            curso = []; // Caso não seja um array ou uma string, definir como array vazio
+        }
+
+        // Construir a cláusula where para a consulta
+        let whereClause = {};
+        if (curso.length > 0 && !curso.includes('Todos')) {
+            whereClause.curso = { [Op.in]: curso };
+        }
+
+        //Adicionar filtro adicional para cursos dentro da string
+        if (curso.length > 0) {
+            whereClause.curso = {
+                [Op.or]: [
+                    { [Op.like]: `%${curso},%` },   // Para cursos no meio da string
+                    { [Op.like]: `${curso},%` },    // Para cursos no início da string
+                    { [Op.like]: `%${curso}` }      // Para cursos no final da string
+                ]
+            };
+        }
+
         // Buscar todos os posts ordenados do mais recente para o mais antigo
-        const posts = await Post.findAll({
-            order: [['id', 'DESC']],
-            limit: 12
-        });
+        let posts;
+        if (curso.includes('Todos')) {
+            // Se a opção "Todos" foi selecionada, buscar todos os posts sem filtro de curso
+            posts = await Post.findAll({
+                order: [['id', 'DESC']],
+                limit: 12
+            });
+        } else {
+            // Caso contrário, buscar os posts com o filtro de curso aplicado
+            posts = await Post.findAll({
+                where: whereClause,
+                order: [['id', 'DESC']],
+                limit: 12
+            });
+        }
 
-        // Dividir os posts entre os que vao para os sliders e os que vao para os cards
+        // Dividir os posts entre os que vão para os sliders e os que vão para os cards
         const postsSlider = posts.slice(0, 4);  // 4 primeiros posts (ordem decrescente)
-        const postsCard = posts.slice(4);  // Restante dos posts
-    // Defina o caminho para o arquivo CSS
+        const postsCard = posts.slice(4);       // Restante dos posts
 
-
-        // Adicionando 1 ao índice de cada post
+        // Adicionar 1 ao índice de cada post
         const postsCardWithIndex = postsCard.map((post, index) => {
             post.indexPlusOne = index + 1;
             return post;
         });
 
-        // Renderizar a página
+        // Renderizar a página com os posts encontrados
         if (req.session.user_name) {  // Verificar se o usuário está logado
-            if (req.session.user_email === 'aagisnoticias2024@gmail.com'){  // Verficiar se usuário está na conta de ADM
-                res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
-                                      user_logado: true, user_adm: true,
-                                      user_foto: req.session.user_foto, user_name: req.session.user_name, user_tipo: 'Adm',
-                                      style: 'styles.css'});
+            if (req.session.user_email === 'aagisnoticias2024@gmail.com') {  // Verificar se o usuário é administrador
+                res.render('index', {
+                    postsSlider: postsSlider,
+                    postsCard: postsCardWithIndex,
+                    user_logado: true,
+                    user_adm: true,
+                    user_foto: req.session.user_foto,
+                    user_name: req.session.user_name,
+                    user_tipo: 'Adm',
+                    style: 'styles.css'
+                });
             } else {
-                res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex,
-                                      user_logado: true,
-                                      user_foto: req.session.user_foto, user_name: req.session.user_name, user_tipo: 'Professor',
-                                      style: 'styles.css'});
+                res.render('index', {
+                    postsSlider: postsSlider,
+                    postsCard: postsCardWithIndex,
+                    user_logado: true,
+                    user_foto: req.session.user_foto,
+                    user_name: req.session.user_name,
+                    user_tipo: 'Professor',
+                    style: 'styles.css'
+                });
             }
-
         } else {
-            res.render('index', { postsSlider: postsSlider, postsCard: postsCardWithIndex, 
-                                  user_logado: false,
-                                  user_name: 'Usuário', user_tipo: 'Aluno', 
-                                  style: 'styles.css'});
+            res.render('index', {
+                postsSlider: postsSlider,
+                postsCard: postsCardWithIndex,
+                user_logado: false,
+                user_name: 'Usuário',
+                user_tipo: 'Aluno',
+                style: 'styles.css'
+            });
         }
 
     } catch (error) {
         // Capturando qualquer erro que ocorra durante a consulta ao banco de dados
         res.send("Erro ao buscar posts: " + error);
     }
-    const data = {
-        user_name: 'User' // Sua variável do arquivo index.js
-      };
 });
+
 
 // Mensagens de erro
 var us_repetido = false
-var senha_incorreta = false 
-var email_inexistente = false 
- 
+var senha_incorreta = false
+var email_inexistente = false
+
 //rota login 
 app.get('/login', function (req, res) {
-    res.render('pag-login', { 
+    res.render('pag-login', {
         us_repetido, email_inexistente, senha_incorreta,
         style: 'styleLogin.css',
         user_name: req.session.user_name
-     }) 
+    })
 })
 
-app.post('/cadastro',  async (req, res) =>{
+app.post('/cadastro', async (req, res) => {
     const email = req.body.emailCadastro
     const nome = req.body.nomeCadastro
     const BDnome = await Usuario.findOne({ where: { email: email } });
     const BDemail = await Usuario.findOne({ where: { nome: nome } });
-     
+
     console.log("checando se existe nome de usuario ou email já existe")
-    if(!BDnome && !BDemail){
+    if (!BDnome && !BDemail) {
         console.log("nome e email ok")
         Usuario.create({
             nome: req.body.nomeCadastro,
@@ -141,10 +196,10 @@ app.post('/cadastro',  async (req, res) =>{
             senha: req.body.senhaCadastro,
             foto_perfil: "/upload/fotoperfil/profile_10693213.png",
             aprovado: false
-        }).then(function() {
+        }).then(function () {
             res.redirect('/login?message=pedido enviado para analise');
-        }).catch(function(erro) {
-            res.redirect('/login?message=Houve um erro: ' + erro); 
+        }).catch(function (erro) {
+            res.redirect('/login?message=Houve um erro: ' + erro);
         })
     } else {
         console.log('nome ou email já existentes')
@@ -156,21 +211,21 @@ app.post('/cadastro',  async (req, res) =>{
 // Rota controle
 app.get('/controle', isAdm, async (req, res) => {
 
-        try {
-            // Buscar todos usuarios nao aprovados 
-            const usuarios_na = await Usuario.findAll({
-                where: {
-                    aprovado: false
-                },
-                order: [['id', 'DESC']],
-            });
+    try {
+        // Buscar todos usuarios nao aprovados 
+        const usuarios_na = await Usuario.findAll({
+            where: {
+                aprovado: false
+            },
+            order: [['id', 'DESC']],
+        });
 
-            // Renderizar a pagina
-            res.render('pag-controle', {usuario: usuarios_na, style: 'style-painel.css'});
+        // Renderizar a pagina
+        res.render('pag-controle', { usuario: usuarios_na, style: 'style-painel.css' });
 
-        } catch(err) {
-            res.send("Erro ao buscar requisições " + err);
-        }
+    } catch (err) {
+        res.send("Erro ao buscar requisições " + err);
+    }
 
 });
 
@@ -182,7 +237,7 @@ app.get('/aprovar-usuario/:id', isAdm, async (req, res) => {
             { aprovado: true },
             { where: { id: id } }
         );
-        
+
         if (result[0] === 1) {
             res.send('Usuário aprovado com sucesso!');
         } else {
@@ -265,40 +320,41 @@ app.get('/logout', (req, res) => {
 });
 
 // Rota perfil
-app.get('/perfil', isLog, async(req, res) => {
+app.get('/perfil', isLog, async (req, res) => {
 
     const email = req.session.user_email;
 
-    const usuario = await Usuario.findOne({ where: { email: email} })
+    const usuario = await Usuario.findOne({ where: { email: email } })
 
     res.render('pag-perfil', {
-            usuario: usuario,    
-            style: 'style-post.css'});
+        usuario: usuario,
+        style: 'style-post.css'
+    });
 });
 
 // Rota atualizar perfil
-app.post('/attperfil/:id', isLog, async(req, res) => {
+app.post('/attperfil/:id', isLog, async (req, res) => {
     const id = req.params.id;
-    const usuario = await Usuario.findOne({where: {id: id}})
+    const usuario = await Usuario.findOne({ where: { id: id } })
 
     // Extrair dados do formulário
     var nomeUsuario = req.body.nomeUsuario;
     var email = req.body.email;
 
     // Caso usuário não atualize o nome ou email
-    if(!req.body.nomeUsuario) { nomeUsuario = usuario.nome; }
-    if(!req.body.email) { email = usuario.email; }
-    
-    
+    if (!req.body.nomeUsuario) { nomeUsuario = usuario.nome; }
+    if (!req.body.email) { email = usuario.email; }
+
+
     if (!req.files || !req.files.picture__input) {
         res.send("Por favor selecione uma foto de perfil");
-        
+
     }
-        
+
     const foto_perfil = req.files.picture__input; // Nome do input é picture__input
-    
+
     const uploadDir = path.join(__dirname, 'upload', 'fotoperfil'); // Diretório de upload
-    
+
 
     // Verifica se o diretório de upload existe, se não, cria o diretório
     if (!fs.existsSync(uploadDir)) {
@@ -340,69 +396,74 @@ app.get('/post', isLog, function (req, res) {
     res.render('pag-post', { style: 'style-post.css' });
 });
 
-//Rota para postar a noticia
-app.post('/add',isLog, function (req, res) {
+// Rota para postar a notícia
+app.post('/add', isLog, async (req, res) => {
+    try {
+        // Verificar se alguma imagem foi enviada
+        if (!req.files || Object.keys(req.files).length === 0) {
+            return res.status(400).send('Por favor, adicione uma imagem à notícia. Nenhuma imagem foi enviada.');
+        }
 
-    let uploadPath// Caminho onde o arquivo será enviado
-    let sampleFile// Variável para armazenar o arquivo enviado
+        // Extrair dados do formulário
+        const titulo = req.body.titulopost;       // Título da notícia
+        const subtitulo = req.body.subtitulopost; // Subtítulo da notícia
+        const conteudo = req.body.conteudopost;   // Conteúdo da notícia
+        const ref_imagem = req.files.picture__input; // Nome do input para a imagem
+        const uploadDir = path.join(__dirname, '/upload'); // Diretório de upload
 
-    // Verificar se alguma imagem foi enviado
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('Por favor, adicione uma imagem à notícia. Nenhuma imagem foi enviada.')
-    }
+        // Verifica se o diretório de upload existe, se não, cria o diretório
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir);
+        }
 
-    // Extrair dados do formulário
-    const titulo = req.body.titulopost// Título da notícia
-    const subtitulo = req.body.subtitulopost// Subtítulo da notícia
-    const conteudo = req.body.conteudopost// Conteúdo da notícia
-    const ref_imagem = req.files.picture__input//nome do input é picture__input
-    const uploadDir = path.join(__dirname, '/upload')// Diretório de upload
+        // Define o caminho completo do arquivo de upload
+        const uploadPath = path.join(uploadDir, ref_imagem.name);
 
-    // Verifica se o diretório de upload existe, se não, cria o diretório
-    if (!fs.existsSync(uploadDir)) {
-        fs.mkdirSync(uploadDir);
-    }
+        // Move o arquivo para o diretório de upload
+        await ref_imagem.mv(uploadPath);
 
-    // Define o caminho completo do arquivo de upload
-    uploadPath = __dirname + '/upload/' + ref_imagem.name
+        // Tratar os cursos selecionados
+        let cursos;
+        if (Array.isArray(req.body.curso)) {
+            cursos = req.body.curso.join(', '); // Transforma o array em uma string separada por vírgula e espaço
+        } else {
+            cursos = req.body.curso; // Se for apenas um valor, mantém como está
+        }
 
-    // Move o arquivo para o diretório de upload que foi selecionado acima
-    ref_imagem.mv(uploadPath, function (err) {
-        if (err) return res.status(500).send(err)
+        // Criação do post no banco de dados
+        await Post.create({
+            titulopost: titulo,
+            subtitulopost: subtitulo,
+            conteudopost: conteudo,
+            ref_imagem: '/upload/' + ref_imagem.name, // Caminho completo da imagem
+            curso: cursos // Salvar os cursos selecionados como uma string
+        });
 
-    })
-
-    // Criação do post no banco de dados
-    Post.create({
-        titulopost: titulo,
-        subtitulopost: subtitulo,
-        conteudopost: conteudo,
-        ref_imagem: '/upload/' + ref_imagem.name // Caminho completo da imagem
-    }).then(function () {
         // Redireciona para a página inicial após a criação do post
-        res.redirect('/')
-    }).catch(function (erro) {
+        res.redirect('/');
+    } catch (error) {
         // Se houver algum erro, retorna uma mensagem de erro
-        res.send('Ocorreu um erro: ' + erro)
-    })
+        res.status(500).send('Ocorreu um erro: ' + error);
+    }
 });
 
-// Rota painel
-app.get('/painel', isAdm, async(req, res) => {
-        try{
-            const noticias = await Post.findAll({
-                order: [['id', 'DESC']]
-            })
 
-            res.render('pag-painel', {noticia: noticias, style: 'style-painel.css'});
-        } catch(err) {
-            res.send("Erro ao buscar notícias:", err);
-        }
+// Rota painel
+app.get('/painel', isAdm, async (req, res) => {
+    try {
+        const noticias = await Post.findAll({
+            order: [['id', 'DESC']]
+        })
+
+        res.render('pag-painel', { noticia: noticias, style: 'style-painel.css' });
+    } catch (err) {
+        res.send("Erro ao buscar notícias:", err);
+    }
 
 });
 
 // Rota para deletar noticia no painel
-app.delete('/excluir-noticia/:id', isAdm, async(req, res) => {
+app.delete('/excluir-noticia/:id', isAdm, async (req, res) => {
     try {
         const id = req.params.id;
         await Post.destroy({
@@ -417,7 +478,7 @@ app.delete('/excluir-noticia/:id', isAdm, async(req, res) => {
 });
 
 // Rota para editar notícia
-app.get('/editar-noticia/:id', isAdm, async(req, res) => {
+app.get('/editar-noticia/:id', isAdm, async (req, res) => {
     try {
         const id = req.params.id;
         const noticia = await Post.findOne({
@@ -425,18 +486,18 @@ app.get('/editar-noticia/:id', isAdm, async(req, res) => {
                 id: id
             }
         })
- 
-        res.render('pag-editarNoticia', {noticia: noticia, style: 'style-post.css'});
-    } catch(err) {
+
+        res.render('pag-editarNoticia', { noticia: noticia, style: 'style-post.css' });
+    } catch (err) {
         res.send("Erro:", err);
     }
 
 });
 
 // rota para atualizar noticia no banco
-app.post('/attnoticia/:id', isAdm, async(req, res) => {
+app.post('/attnoticia/:id', isAdm, async (req, res) => {
     const id = req.params.id;
-    const noticia = await Post.findOne({where: {id: id}})
+    const noticia = await Post.findOne({ where: { id: id } })
 
     // Extrair dados do formulário
     var titulo = req.body.titulopost;
@@ -446,13 +507,13 @@ app.post('/attnoticia/:id', isAdm, async(req, res) => {
     var foto_noticia;
 
     // Caso usuário não atualize algum dado
-    if(!req.body.titulopost) { titulo = noticia.titulopost; }
-    if(!req.body.subtitulopost) { subtitulo = noticia.subtitulopost; }
-    if(!req.body.conteudopost) { conteudo = noticia.conteudopost; }
-        
-    if(req.files.picture__input) {
+    if (!req.body.titulopost) { titulo = noticia.titulopost; }
+    if (!req.body.subtitulopost) { subtitulo = noticia.subtitulopost; }
+    if (!req.body.conteudopost) { conteudo = noticia.conteudopost; }
+
+    if (req.files.picture__input) {
         const uploadDir = path.join(__dirname, 'upload'); // Diretório de upload
-        
+
 
         // Verifica se o diretório de upload existe, se não, cria o diretório
         if (!fs.existsSync(uploadDir)) {
@@ -461,8 +522,8 @@ app.post('/attnoticia/:id', isAdm, async(req, res) => {
 
         // Define o caminho completo do arquivo de upload
         const uploadPath = path.join(uploadDir, foto_noticia_temp.name);
-    
-    
+
+
         // Move o arquivo para o diretório de upload que foi selecionado acima
         foto_noticia_temp.mv(uploadPath, function (err) {
             if (err) return res.status(500).send(err)
