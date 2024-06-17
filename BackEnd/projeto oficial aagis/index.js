@@ -175,9 +175,12 @@ var email_inexistente = false
 //rota login 
 app.get('/login', function (req, res) {
     res.render('pag-login', {
-        us_repetido, email_inexistente, senha_incorreta,
+        us_repetido, 
+        email_inexistente, 
+        senha_incorreta,
+        user_name: req.session.user_name,
         style: 'styleLogin.css',
-        user_name: req.session.user_name
+        
     })
 })
 
@@ -201,6 +204,7 @@ app.post('/cadastro', async (req, res) => {
         }).catch(function (erro) {
             res.redirect('/login?message=Houve um erro: ' + erro);
         })
+        us_repetido = false;
     } else {
         console.log('nome ou email já existentes')
         us_repetido = true
@@ -277,12 +281,14 @@ app.post('/addlogin', async (req, res) => {
         if (usuario) {
             console.log('Usuário encontrado:', usuario, '\nStatus:', usuario.aprovado);
             if (usuario.aprovado === true) {
+                email_inexistente = false;
                 if (senha === usuario.senha) {
                     console.log("Senha correta, redirecionando...");
                     req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
                     req.session.user_email = usuario.email;
                     req.session.user_foto = usuario.foto_perfil;
 
+                    senha_incorreta = false;
                     res.redirect('/');
                 } else {
                     senha_incorreta = true
@@ -294,7 +300,8 @@ app.post('/addlogin', async (req, res) => {
                 res.redirect('/login?message=Usuário em análise');
             }
         } else {
-            email_inexistente = true
+            email_inexistente = true;
+            senha_incorreta = false;
             console.log("Usuário não encontrado");
             res.redirect('/login?message=Credenciais inválidas');
         }
