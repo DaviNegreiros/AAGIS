@@ -20,21 +20,7 @@ const Post = db.sequelize.define('postagens', {
         type: db.Sequelize.INTEGER
     }
 })
-//Post.sync({ force: true })
+// Post.sync({ force: true })
 
-/*const Usuario = db.sequelize.define('usuarios', {
-    nome: {
-        type: db.Sequelize.STRING
-    },
-    email: {
-        type: db.Sequelize.STRING
-    },
-    senha: {
-        type: db.Sequelize.STRING
-    }
-})
-*/
-//Usuario.sync({ force: true })
 
 module.exports = Post
-//module.exports = Usuario

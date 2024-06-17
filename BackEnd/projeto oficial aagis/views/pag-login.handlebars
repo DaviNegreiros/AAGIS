@@ -5,63 +5,7 @@
     <link rel="stylesheet" href="styleLogin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="scripts.js"></script>
-    <script>
-        
-        function erroLSenha() {
-            let erromsg1 = document.querySelector('#errom1');
-            erromsg1.classList.remove('.hide');
-        }
 
-        function HIDEerroLSenha() {
-            let erromsg1 = document.querySelector('#errom1');
-            erromsg1.classList.add('.hide');
-        }
-
-        function erroLUsuario() {
-            let erromsg2 = document.querySelector('#errom2');
-            erromsg2.classList.remove('.hide');
-        }
-
-        function HIDEerroLUsuario() {
-            let erromsg2 = document.querySelector('#errom2');
-            erromsg2.classList.add('.hide');
-        }
-
-        function erroCEmail() {
-            let erromsg3 = document.querySelector('#errom3');
-            erromsg3.classList.remove('.hide');
-        }
-
-        function HIDEerroCEmail() {
-            let erromsg3 = document.querySelector('#errom3');
-            erromsg3.classList.add('.hide');
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const usRepetido = {{us_repetido}};
-            const emailInexistente = {{email_inexistente}};
-            const senhaIncorreta = {{senha_incorreta}};
-
-            if (senhaIncorreta) {
-                erroLSenha();
-            } else {
-                HIDEerroLSenha();
-            }
-
-            if (usRepetido) {
-                erroLUsuario();
-            } else {
-                HIDEerroLUsuario();
-            }
-
-            if (emailInexistente) {
-                erroCEmail();
-            } else {
-                HIDEerroCEmail();
-            }
-        });
-
-    </script>
 </head>
 <body>
 
@@ -86,8 +30,8 @@
                     <input type="email" name="email" id="loginEmail" placeholder="Email" required><br>
                     <input type="password" name="senha" id="loginPassword" placeholder="Senha" required><br>
                     <p><a href="index.html"> Esqueceu sua senha?</a>
-                    <div id="errom1" class="erroMessage hide">Senha inválida</div>
-                    <div id="errom2" class="erroMessage hide">Usuário inexistente</div>
+                     <div id="errom1" class="erroMessage {{#if senha_incorreta}}show{{else}}hide{{/if}}">Senha inválida</div>
+                    <div id="errom2" class="erroMessage {{#if email_inexistente}}show{{else}}hide{{/if}}">Usuário inexistente</div>
                     </p>
                    <button type="submit">Entrar</button>
             </form>
@@ -98,7 +42,7 @@
         <input type="text" name="nomeCadastro" id="signupName" placeholder="Nome" required><br>
         <input type="email" name="emailCadastro" id="signupEmail" placeholder="Email" required><br>
         <input type="password" name="senhaCadastro" id="signupPassword" placeholder="Senha" required><br>
-                    <div id="errom3" class="erroMessage hide">Email já cadastrado</div>
+        <div id="errom3" class="erroMessage {{#if us_repetido}}show{{else}}hide{{/if}}">Email ou nome já cadastrado</div>
             <button  type="submit">Cadastrar</button>
             </form>
          </div>
