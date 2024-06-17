@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style-post.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel</title>
+</head>
+<body>
+    <div class="header">
+        <div class="HeaderRow">
+            <div class="home" onclick="homeFunction()">
+                <h1 id="HOME">AAGIS</h1>
+                <div id="imgPadding">
+                    <img src="imagens/unb_logo.png" alt="Logo UnB">
+                </div>
+            </div>
+        </div>
+
+        <a id="slogan">Atualizações Acadêmicas Gerais, Indispensáveis e Sucintas</a>
+
+    </div>
+    <!-- area postagem-->
+    <div class="container">
+        <div class="Title-box">
+            <h1>Editar Notícia</h1>
+        </div>
+        <div class="fakeModal">
+            <div class="fakeModal-conteudo">
+                <form action="/attnoticia/{{noticia.id}}" method="POST" enctype="multipart/form-data">
+                    <div class="fakeModal1">
+                        <!-- botão imagem -->
+                        <div class="btnImg">
+                            <label class="picture" for="picture__input" tabIndex="0">
+                                <span class="picture__image"></span>
+                            </label>
+                            <input type="file" name="picture__input" id="picture__input">
+                        </div>
+                        <!-- FIM botão imagem -->
+                    </div>
+                    <div class="input-texto">
+                        <textarea name="titulopost" placeholder="Digite o título..." class="title"></textarea><br>
+                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle"></textarea><br>
+                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text"></textarea><br>
+                                            
+                            <div id="checkbox-container">
+                                <label><input type="checkbox" name="categoria" value="categoria1"> Engenharias</label>
+                                <label><input type="checkbox" name="categoria" value="categoria2"> Eng. Software</label>
+                                <label><input type="checkbox" name="categoria" value="categoria3"> Eng. Automotiva</label>
+                                <label><input type="checkbox" name="categoria" value="categoria4"> Eng. Aeroespacial</label>
+                                <label><input type="checkbox" name="categoria" value="categoria5"> Eng. Eletrônica</label>
+                                <label><input type="checkbox" name="categoria" value="categoria6"> Eng. Energia</label>
+                            </div> <br>
+                            <div class="data-hora" id="dateTimeForm">
+
+                            <label for="date">Data:</label>
+                            <input type="date" id="date" name="date">
+
+                            <label for="time">Hora:</label>
+                            <input type="time" id="time" name="time"> 
+                            </div>
+                        <button type="submit">Enviar</button>
+                    </div>
+
+            </div>
+        </div>
+
+
+        <!-- botão imagem -->
+        <!--<div class="btnImg">
+            <label class="picture" for="picture__input" tabIndex="0">
+                <span class="picture__image"></span>
+            </label>
+            <input type="file" name="picture__input" id="picture__input">
+        </div>-->
+        <!-- FIM botão imagem -->
+    </div>
+
+    <!-- FIM area postagem-->
+    <footer>
+        <div class="info1">
+            <ul>
+                <h3>AAGIS</h3>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elits!
+                <div class="redes-sociais">
+                    <img src="imagens/icon.instagram.png" alt="">
+                    <img src="imagens/icon.telegram.png" alt="">
+                    <img src="imagens/icon.twitter.png" alt="">
+                </div>
+            </ul>
+            <ul>
+                <h3>Links</h3>
+                <li><a href="https://sigaa.unb.br" target="_blank">Sigaa</a></li>
+                <li><a href="https://aprender3.unb.br" target="_blank">Aprender</a></li>
+                <li><a href="https://www.noticias.unb.br" target="_blank">Unb Noticias</a></li>
+            </ul>
+            <ul>
+                <h3>Suporte</h3>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Como ser um colaborador</a></li>
+                <li><a href="#">Contatos</a></li>
+            </ul>
+            <ul>
+                <h3> Fale conosco </h3>
+                <li>
+                    <p> +55 61 9 8638-7990</p>
+                </li>
+                <li>
+                    <p> aagisnoticias2024@gmail.com</p>
+                </li>
+                <li>
+                    <p> Universidade de Brasília - UnB tararararara</p>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

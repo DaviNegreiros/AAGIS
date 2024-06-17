@@ -50,6 +50,14 @@ function isLog(req, res, next) {
     }
 }
 
+function isAdm(req, res, next) {
+    if (req.session.user_email === 'aagisnoticias2024@gmail.com') {
+        return next(); // Usuário está na conta de adm, seguir para rota
+    } else {
+        res.redirect('/?message=Acesso negado'); // Usuário não está na conta de adm, redirecionar para página inicial
+    }
+}
+
 
 //Rotas
 //rota pagina inicial
@@ -146,9 +154,8 @@ app.post('/cadastro',  async (req, res) =>{
 })
 
 // Rota controle
-app.get('/controle', async (req, res) => {
+app.get('/controle', isAdm, async (req, res) => {
 
-    if (req.session.user_email === "aagisnoticias2024@gmail.com") {
         try {
             // Buscar todos usuarios nao aprovados 
             const usuarios_na = await Usuario.findAll({
@@ -164,15 +171,11 @@ app.get('/controle', async (req, res) => {
         } catch(err) {
             res.send("Erro ao buscar requisições " + err);
         }
-    } else {
-        res.redirect('/');
-        
-    }
 
 });
 
 // Aprovar usuário
-app.get('/aprovar-usuario/:id', async (req, res) => {
+app.get('/aprovar-usuario/:id', isAdm, async (req, res) => {
     try {
         const id = req.params.id;
         const result = await Usuario.update(
@@ -193,7 +196,7 @@ app.get('/aprovar-usuario/:id', async (req, res) => {
 });
 
 // Deletar usuário recusado
-app.delete('/deletar-usuario/:id', async (req, res) => {
+app.delete('/deletar-usuario/:id', isAdm, async (req, res) => {
     try {
         const id = req.params.id;
         await Usuario.destroy({
@@ -383,6 +386,111 @@ app.post('/add',isLog, function (req, res) {
         res.send('Ocorreu um erro: ' + erro)
     })
 });
+
+// Rota painel
+app.get('/painel', isAdm, async(req, res) => {
+        try{
+            const noticias = await Post.findAll({
+                order: [['id', 'DESC']]
+            })
+
+            res.render('pag-painel', {noticia: noticias, style: 'style-painel.css'});
+        } catch(err) {
+            res.send("Erro ao buscar notícias:", err);
+        }
+
+});
+
+// Rota para deletar noticia no painel
+app.delete('/excluir-noticia/:id', isAdm, async(req, res) => {
+    try {
+        const id = req.params.id;
+        await Post.destroy({
+            where: { id: id }
+        });
+        res.sendStatus(200); // Sucesso
+    } catch (error) {
+        console.error('Erro ao excluir noticia:', error);
+        res.sendStatus(500); // Erro no servidor
+    }
+
+});
+
+// Rota para editar notícia
+app.get('/editar-noticia/:id', isAdm, async(req, res) => {
+    try {
+        const id = req.params.id;
+        const noticia = await Post.findOne({
+            where: {
+                id: id
+            }
+        })
+ 
+        res.render('pag-editarNoticia', {noticia: noticia, style: 'style-post.css'});
+    } catch(err) {
+        res.send("Erro:", err);
+    }
+
+});
+
+// rota para atualizar noticia no banco
+app.post('/attnoticia/:id', isAdm, async(req, res) => {
+    const id = req.params.id;
+    const noticia = await Post.findOne({where: {id: id}})
+
+    // Extrair dados do formulário
+    var titulo = req.body.titulopost;
+    var subtitulo = req.body.subtitulopost;
+    var conteudo = req.body.conteudopost;
+    var foto_noticia_temp = req.files.picture__input;
+    var foto_noticia;
+
+    // Caso usuário não atualize algum dado
+    if(!req.body.titulopost) { titulo = noticia.titulopost; }
+    if(!req.body.subtitulopost) { subtitulo = noticia.subtitulopost; }
+    if(!req.body.conteudopost) { conteudo = noticia.conteudopost; }
+        
+    if(req.files.picture__input) {
+        const uploadDir = path.join(__dirname, 'upload'); // Diretório de upload
+        
+
+        // Verifica se o diretório de upload existe, se não, cria o diretório
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        // Define o caminho completo do arquivo de upload
+        const uploadPath = path.join(uploadDir, foto_noticia_temp.name);
+    
+    
+        // Move o arquivo para o diretório de upload que foi selecionado acima
+        foto_noticia_temp.mv(uploadPath, function (err) {
+            if (err) return res.status(500).send(err)
+
+        });
+
+        foto_noticia = path.join('/upload', foto_noticia_temp.name).replace(/\\/g, '/');
+
+    } else { foto_noticia = noticia.ref_imagem; }
+
+    // Atualizar dados do usuário
+    Post.update(
+        {
+            titulopost: titulo,
+            subtitulopost: subtitulo,
+            conteudopost: conteudo,
+            ref_imagem: foto_noticia
+        },
+        { where: { id: id } }
+    ).then(() => {
+        // Redireciona para o painel
+        res.redirect('/painel');
+    }).catch((erro) => {
+        // Se houver algum erro, retorna uma mensagem de erro
+        res.status(500).send('Ocorreu um erro: ' + erro);
+    });
+});
+
 
 app.listen(6969, function () {
     console.log("Server on: http://localhost:6969")
