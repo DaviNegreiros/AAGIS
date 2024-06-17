@@ -52,7 +52,9 @@
         </div>
         {{/if}}
         {{#unless user_logado}}
-        <div class="user"><a href="/perfil"><img src="https://static-00.iconduck.com/assets.00/profile-user-icon-2048x2048-m41rxkoe.png" alt="me" class="user-img">
+        <div class="user"><a href="/perfil"><img
+                    src="https://static-00.iconduck.com/assets.00/profile-user-icon-2048x2048-m41rxkoe.png" alt="me"
+                    class="user-img">
             </a>
             <div>
                 <p class="bold">{{user_name}}</p>
@@ -77,36 +79,48 @@
                 <span class="tooltip">Filtro</span>
             </li>
 
-            </a>
-            <form action="cadastro.php" method=" get" autocomplete="on"></form>
-            <fieldset class="filtro">
-                <label class="filtro1">Engenharias
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+            <!-- Formulário para filtros -->
+            <form id="filtroForm" action="/" method="get">
+                <fieldset class="filtro">
+                    <label class="filtro1">
+                        <input type="checkbox" name="curso" value="Todos" checked>
+                        Todos
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="filtro1">Engenharia de Software
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="filtro1">Engenharias
+                        <input type="checkbox" name="curso" value="Engenharias">
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="filtro1">Engenharia De Energia
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="filtro1">Engenharia de Software
+                        <input type="checkbox" name="curso" value="Eng. Software">
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="filtro1">Engenharia Aeroespacial
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+                    <label class="filtro1">Engenharia de Energia
+                        <input type="checkbox" name="curso" value="Eng. Energia">
+                        <span class="checkmark"></span>
+                    </label>
 
-                <label class="filtro1">Engenharia Automotiva
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-            </fieldset>
+                    <label class="filtro1">Engenharia Aeroespacial
+                        <input type="checkbox" name="curso" value="Eng. Aeroespacial">
+                        <span class="checkmark"></span>
+                    </label>
 
-            
+                    <label class="filtro1">Engenharia Automotiva
+                        <input type="checkbox" name="curso" value="Eng. Automotiva">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="filtro1">Engenharia Eletrônica
+                        <input type="checkbox" name="curso" value="Eng. Eletrônica">
+                        <span class="checkmark"></span>
+                    </label>
+                    <button type="submit">Aplicar Filtros</button>
+                </fieldset>
+
+            </form>
 
             {{#if user_logado}}
             <li>
@@ -152,9 +166,6 @@
                 <span class="tooltip">Login</span>
             </li>
             {{/unless}}
-
-            
-
         </ul>
     </div>
 

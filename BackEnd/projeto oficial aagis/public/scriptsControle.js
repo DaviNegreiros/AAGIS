@@ -12,7 +12,6 @@ function aprovarUsuario(id) {
     })
     .then(response => {
         if (response.ok) {
-            alert('Usuário aprovado com sucesso!');
             window.location.reload();  // Atualizar pagina
         } else {
             alert('Falha ao aprovar usuário.');
@@ -30,7 +29,6 @@ function deletarUsuario(id) {
     })
     .then(response => {
         if (response.ok) {
-            alert('Usuário deletado com sucesso!');
             window.location.reload();  // Atualizar pagina
         } else {
             alert('Falha ao deletar usuário.');
