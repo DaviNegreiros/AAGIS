@@ -17,7 +17,8 @@ app.use(fileUpload())
 
 //static files
 app.use(express.static('upload'))
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 //Config
@@ -66,6 +67,10 @@ Handlebars.registerHelper('includes', function (array, value, options) {
 
 // Simulação de dados de cursos selecionados inicialmente
 let curso = ['Todos']; // 'Todos' selecionado por padrão
+
+var us_repetido = false
+var senha_incorreta = false
+var email_inexistente = false
 
 //Rotas
 // Rota da página inicial
@@ -156,8 +161,11 @@ app.get('/', async (req, res) => {
                 user_logado: false,
                 user_name: 'Usuário',
                 user_tipo: 'Aluno',
-                style: 'styles.css'
+                style: 'styles.css',
             });
+            senha_incorreta = false;
+            email_inexistente = false;
+            us_repetido = false;
         }
 
     } catch (error) {
@@ -167,10 +175,7 @@ app.get('/', async (req, res) => {
 });
 
 
-// Mensagens de erro
-var us_repetido = false
-var senha_incorreta = false
-var email_inexistente = false
+
 
 //rota login 
 app.get('/login', function (req, res) {
@@ -494,7 +499,12 @@ app.get('/editar-noticia/:id', isAdm, async (req, res) => {
             }
         })
 
-        res.render('pag-editarNoticia', { noticia: noticia, style: 'style-post.css' });
+        res.render('pag-editarNoticia', {noticia: noticia,
+                                         style: 'css/style-post.css',
+                                         titulo: noticia.titulopost,
+                                         subtitulo: noticia.subtitulopost,
+                                         conteudo: noticia.conteudopost         
+         });
     } catch (err) {
         res.send("Erro:", err);
     }
