@@ -67,6 +67,10 @@ Handlebars.registerHelper('includes', function (array, value, options) {
 // Simulação de dados de cursos selecionados inicialmente
 let curso = ['Todos']; // 'Todos' selecionado por padrão
 
+var us_repetido = false
+var senha_incorreta = false
+var email_inexistente = false
+
 //Rotas
 // Rota da página inicial
 app.get('/', async (req, res) => {
@@ -156,8 +160,11 @@ app.get('/', async (req, res) => {
                 user_logado: false,
                 user_name: 'Usuário',
                 user_tipo: 'Aluno',
-                style: 'styles.css'
+                style: 'styles.css',
             });
+            senha_incorreta = false;
+            email_inexistente = false;
+            us_repetido = false;
         }
 
     } catch (error) {
@@ -167,10 +174,7 @@ app.get('/', async (req, res) => {
 });
 
 
-// Mensagens de erro
-var us_repetido = false
-var senha_incorreta = false
-var email_inexistente = false
+
 
 //rota login 
 app.get('/login', function (req, res) {
