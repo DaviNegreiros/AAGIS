@@ -17,7 +17,8 @@ app.use(fileUpload())
 
 //static files
 app.use(express.static('upload'))
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 //Config
@@ -498,7 +499,12 @@ app.get('/editar-noticia/:id', isAdm, async (req, res) => {
             }
         })
 
-        res.render('pag-editarNoticia', { noticia: noticia, style: 'style-post.css' });
+        res.render('pag-editarNoticia', {noticia: noticia,
+                                         style: 'css/style-post.css',
+                                         titulo: noticia.titulopost,
+                                         subtitulo: noticia.subtitulopost,
+                                         conteudo: noticia.conteudopost         
+         });
     } catch (err) {
         res.send("Erro:", err);
     }

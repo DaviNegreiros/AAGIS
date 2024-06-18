@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style-post.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel</title>
+    <link rel="stylesheet" href="/{{style}}">
 </head>
 <body>
     <div class="header">
@@ -39,9 +40,9 @@
                         <!-- FIM botão imagem -->
                     </div>
                     <div class="input-texto">
-                        <textarea name="titulopost" placeholder="Digite o título..." class="title"></textarea><br>
-                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle"></textarea><br>
-                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text"></textarea><br>
+                        <textarea name="titulopost" placeholder="Digite o título..." class="title">{{titulo}}</textarea><br>
+                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle">{{subtitulo}}</textarea><br>
+                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text">{{conteudo}}</textarea><br>
                                             
                             <div id="checkbox-container">
                                 <label><input type="checkbox" name="categoria" value="categoria1"> Engenharias</label>
