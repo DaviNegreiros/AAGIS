@@ -503,7 +503,7 @@ app.get('/editar-noticia/:id', isAdm, async (req, res) => {
                                          style: 'css/style-post.css',
                                          titulo: noticia.titulopost,
                                          subtitulo: noticia.subtitulopost,
-                                         conteudo: noticia.conteudopost         
+                                         conteudo: noticia.conteudopost
          });
     } catch (err) {
         res.send("Erro:", err);
@@ -568,6 +568,11 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
         res.status(500).send('Ocorreu um erro: ' + erro);
     });
 });
+
+//rota calendario
+app.get('/calendario', function (req, res) {
+    res.render('pag-calendario', {style: 'css/style-calendario.css'})
+})
 
 
 app.listen(6969, function () {
