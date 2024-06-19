@@ -420,6 +420,10 @@ app.post('/add', isLog, async (req, res) => {
         const titulo = req.body.titulopost;       // Título da notícia
         const subtitulo = req.body.subtitulopost; // Subtítulo da notícia
         const conteudo = req.body.conteudopost;   // Conteúdo da notícia
+        const data = req.body.date;               // Data do evento // AAAA-MM-DD
+        const hora = req.body.time;               // Horário do evento // HH:MM
+        const autor = req.session.user_name;      // Nome de quem postou a noticia
+
         const ref_imagem = req.files.picture__input; // Nome do input para a imagem
         const uploadDir = path.join(__dirname, '/upload'); // Diretório de upload
 
@@ -447,8 +451,12 @@ app.post('/add', isLog, async (req, res) => {
             titulopost: titulo,
             subtitulopost: subtitulo,
             conteudopost: conteudo,
+            data: data,  
+            hora: hora,
+            autor: autor,
             ref_imagem: '/upload/' + ref_imagem.name, // Caminho completo da imagem
             curso: cursos // Salvar os cursos selecionados como uma string
+            
         });
 
         // Redireciona para a página inicial após a criação do post
@@ -516,15 +524,21 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
     var titulo = req.body.titulopost;
     var subtitulo = req.body.subtitulopost;
     var conteudo = req.body.conteudopost;
-    var foto_noticia_temp = req.files.picture__input;
+    var data = req.body.date;
+    var hora = req.body.time;
+    var foto_noticia_temp;
     var foto_noticia;
 
     // Caso usuário não atualize algum dado
     if (!req.body.titulopost) { titulo = noticia.titulopost; }
     if (!req.body.subtitulopost) { subtitulo = noticia.subtitulopost; }
     if (!req.body.conteudopost) { conteudo = noticia.conteudopost; }
+    if (!req.body.date) { data = noticia.data; }
+    if (!req.body.time) { hora = noticia.hora; }
 
-    if (req.files.picture__input) {
+    // Verificar se usuário enviou imagem
+    if (req.files && req.files.picture__input) {
+        foto_noticia_temp = req.files.picture__input;
         const uploadDir = path.join(__dirname, 'upload'); // Diretório de upload
 
 
@@ -547,13 +561,27 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
 
     } else { foto_noticia = noticia.ref_imagem; }
 
+    // Tratar os cursos selecionados
+    var cursos;
+    if (req.body.curso){
+    
+        if (Array.isArray(req.body.curso)) {
+            cursos = req.body.curso.join(', '); // Transforma o array em uma string separada por vírgula e espaço
+        } else {
+            cursos = req.body.curso; // Se for apenas um valor, mantém como está
+        }
+    } else { cursos = noticia.curso; }
+
     // Atualizar dados do usuário
     Post.update(
         {
             titulopost: titulo,
             subtitulopost: subtitulo,
             conteudopost: conteudo,
-            ref_imagem: foto_noticia
+            data: data, 
+            hora: hora, 
+            ref_imagem: foto_noticia,
+            curso: cursos
         },
         { where: { id: id } }
     ).then(() => {

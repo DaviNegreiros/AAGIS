@@ -38,7 +38,9 @@
                         <!-- botão imagem -->
                         <div class="btnImg">
                             <label class="picture" for="picture__input" tabIndex="0">
-                                <span class="picture__image"></span>
+                                <span class="picture__image">
+                                    <img src={{noticia.ref_imagem}} class="picture__img">
+                                </span>
                             </label>
                             <input type="file" name="picture__input" id="picture__input">
                         </div>
@@ -65,7 +67,7 @@
                             <label for="time">Hora:</label>
                             <input type="time" id="time" name="time">
                         </div>
-                        <button type="submit">Enviar</button>
+                        <button type="submit">Editar</button>
                     </div>
                 </form>
             </div>

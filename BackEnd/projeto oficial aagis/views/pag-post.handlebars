@@ -45,23 +45,21 @@
                     </div>
                     <div class="input-texto">
                         <textarea name="titulopost" placeholder="Digite o título..." class="title"></textarea><br>
-                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..."
-                            class="subtitle"></textarea><br>
+                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle"></textarea><br>
                         <textarea name="conteudopost" placeholder="Digite o texto..." class="text"></textarea><br>
 
                         <div id="checkbox-container">
                             <label><input type="checkbox" name="curso" value="Engenharias">Engenharias</label>
                             <label><input type="checkbox" name="curso" value="Eng. Software"> Engenharia de Software</label>
                             <label><input type="checkbox" name="curso" value="Eng. Automotiva"> Engenharia Automotiva</label>
-                            <label><input type="checkbox" name="curso" value="Eng. Aeroespacial"> Engenharia
-                                Aeroespacial</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Aeroespacial"> Engenharia Aeroespacial</label>
                             <label><input type="checkbox" name="curso" value="Eng. Eletrônica"> Engenharia Eletrônica</label>
                             <label><input type="checkbox" name="curso" value="Eng. Energia"> Engenharia de Energia</label>
                         </div> <br>
                         <div class="data-hora" id="dateTimeForm">
 
                             <label for="date">Data:</label>
-                            <input type="date" id="date" name="date">
+                            <input type="date" id="date" name="date" min="2024-01-01" max="2099-12-31">
 
                             <label for="time">Hora:</label>
                             <input type="time" id="time" name="time">
