@@ -36,27 +36,51 @@ const months = [
   "Novembro",
   "Dezembro",
 ];
+const diasDaSemana = {
+  "Sun": "Dom",
+  "Mon": "Seg",
+  "Tue": "Ter",
+  "Wed": "Qua",
+  "Thu": "Qui",
+  "Fri": "Sex",
+  "Sat": "Sab"
+};
+//INTEGRAR BACK AQUI
+ const eventsArr = [
+   {
+     day: 13,
+     month: 6, //aqui não pode ter zero (já testei)
+     year: 2024,
+     events: [
+       {
+         title: "Titulo 1",
+         time: "10:00 (isso é uma string)",
+       },
+       {
+         title: "Titulo 2",
+         time: "11:00 AM",
+       },
+     ],
+   },
+   {
+    day: 14,
+    month: 6,
+    year: 2024,
+    events: [
+      {
+        title: "Titulo 1, dia 2",
+        time: "10:00 AM",
+      },
+      {
+        title: "Titulo 2, dia 2",
+        time: "11:00 AM",
+      },
+    ],
+  },
+ ];
 
-// const eventsArr = [
-//   {
-//     day: 13,
-//     month: 11,
-//     year: 2022,
-//     events: [
-//       {
-//         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-//         time: "10:00 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-// ];
-
-const eventsArr = [];
-getEvents();
+//const eventsArr = [];
+//getEvents();
 console.log(eventsArr);
 
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
@@ -233,11 +257,13 @@ function gotoDate() {
 function getActiveDay(date) {
   const day = new Date(year, month, date);
   const dayName = day.toString().split(" ")[0];
-  eventDay.innerHTML = dayName;
+  const diaPortugues = diasDaSemana[dayName];
+  eventDay.innerHTML = diaPortugues;
   eventDate.innerHTML = date + " " + months[month] + " " + year;
+
 }
 
-//function update events when a day is active
+//function update events when a day is active LEO AQUI TAMBEM TA LEO
 function updateEvents(date) {
   let events = "";
   eventsArr.forEach((event) => {
@@ -288,26 +314,6 @@ addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
-function defineProperty() {
-  var osccred = document.createElement("div");
-  osccred.innerHTML =
-    "A Project By <a href='https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ' target=_blank>Open Source Coding</a>";
-  osccred.style.position = "absolute";
-  osccred.style.bottom = "0";
-  osccred.style.right = "0";
-  osccred.style.fontSize = "10px";
-  osccred.style.color = "#ccc";
-  osccred.style.fontFamily = "sans-serif";
-  osccred.style.padding = "5px";
-  osccred.style.background = "#fff";
-  osccred.style.borderTopLeftRadius = "5px";
-  osccred.style.borderBottomRightRadius = "5px";
-  osccred.style.boxShadow = "0 0 5px #ccc";
-  document.body.appendChild(osccred);
-}
-
-defineProperty();
-
 //allow only time in eventtime from and to
 addEventFrom.addEventListener("input", (e) => {
   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
@@ -329,7 +335,7 @@ addEventTo.addEventListener("input", (e) => {
   }
 });
 
-//function to add event to eventsArr
+//function to add event to eventsArr LEO AQUI LEO TA BEM AQUI
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
   const eventTimeFrom = addEventFrom.value;
