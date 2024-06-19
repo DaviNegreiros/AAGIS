@@ -491,7 +491,7 @@ function convertTime(time) {
 
 /*-- BOTAO HOME --*/
 function homeFunction() {
-  window.location.href = '/Frontend/'; // Redirect to homepage URL
+  window.location.href = '/'; // Redirect to homepage URL
 }
 
 /*-- FIM BOTAO HOME--*/
