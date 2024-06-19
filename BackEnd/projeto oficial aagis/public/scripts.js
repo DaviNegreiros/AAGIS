@@ -43,6 +43,74 @@ btnFiltro.onclick = function () {
     }
 };
 /*--FIM  FILTRO--*/
+/*-- Checka Tchecka --*/
+const cbAll = document.querySelectorAll('.filtro1 input[type="checkbox"]');
+cb1 = document.querySelector('#cb1');
+cb2 = document.querySelector('#cb2');
+cb3 = document.querySelector('#cb3');
+cb4 = document.querySelector('#cb4');
+cb5 = document.querySelector('#cb5');
+cb6 = document.querySelector('#cb6');
+cb7 = document.querySelector('#cb7');
+
+function ck1(){
+    cb1.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb1) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck2(){
+    cb2.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb2) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck3(){
+    cb3.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb3) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck4(){
+    cb4.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb4) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck5(){
+    cb5.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb5) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck6(){
+    cb6.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb6) {
+          checkbox.checked = false;
+        }
+      }
+}
+function ck7(){
+    cb7.checked = true;
+    for (const checkbox of cbAll) {
+        if (checkbox !== cb7) {
+          checkbox.checked = false;
+        }
+      }
+}
+
+/*-- FIM Checka Tcheka--*/
 
 /*--INICIO MODAL--*/
 function abrirModalS1() {
