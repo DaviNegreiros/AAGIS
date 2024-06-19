@@ -340,7 +340,7 @@ app.get('/perfil', isLog, async (req, res) => {
 
     res.render('pag-perfil', {
         usuario: usuario,
-        style: 'style-post.css'
+        style: 'style-perfil.css'
     });
 });
 

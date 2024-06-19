@@ -145,9 +145,9 @@ footer li{
   }
   
   .picture {
-    width: 800px;
-    height: 350px;
-    border-radius: 35px;
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
     box-shadow: 5px 5px 20px black;
     background: #ddd;
     display: flex;
@@ -161,7 +161,10 @@ footer li{
     outline: none;
     overflow: hidden;
   }
-  
+  .picture img {
+    height: 250px;
+    max-height: 100%;
+}
   .picture:hover {
     color: #777;
     background: #ccc;
@@ -179,26 +182,23 @@ footer li{
     box-shadow: 5px 5px 20px black;
   }
   
-  .picture__img {
-    max-width: 100%;
-  }
   /*== FIM BOTÃO IMAGEM ==*/
   /*== fake modal ==*/
   .fakeModal1{
     text-align: center;
     width: 700px;
-    height: 350px;
+    height: 250px;
     margin-top: 2px;
     padding-top: 2px;
 
 }
 .btnImg{
-    width: 800px;
-    height:350px;
-    margin-left:15px;
+    width: 250px;
+    height: 250px;
+    margin-left: 325px;
     margin-top: 5px;
     margin-bottom: 0;
-    border-radius: 35px;
+    border-radius: 250px;
     box-shadow:5px 5px 20px black ;
 
 }
@@ -322,22 +322,5 @@ input.text:hover {
     background: linear-gradient(#476e9e, rgb(120, 146, 194));
   }
 
-  /*==checkbox==*/
-#checkbox-container {
-    display: flex;
-  }
-  
-  #checkbox-container label {
-    margin-right: 8px; /* Espaçamento entre as checkboxes */
-    padding-left: 20px;
-    font-size: 15px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-top: 12px;
-  
-  }
-  .data-hora{
-    padding-left: 500px;
-    color: black;
-    font-size: 18px;
-  }
+
   

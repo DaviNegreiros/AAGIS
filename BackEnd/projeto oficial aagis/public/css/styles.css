@@ -23,16 +23,18 @@ body {
     .activeFiltro {
         display: block;
     }
-
+    #botaoAplicarFiltros {
+        color: white;
+        background-color: #072c6b;
+        border-radius: 5px;
+        padding: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
     /*== FIM FILTRO ==*/
 
     /*=== SIDEBAR ===*/
-    .user-img {
-        width: 50px;
-        border-radius: 100%;
-        border: 1px solid #eee;
-    }
-
+   
     .sidebar {
         position: fixed;
         top: 0;
@@ -176,11 +178,11 @@ body {
     .filtro1 {
         display: block;
         position: relative;
-        padding-left: 20px;
+        padding-left: 28px;
         margin-bottom: 20px;
         cursor: pointer;
         color:#FFF;
-        font-size: 15px;
+        font-size: 14px;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -921,4 +923,22 @@ height: 450px;
     /*== FINAL FOOTER==*/
     
     
-  
+    /*== pfp pic ==*/
+    .pfpContainer {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 2px solid #eee;
+    }
+    .pfpContainer img{
+        height: 50px;
+        max-height: 100%;
+    }
+    
+
+    /*== FIM pfp pic ==*/

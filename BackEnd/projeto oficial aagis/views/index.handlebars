@@ -43,7 +43,8 @@
         </div>
 
         {{#if user_logado}}
-        <div class="user"><a href="/perfil"><img src={{user_foto}} alt="me" class="user-img">
+        <div class="user"><a href="/perfil">
+        <div class="pfpContainer"><img src={{user_foto}} alt="me" class="user-img"> </div>
             </a>
             <div>
                 <p class="bold">{{user_name}}</p>
@@ -52,9 +53,11 @@
         </div>
         {{/if}}
         {{#unless user_logado}}
-        <div class="user"><a href="/perfil"><img
+        <div class="user">
+            <a href="/perfil">
+            <div class="pfpContainer"><img
                     src="https://static-00.iconduck.com/assets.00/profile-user-icon-2048x2048-m41rxkoe.png" alt="me"
-                    class="user-img">
+                    class="user-img"></div>
             </a>
             <div>
                 <p class="bold">{{user_name}}</p>
@@ -117,7 +120,7 @@
                         <input type="checkbox" name="curso" value="Eng. Eletrônica">
                         <span class="checkmark"></span>
                     </label>
-                    <button type="submit">Aplicar Filtros</button>
+                    <button type="submit" id="botaoAplicarFiltros">Aplicar Filtros</button>
                 </fieldset>
 
             </form>
