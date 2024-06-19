@@ -16,8 +16,14 @@ const Post = db.sequelize.define('postagens', {
     ref_imagem: {
         type: db.Sequelize.STRING
     },
-    idconta: {
-        type: db.Sequelize.INTEGER
+    data: { 
+        type: db.Sequelize.STRING
+    },
+    hora: {
+        type: db.Sequelize.STRING
+    },
+    autor: {
+        type: db.Sequelize.STRING
     }
 })
 // Post.sync({ force: true })
