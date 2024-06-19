@@ -273,6 +273,19 @@ header .HeaderRow {
     color: rgb(120, 43, 43);
     font-size: 12px;
     font-weight: bold;
+    margin-top: 5px;
+  }
+  .waitMessage {
+    color: rgb(0, 26, 141);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  .successMessage {
+    color: rgb(34, 100, 255);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
   }
   .hide {
     display: none;
