@@ -62,9 +62,7 @@ header .HeaderRow {
 }
 
     /*=== FIM HEADER ===*/
-.Container-Painel{
-}
-.Noticia-1{
+.Noticia{
     display: flex;
     gap: 20px;
     border: 2px solid #000;
@@ -125,3 +123,223 @@ header .HeaderRow {
   button:hover {
     background: linear-gradient(#476e9e, rgb(120, 146, 194));
   }
+
+
+
+/*MODAL*/
+.HIDE{
+    display: none;
+}
+
+#btn1 {
+    margin-left: 150px;
+}
+/*FIM MODAL*/
+
+
+
+
+
+  
+  
+/*== BOTÃO IMAGEM ==*/
+#picture__input {
+    display: none;
+  }
+  
+  .picture {
+    width: 800px;
+    height: 350px;
+    border-radius: 35px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+  }
+  
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+  
+  .picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+  }
+  
+  .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 5px 5px 20px black;
+  }
+  
+  .picture__img {
+    max-width: 100%;
+  }
+  /*== FIM BOTÃO IMAGEM ==*/
+  /*== fake modal ==*/
+  .fakeModal1{
+    text-align: center;
+    width: 700px;
+    height: 350px;
+    margin-top: 2px;
+    padding-top: 2px;
+
+}
+.btnImg{
+    width: 800px;
+    height:350px;
+    margin-left:15px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    border-radius: 35px;
+    box-shadow:5px 5px 20px black ;
+
+}
+.fakeModal {
+    left: 50%;
+    top: 50%;
+    width: 900px;
+    height: 720px;
+    overflow-y: auto;   
+}
+ .fakeModal p{
+    color: black;
+ }
+.fakeModal-conteudo {
+    margin-top: 110px;
+    background-color:rgb(255, 255, 255);
+    color: black;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 900px;
+    height: 700px;
+    border-radius: 20px;
+}
+/*== FIM fake modal ==*/
+/*==botao texto==*/
+.input-texto{
+    width: 800px;
+    height: 100px;
+    margin-top: 35px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 18px;
+}
+textarea.title{
+    resize: none;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 750px;
+    height:50px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    overflow-wrap: break-word;
+    font-size: 25px;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+input.title:hover {
+    background: #ccc;
+  }
+  textarea.subtitle{
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 800px;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    text-align: start;
+    resize: none;
+    font-size: 18px;
+    color: black;
+
+
+}
+input.subtitle:hover {
+    background: #ccc;
+  }
+textarea.text{
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 800px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px black;
+    background: #ddd;
+    text-align: start;
+    resize: none;
+    font-size: 18px;
+    color: black;
+
+
+}
+input.text:hover {
+    background: #ccc;
+  }
+  .fakeModal button{
+    margin-bottom: 10px;
+    margin-left: 350px;
+    margin-top: 18px;
+    font-size:25px;
+    font-family:Arial;
+    width:140px;
+    height:45px;
+    border-width:1px;
+    color:#041024;
+    border-color:#6a80c2;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    text-shadow: 0px 1px 0px #3b5397;
+    background:linear-gradient(rgb(120, 146, 194), #718dec);
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(#476e9e, rgb(120, 146, 194));
+  }
+
+  /*==checkbox==*/
+  #checkbox-container {
+    display: flex;
+  }
+  
+  #checkbox-container label {
+    margin-right: 8px; /* Espaçamento entre as checkboxes */
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 12px;
+
+  }
+  .data-hora{
+    padding-left: 500px;
+    color: black;
+    font-size: 18px;
+  }
+  
