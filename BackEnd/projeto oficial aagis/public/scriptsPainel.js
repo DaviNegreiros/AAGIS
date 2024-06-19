@@ -4,7 +4,7 @@ let btnClose = document.querySelector('#btnClose')
 let fakeModal = document.querySelector('#fm')
 
 function editarNoticia(id) {
-    window.location.href = `/editar-noticia/${id}`;
+    window.location.href = `/editar-noticia-${id}`;
 }
 
 function excluirNoticia(id) {

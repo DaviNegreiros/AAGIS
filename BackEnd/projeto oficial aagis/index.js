@@ -490,7 +490,7 @@ app.delete('/excluir-noticia/:id', isAdm, async (req, res) => {
 });
 
 // Rota para editar notícia
-app.get('/editar-noticia/:id', isAdm, async (req, res) => {
+app.get('/editar-noticia-:id', isAdm, async (req, res) => {
     try {
         const id = req.params.id;
         const noticia = await Post.findOne({
@@ -499,14 +499,10 @@ app.get('/editar-noticia/:id', isAdm, async (req, res) => {
             }
         })
 
-        res.render('pag-editarNoticia', {noticia: noticia,
-                                         style: 'css/style-post.css',
-                                         titulo: noticia.titulopost,
-                                         subtitulo: noticia.subtitulopost,
-                                         conteudo: noticia.conteudopost
-         });
+        res.render('pag-editarNoticia', {noticia: noticia, style: 'css/style-post.css'});
+        
     } catch (err) {
-        res.send("Erro:", err);
+        res.send("Erro: penis" + err);
     }
 
 });

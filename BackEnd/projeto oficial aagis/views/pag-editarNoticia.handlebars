@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style-post.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel</title>
+    <title>Editar Noticia</title>
     <link rel="stylesheet" href="/{{style}}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style type='text/css'></style>
 </head>
+
 <body>
+    <script defer src="scriptsPost.js"></script>
+    <script async src="scriptsPost.js"></script>
+
+
     <div class="header">
         <div class="HeaderRow">
             <div class="home" onclick="homeFunction()">
@@ -40,41 +45,42 @@
                         <!-- FIM botão imagem -->
                     </div>
                     <div class="input-texto">
-                        <textarea name="titulopost" placeholder="Digite o título..." class="title">{{titulo}}</textarea><br>
-                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle">{{subtitulo}}</textarea><br>
-                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text">{{conteudo}}</textarea><br>
-                                            
-                            <div id="checkbox-container">
-                                <label><input type="checkbox" name="categoria" value="categoria1"> Engenharias</label>
-                                <label><input type="checkbox" name="categoria" value="categoria2"> Eng. Software</label>
-                                <label><input type="checkbox" name="categoria" value="categoria3"> Eng. Automotiva</label>
-                                <label><input type="checkbox" name="categoria" value="categoria4"> Eng. Aeroespacial</label>
-                                <label><input type="checkbox" name="categoria" value="categoria5"> Eng. Eletrônica</label>
-                                <label><input type="checkbox" name="categoria" value="categoria6"> Eng. Energia</label>
-                            </div> <br>
-                            <div class="data-hora" id="dateTimeForm">
+                        <textarea name="titulopost" placeholder="Digite o título..." class="title">{{noticia.titulopost}}</textarea><br>
+                        <textarea name="subtitulopost" placeholder="Digite o subtítulo..." class="subtitle">{{noticia.subtitulopost}}</textarea><br>
+                        <textarea name="conteudopost" placeholder="Digite o texto..." class="text">{{noticia.conteudopost}}</textarea><br>
+
+                        <div id="checkbox-container">
+                            <label><input type="checkbox" name="curso" value="Engenharias">Engenharias</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Software"> Engenharia de Software</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Automotiva"> Engenharia Automotiva</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Aeroespacial"> Engenharia Aeroespacial</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Eletrônica"> Engenharia Eletrônica</label>
+                            <label><input type="checkbox" name="curso" value="Eng. Energia"> Engenharia de Energia</label>
+                        </div> <br>
+                        <div class="data-hora" id="dateTimeForm">
 
                             <label for="date">Data:</label>
                             <input type="date" id="date" name="date">
 
                             <label for="time">Hora:</label>
-                            <input type="time" id="time" name="time"> 
-                            </div>
+                            <input type="time" id="time" name="time">
+                        </div>
                         <button type="submit">Enviar</button>
                     </div>
-
+                </form>
             </div>
         </div>
+    </div>
 
 
-        <!-- botão imagem -->
-        <!--<div class="btnImg">
+    <!-- botão imagem -->
+    <!--<div class="btnImg">
             <label class="picture" for="picture__input" tabIndex="0">
                 <span class="picture__image"></span>
             </label>
             <input type="file" name="picture__input" id="picture__input">
         </div>-->
-        <!-- FIM botão imagem -->
+    <!-- FIM botão imagem -->
     </div>
 
     <!-- FIM area postagem-->
@@ -82,7 +88,7 @@
         <div class="info1">
             <ul>
                 <h3>AAGIS</h3>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elits!
+                Fique atento aos eventos acadêmicos com o nosso site!
                 <div class="redes-sociais">
                     <img src="imagens/icon.instagram.png" alt="">
                     <img src="imagens/icon.telegram.png" alt="">
