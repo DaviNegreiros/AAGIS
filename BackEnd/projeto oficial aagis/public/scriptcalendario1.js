@@ -45,8 +45,10 @@ const diasDaSemana = {
   "Fri": "Sex",
   "Sat": "Sab"
 };
-//INTEGRAR BACK AQUI
- const eventsArr = [
+
+/*-- MODELO MAPA DE EVENTOS --*/
+/* 
+const eventsArr = [
    {
      day: 13,
      month: 6, //aqui não pode ter zero (já testei)
@@ -78,8 +80,9 @@ const diasDaSemana = {
     ],
   },
  ];
+ */
 
-//const eventsArr = [];
+//var eventsArr = [];
 //getEvents();
 console.log(eventsArr);
 

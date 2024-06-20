@@ -24,6 +24,9 @@ const Post = db.sequelize.define('postagens', {
     },
     autor: {
         type: db.Sequelize.STRING
+    },
+    foto_autor: {
+        type: db.Sequelize.STRING
     }
 })
 // Post.sync({ force: true })

@@ -217,11 +217,11 @@
                                 </p>
                                 <div class="datahora"> <!-- INTEGRAR AQUI -->
                             <div class="dhImgContainer">
-                                <img src="https://s2-g1.glbimg.com/eiyL7tSGe2nM0EZjrEZDSE_10eE=/0x0:4896x4893/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/t/V/dc9R0fTxyK8KHoSfBOoQ/img-20190921-132428.jpg">
+                                <img src={{postsSlider.[0].foto_autor}}>
                             </div>
                             <div class="wrap">
-                                <p class="autor">Postado por "????? ????"</p>
-                                <p class="dh">??:?? ??/??/??</p>
+                                <p class="autor">Postado por "{{postsSlider.[0].autor}}"</p>
+                                <p class="dh">{{postsSlider.[0].hora}} {{postsSlider.[0].data}}</p>
                             </div>
                         </div>
                             </div>
@@ -247,11 +247,11 @@
                                 </p>
                                 <div class="datahora"> <!-- INTEGRAR AQUI -->
                             <div class="dhImgContainer">
-                                <img src="https://s2-g1.glbimg.com/eiyL7tSGe2nM0EZjrEZDSE_10eE=/0x0:4896x4893/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/t/V/dc9R0fTxyK8KHoSfBOoQ/img-20190921-132428.jpg">
+                                <img src={{postsSlider.[1].foto_autor}}>
                             </div>
                             <div class="wrap">
-                                <p class="autor">Postado por "????? ????"</p>
-                                <p class="dh">??:?? ??/??/??</p>
+                                <p class="autor">Postado por "{{postsSlider.[1].autor}}"</p>
+                                <p class="dh">{{postsSlider.[1].hora}} {{postsSlider.[1].data}}</p>
                             </div>
                         </div>
                             </div>
@@ -276,11 +276,11 @@
                                 </p>
                                 <div class="datahora"> <!-- INTEGRAR AQUI -->
                             <div class="dhImgContainer">
-                                <img src="https://s2-g1.glbimg.com/eiyL7tSGe2nM0EZjrEZDSE_10eE=/0x0:4896x4893/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/t/V/dc9R0fTxyK8KHoSfBOoQ/img-20190921-132428.jpg">
+                                <img src={{postsSlider.[2].foto_autor}}>
                             </div>
                             <div class="wrap">
-                                <p class="autor">Postado por "????? ????"</p>
-                                <p class="dh">??:?? ??/??/??</p>
+                                <p class="autor">Postado por "{{postsSlider.[2].autor}}"</p>
+                                <p class="dh">{{postsSlider.[2].hora}} {{postsSlider.[2].data}}</p>
                             </div>
                         </div>
                             </div>
@@ -305,11 +305,11 @@
                                 </p>
                                 <div class="datahora"> <!-- INTEGRAR AQUI -->
                             <div class="dhImgContainer">
-                                <img src="https://s2-g1.glbimg.com/eiyL7tSGe2nM0EZjrEZDSE_10eE=/0x0:4896x4893/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/t/V/dc9R0fTxyK8KHoSfBOoQ/img-20190921-132428.jpg">
+                                <img src={{postsSlider.[3].foto_autor}}>
                             </div>
                             <div class="wrap">
-                                <p class="autor">Postado por "????? ????"</p>
-                                <p class="dh">??:?? ??/??/??</p>
+                                <p class="autor">Postado por "{{postsSlider.[3].autor}}"</p>
+                                <p class="dh">{{postsSlider.[3].hora}} {{postsSlider.[3].data}}</p>
                             </div>
                         </div>
                             </div>
@@ -361,14 +361,17 @@
                         <p>
                             {{this.conteudopost}}
                         </p>
+
                         <div class="datahora"> <!-- INTEGRAR AQUI -->
                             <div class="dhImgContainer">
-                                <img src="https://s2-g1.glbimg.com/eiyL7tSGe2nM0EZjrEZDSE_10eE=/0x0:4896x4893/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/t/V/dc9R0fTxyK8KHoSfBOoQ/img-20190921-132428.jpg">
+                                <img src={{this.foto_autor}}>
                             </div>
+
                             <div class="wrap">
-                                <p class="autor">Postado por "????? ????"</p>
-                                <p class="dh">??:?? ??/??/??</p>
+                                <p class="autor">Postado por "{{this.autor}}"</p>
+                                <p class="dh">{{this.hora}} {{this.data}}</p>
                             </div>
+                       
                         </div>
                     </div>
                 </div>

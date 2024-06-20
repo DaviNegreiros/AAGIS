@@ -29,8 +29,9 @@ app.engine('handlebars', handlebars.engine({
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true,
     }
-}))
-app.set('view engine', 'handlebars')
+}));
+app.set('view engine', 'handlebars');
+
 
 //Body Parser
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -423,6 +424,7 @@ app.post('/add', isLog, async (req, res) => {
         const data = req.body.date;               // Data do evento // AAAA-MM-DD
         const hora = req.body.time;               // Horário do evento // HH:MM
         const autor = req.session.user_name;      // Nome de quem postou a noticia
+        const foto_autor = req.session.user_foto; // Foto de perfil de quem postou a noticia
 
         const ref_imagem = req.files.picture__input; // Nome do input para a imagem
         const uploadDir = path.join(__dirname, '/upload'); // Diretório de upload
@@ -454,6 +456,7 @@ app.post('/add', isLog, async (req, res) => {
             data: data,  
             hora: hora,
             autor: autor,
+            foto_autor: foto_autor,
             ref_imagem: '/upload/' + ref_imagem.name, // Caminho completo da imagem
             curso: cursos // Salvar os cursos selecionados como uma string
             
@@ -594,9 +597,56 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
 });
 
 //rota calendario
-app.get('/calendario', function (req, res) {
-    res.render('pag-calendario', {style: 'css/style-calendario.css'})
-})
+app.get('/calendario', async (req, res) => {
+    try {
+        // Busca todos os eventos com data registrada
+        const eventos = await Post.findAll({
+            where: {
+                data: {
+                    [Op.ne]: null
+                }
+            },
+            order: [['id', 'DESC']]
+        });
+
+
+        // Converter os eventos no formato necessário
+        const eventsArr = eventos.map(evento => {
+            const [year, month, day] = evento.data.split('-').map(Number);  // Sepra a string pelos "-" pra separar ano mes e dia
+            return {
+                day: day,
+                month: month,
+                year: year,
+                events: [{
+                    title: evento.titulopost,
+                    time: evento.hora
+                }]
+            };
+        });
+
+        // Agrupar os eventos pelo mesmo dia
+        const groupedEvents = eventsArr.reduce((acc, curr) => {
+            const key = `${curr.day}-${curr.month}-${curr.year}`;
+            if (!acc[key]) {
+                acc[key] = { day: curr.day, month: curr.month, year: curr.year, events: [] };
+            }
+
+            acc[key].events.push(...curr.events);
+            return acc;
+        }, {}); 
+
+        // Converter o objeto agrupado em um array
+        const finalEventsArr = Object.values(groupedEvents);
+
+        // Renderizar a página com os eventos
+        res.render('pag-calendario', { 
+            eventos: JSON.stringify(finalEventsArr),   // Mudar para formato json para mandar pro script
+            style: 'css/style-calendario.css' });
+
+    } catch (err) {
+        res.status(500).send('Erro ao buscar eventos: ' + err.message);
+    }
+});
 
 
 app.listen(6969, function () {
