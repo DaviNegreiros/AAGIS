@@ -52,3 +52,32 @@ function homeFunction() {
 }
 
 /*-- FIM BOTAO HOME--*/
+
+/*--inicio envio obrigatório--*/
+document.getElementById('submitButton').addEventListener('click', function(event) {
+  event.preventDefault(); // Impede o envio do formulário até a validação ser completada
+  
+  let errorMessages = [];
+  let titulo = document.getElementById('titulo').value.trim();
+  let subtitulo = document.getElementById('subtitulo').value.trim();
+  let texto = document.getElementById('texto').value.trim();
+  let date = document.getElementById('date').value.trim();
+  let time = document.getElementById('time').value.trim();
+  let picture = document.getElementById('picture__input').files.length;
+  let checkboxes = document.querySelectorAll('#checkbox-container input[type="checkbox"]');
+  let checkboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+  if (titulo === '') errorMessages.push('O campo "Título" é obrigatório.');
+  if (subtitulo === '') errorMessages.push('O campo "Subtítulo" é obrigatório.');
+  if (texto === '') errorMessages.push('O campo "Texto" é obrigatório.');
+  if (date === '') errorMessages.push('O campo "Data" é obrigatório.');
+  if (time === '') errorMessages.push('O campo "Hora" é obrigatório.');
+  if (picture === 0) errorMessages.push('O campo "Imagem" é obrigatório.');
+  if (!checkboxChecked) errorMessages.push('Pelo menos uma categoria deve ser selecionada.');
+
+  if (errorMessages.length > 0) {
+      alert(errorMessages.join('\n'));
+  } else {
+      alert('Formulário enviado com sucesso!');
+  }
+});
