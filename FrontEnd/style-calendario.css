@@ -388,7 +388,7 @@ body {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: none;
   padding: 0 20px;
   font-size: 1rem;
   font-weight: 500;
@@ -809,7 +809,6 @@ body {
     padding: 20px;
   }
 }
-
 .credits {
   position: absolute;
   bottom: 0;

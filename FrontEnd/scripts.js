@@ -21,7 +21,7 @@ function nextImage(){
     let btn = document.querySelector('#btn');
     let slidebar = document.querySelector('.sidebar');
 
-    btn.onclick = function() {
+    btn.onclick = function buttonsb() {
         slidebar.classList.toggle('active');
         if(filtro.classList.contains('activeFiltro')){
             filtro.classList.toggle('activeFiltro');
