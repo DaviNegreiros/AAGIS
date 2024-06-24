@@ -2,7 +2,7 @@
 //Conexão com o BD MySQL
 //Model definition
 const Sequelize = require('sequelize')  // npm i sequelize
-const sequelize = new Sequelize('aagis3', 'root', 'yasmin@0102', {
+const sequelize = new Sequelize('aagis3', 'root', '2912', {
     host: "localhost",
     dialect: 'mysql'
 })
