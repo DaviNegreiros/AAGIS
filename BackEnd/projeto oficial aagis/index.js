@@ -195,12 +195,12 @@ app.get('/', async (req, res) => {
 //rota login 
 app.get('/login', function (req, res) {
     res.render('pag-login', {
-        us_repetido, 
-        email_inexistente, 
+        us_repetido,
+        email_inexistente,
         senha_incorreta,
         user_name: req.session.user_name,
         style: 'styleLogin.css',
-        
+
     })
 })
 
@@ -468,13 +468,13 @@ app.post('/add', isLog, async (req, res) => {
             titulopost: titulo,
             subtitulopost: subtitulo,
             conteudopost: conteudo,
-            data: data,  
+            data: data,
             hora: hora,
             autor: autor,
             foto_autor: foto_autor,
             ref_imagem: '/upload/' + sanitizedFileName,  // Caminho completo da imagem
             curso: cursos // Salvar os cursos selecionados como uma string
-            
+
         });
 
         // Redireciona para a página inicial após a criação do post
@@ -525,10 +525,10 @@ app.get('/editar-noticia-:id', isAdm, async (req, res) => {
             }
         })
 
-        res.render('pag-editarNoticia', {noticia: noticia, style: 'css/style-post.css'});
-        
+        res.render('pag-editarNoticia', { noticia: noticia, style: 'css/style-post.css' });
+
     } catch (err) {
-        res.send("Erro: penis" + err);
+        res.send("Erro: " + err);
     }
 
 });
@@ -581,8 +581,8 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
 
     // Tratar os cursos selecionados
     var cursos;
-    if (req.body.curso){
-    
+    if (req.body.curso) {
+
         if (Array.isArray(req.body.curso)) {
             cursos = req.body.curso.join(', '); // Transforma o array em uma string separada por vírgula e espaço
         } else {
@@ -596,8 +596,8 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
             titulopost: titulo,
             subtitulopost: subtitulo,
             conteudopost: conteudo,
-            data: data, 
-            hora: hora, 
+            data: data,
+            hora: hora,
             ref_imagem: foto_noticia,
             curso: cursos
         },
@@ -648,15 +648,16 @@ app.get('/calendario', async (req, res) => {
 
             acc[key].events.push(...curr.events);
             return acc;
-        }, {}); 
+        }, {});
 
         // Converter o objeto agrupado em um array
         const finalEventsArr = Object.values(groupedEvents);
 
         // Renderizar a página com os eventos
-        res.render('pag-calendario', { 
+        res.render('pag-calendario', {
             eventos: JSON.stringify(finalEventsArr),   // Mudar para formato json para mandar pro script
-            style: 'css/style-calendario.css' });
+            style: 'css/style-calendario.css'
+        });
 
     } catch (err) {
         res.status(500).send('Erro ao buscar eventos: ' + err.message);

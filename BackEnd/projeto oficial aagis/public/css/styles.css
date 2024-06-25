@@ -606,22 +606,19 @@ height: 450px;
         text-decoration: none;
         cursor: pointer;
     }
-    .modal1{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-
-    }
-    .modal1 img{
+    .modalImgContainer{
         width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
+        height: 350px;
+        margin-top: 30px;
+        border-radius: 35px; /* Bordas arredondadas no container */
+        box-shadow: 5px 5px 20px black;
+        overflow: hidden;
+    }
+    .modalImgContainer img{
+        width: 100%; /* A imagem ocupa a largura total do container */
+        height: 350px; /* A imagem ocupa a altura total do container */
+        object-fit: cover; /* Preenche o container sem distorção */
+        object-position: center; /* Imagem centralizada */
 
     }
     .modal h2{
@@ -648,199 +645,6 @@ height: 450px;
         background: #babcbe;
     }
 
-    .modal2{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal2 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modal3{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal3 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top:5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modal4{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-        color: #041024;
-    }
-    .modal4 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top:5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }.modal5{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal5 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top:5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }.modal6{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal6 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top:5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }.modal7{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal7 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }.modal8{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modal8 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 5px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modalS1 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modalS1{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modalS2 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    }
-    .modalS2{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modalS3 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modalS3{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
-    .modalS4 img{
-        width: 800px;
-        height:350px;
-        margin-left:15px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        border-radius: 35px;
-        box-shadow:5px 5px 20px black ;
-    
-    }
-    .modalS4{
-        text-align: center;
-        width: 700px;
-        height: 350px;
-        margin-top: 2px;
-        padding-top: 2px;
-    
-    }
     @media screen and (max-width: 900px) {
         .modal-conteudo {
             width: 90%;
@@ -928,18 +732,19 @@ height: 450px;
     .pfpContainer {
         width: 50px;
         height: 50px;
-        border-radius: 50px;
+        border-radius: 50%;
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         overflow: hidden;
         border: 2px solid #eee;
     }
     .pfpContainer img{
         height: 50px;
-        max-height: 100%;
+        width: 100%;
+        object-fit: cover; /* Mantém a proporção da imagem e cobre o container */
+        object-position: center; /* Posiciona a imagem no centro do container */
     }
+
+
     /*== FIM pfp pic ==*/
     /*== data e hora ==*/
     .datahora {
@@ -965,15 +770,16 @@ height: 450px;
     .dhImgContainer {
         width: 50px;
         height: 50px;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
         overflow: hidden;
         border: 2px solid #041024;
     }
     .datahora img{
         height: 50px;
-        max-height: 100%;
+        width: 100%;
+        object-fit: cover; /* Mantém a proporção da imagem e cobre o container */
+        object-position: center; /* Posiciona a imagem no centro do container */
     }
     /*== FIM data e hora ==*/
+    
