@@ -60,6 +60,20 @@ function isAdm(req, res, next) {
         res.redirect('/?message=Acesso negado'); // Usuário não está na conta de adm, redirecionar para página inicial
     }
 }
+function sanitizeFileName(fileName) {
+    let sanitizedFileName = '';
+    // Percorre cada caractere do nome do arquivo
+    for (let i = 0; i < fileName.length; i++) {
+        // Se o caractere atual for um espaço, adiciona um sublinhado ao resultado
+        if (fileName[i] === ' ') {
+            sanitizedFileName += '_';
+        } else {
+            // Caso contrário, adiciona o caractere original ao resultado
+            sanitizedFileName += fileName[i];
+        }
+    }
+    return sanitizedFileName;
+}
 // Helper para verificar se um valor está presente em um array
 const Handlebars = require('handlebars');
 Handlebars.registerHelper('includes', function (array, value, options) {
@@ -427,6 +441,7 @@ app.post('/add', isLog, async (req, res) => {
         const foto_autor = req.session.user_foto; // Foto de perfil de quem postou a noticia
 
         const ref_imagem = req.files.picture__input; // Nome do input para a imagem
+        const sanitizedFileName = sanitizeFileName(ref_imagem.name);
         const uploadDir = path.join(__dirname, '/upload'); // Diretório de upload
 
         // Verifica se o diretório de upload existe, se não, cria o diretório
@@ -435,7 +450,7 @@ app.post('/add', isLog, async (req, res) => {
         }
 
         // Define o caminho completo do arquivo de upload
-        const uploadPath = path.join(uploadDir, ref_imagem.name);
+        const uploadPath = path.join(uploadDir, sanitizedFileName);
 
         // Move o arquivo para o diretório de upload
         await ref_imagem.mv(uploadPath);
@@ -457,7 +472,7 @@ app.post('/add', isLog, async (req, res) => {
             hora: hora,
             autor: autor,
             foto_autor: foto_autor,
-            ref_imagem: '/upload/' + ref_imagem.name, // Caminho completo da imagem
+            ref_imagem: '/upload/' + sanitizedFileName,  // Caminho completo da imagem
             curso: cursos // Salvar os cursos selecionados como uma string
             
         });
