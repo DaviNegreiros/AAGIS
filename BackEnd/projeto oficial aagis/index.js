@@ -6,13 +6,21 @@ const Post = require('./models/Post')
 const Usuario = require('./models/Usuario')
 const path = require('path') //npm i path
 const fileUpload = require('express-fileupload') //npm i express-fileupload
-const fs = require('fs')
+const fs = require('fs');
 const session = require('express-session');  //npm i express-session
 const { Op } = require('sequelize');
+const say = require('say');
+const dotenv = require('dotenv');
+const { GoogleGenerativeAI } = require('@google/generative-ai');  //npm i @google/generative-ai dotenv
+dotenv.config();
+
+const genAI = new GoogleGenerativeAI(process.env.API_KEY); 
+
+
 //npm install mysql2
 
 //default option
-app.use(fileUpload())
+app.use(fileUpload()) 
 //app.use(express.static('views'))
 
 //static files
@@ -22,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 //Config
+
 //Template Engine
 app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
@@ -44,6 +53,17 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // Defina como true se estiver usando HTTPS
 }));
+
+// Função para enviar arquivos para a IA
+function fileToGenerativePart(path, mimeType) {
+    return {
+        inlineData: {
+            data: Buffer.from(fs.readFileSync(path)).toString("base64"),
+            mimeType
+        }
+    };
+}
+
 
 function isLog(req, res, next) {
     if (req.session && req.session.user_name) {
@@ -648,6 +668,35 @@ app.get('/calendario', async (req, res) => {
         res.status(500).send('Erro ao buscar eventos: ' + err.message);
     }
 });
+
+// Rota init gemini
+app.post('/initGemini-:id', async(req, res) => {
+    try{
+        const id = req.params.id;
+        const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+
+        // Buscar o post a partir do id
+        const post = await Post.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        const prompt = "Segue o título, conteúdo e imagem de capa de uma notícia em um site. Descreva a imagem e resuma o conteúdo da notícia para uma pessoa cega. Não crie informações adicionais que não estejam na própria notícia. Descreva a imagem e o conteúdo da notícia em parágrafos diferentes.\nTitulo: " + post.titulopost + "\nConteúdo: " + post.conteudopost;
+
+        const uploadDir = __dirname + post.ref_imagem;
+        const imageParts = [fileToGenerativePart(uploadDir, "image/jpeg")];
+
+        const result = await model.generateContent([prompt, ...imageParts]);
+        const response = await result.response;
+        const text = response.text();
+        console.log(text);
+        say.speak(text, '', 1.2);
+
+    }catch(error){
+        console.error('Erro:', error);
+    }
+})
 
 
 app.listen(6969, function () {

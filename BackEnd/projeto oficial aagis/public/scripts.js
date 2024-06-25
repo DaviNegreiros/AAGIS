@@ -345,5 +345,28 @@ document.addEventListener('DOMContentLoaded', function () {
     botao.addEventListener('click', exibirMensagem);
 });
 
+// Função initGemini
+function initGemini(id) {
+    const button = document.getElementById('btnGemini');
+    button.disabled = true;
 
+
+    fetch(`/initGemini-${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+
+    }).then(response => response.json()).then(data => {
+        console.log('Gemini iniciado...');
+    }).catch(error => {
+        console.error('Erro:', error);
+    });
+
+    setTimeout(() => {
+        button.disabled = false;
+    }, 10000);  // 10000ms = 10s
+
+}
 
