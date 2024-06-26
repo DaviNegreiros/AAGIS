@@ -793,4 +793,9 @@ height: 450px;
         font-size: 14px;
         padding-left: 8px;
         padding-right: 8px;
+        transition: 0.5s ease;
     }
+    .GeminiButton:disabled {
+        background-color: #07204c; /* Cor de fundo mais escura */
+        color: #999;; /* Cor da fonte mais escura */
+      }
