@@ -783,3 +783,14 @@ height: 450px;
     }
     /*== FIM data e hora ==*/
     
+
+    .GeminiButton {
+        color: white;
+        background-color: #072c6b;
+        border-radius: 5px;
+        padding: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
