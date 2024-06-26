@@ -94,6 +94,26 @@ function sanitizeFileName(fileName) {
     }
     return sanitizedFileName;
 }
+
+function removerAcento(text) {
+    text = text.replaceAll('é', 'e')
+                    .replaceAll('á', 'a')
+                    .replaceAll('í', 'i')
+                    .replaceAll('ó', 'o')
+                    .replaceAll('ú', 'u')
+                    .replaceAll('à', 'a')
+                    .replaceAll('ã', 'a')
+                    .replaceAll('õ', 'o')
+                    .replaceAll('â', 'a')
+                    .replaceAll('ê', 'e')
+                    .replaceAll('ç', 'ss')
+                    .replaceAll('Á', 'A')
+                    .replaceAll('Ú', 'U')
+                    .replaceAll('É', 'E');
+
+    return text;
+}
+
 // Helper para verificar se um valor está presente em um array
 const Handlebars = require('handlebars');
 Handlebars.registerHelper('includes', function (array, value, options) {
@@ -704,7 +724,10 @@ app.post('/initGemini-:id', async(req, res) => {
 
         const result = await model.generateContent([prompt, ...imageParts]);
         const response = await result.response;
-        const text = response.text();
+        var text = response.text();
+
+        text = removerAcento(text);
+
         console.log(text);
         say.speak(text, '', 1.2);
 
