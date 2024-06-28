@@ -34,7 +34,7 @@
                    <button type="submit">Entrar</button>
                     <div id="errom1" class="erroMessage {{#if senha_incorreta}}show{{else}}hide{{/if}}">Senha inválida</div>
                     <div id="errom2" class="erroMessage {{#if email_inexistente}}show{{else}}hide{{/if}}">Usuário inexistente</div>
-                    <div id="wait1" class="waitMessage {{#if usuario_naoAprovado}}show{{else}}hide{{/if}}">O usuário ainda não foi aprovado</div>
+                    <div id="wait1" class="waitMessage {{#if mensagem_wait}}show{{else}}hide{{/if}}">O usuário ainda não foi aprovado</div>
 
             </form>
          </div>
@@ -48,7 +48,8 @@
             <button  type="submit">Cadastrar</button>
         <div id="errom3" class="erroMessage {{#if us_repetido}}show{{else}}hide{{/if}}">Email ou nome já cadastrado</div>
         
-        <div id="success1" class="successMessage {{#if us_criado}}show{{else}}hide{{/if}}">Sucesso! Aguarde aprovação.</div>
+        <div id="success1" class="successMessage {{#if user_criado}}show{{else}}hide{{/if}}">Sucesso! Aguarde aprovação.</div>
+
             </form>
          </div>
        </div>

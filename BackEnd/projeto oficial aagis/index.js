@@ -126,6 +126,8 @@ let curso = ['Todos']; // 'Todos' selecionado por padrão
 var us_repetido = false
 var senha_incorreta = false
 var email_inexistente = false
+var user_criado = false
+var mensagem_wait = false
 
 //Rotas
 // Rota da página inicial
@@ -218,9 +220,6 @@ app.get('/', async (req, res) => {
                 user_tipo: 'Aluno',
                 style: 'styles.css',
             });
-            senha_incorreta = false;
-            email_inexistente = false;
-            us_repetido = false;
         }
 
     } catch (error) {
@@ -238,10 +237,16 @@ app.get('/login', function (req, res) {
         us_repetido,
         email_inexistente,
         senha_incorreta,
+        user_criado,
+        mensagem_wait,
         user_name: req.session.user_name,
         style: 'styleLogin.css',
-
     })
+    us_repetido = false
+    senha_incorreta = false
+    email_inexistente = false
+    user_criado = false
+    mensagem_wait = false
 })
 
 app.post('/cadastro', async (req, res) => {
@@ -257,14 +262,14 @@ app.post('/cadastro', async (req, res) => {
             nome: req.body.nomeCadastro,
             email: req.body.emailCadastro,
             senha: req.body.senhaCadastro,
-            foto_perfil: "/upload/fotoperfil/profile_10693213.png",
-            aprovado: false
+            foto_perfil: "/upload/fotoperfil/profile_10693213.png"
         }).then(function () {
             res.redirect('/login?message=pedido enviado para analise');
         }).catch(function (erro) {
             res.redirect('/login?message=Houve um erro: ' + erro);
         })
-        us_repetido = false;
+        us_repetido = false
+        user_criado = true
     } else {
         console.log('nome ou email já existentes')
         us_repetido = true
@@ -357,6 +362,7 @@ app.post('/addlogin', async (req, res) => {
                 }
             } else {
                 console.log("Usuário não aprovado");
+                mensagem_wait = true
                 res.redirect('/login?message=Usuário em análise');
             }
         } else {
