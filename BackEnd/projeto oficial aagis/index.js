@@ -9,11 +9,13 @@ const fileUpload = require('express-fileupload') //npm i express-fileupload
 const fs = require('fs');
 const session = require('express-session');  //npm i express-session
 const { Op } = require('sequelize');
+const bcrypt = require('bcrypt');  //npm i bcrypt
 const say = require('say');
 const dotenv = require('dotenv');
 const { GoogleGenerativeAI } = require('@google/generative-ai');  //npm i @google/generative-ai dotenv
 dotenv.config();
 
+const saltRounds = 11;  // Nível de segurança do processo de hashing para senha do usuário (maior nível = maior custo de processamento)
 const genAI = new GoogleGenerativeAI(process.env.API_KEY); 
 
 
@@ -258,23 +260,45 @@ app.post('/cadastro', async (req, res) => {
     console.log("checando se existe nome de usuario ou email já existe")
     if (!BDnome && !BDemail) {
         console.log("nome e email ok")
-        Usuario.create({
-            nome: req.body.nomeCadastro,
-            email: req.body.emailCadastro,
-            senha: req.body.senhaCadastro,
-            foto_perfil: "/upload/fotoperfil/profile_10693213.png"
-        }).then(function () {
-            res.redirect('/login?message=pedido enviado para analise');
-        }).catch(function (erro) {
-            res.redirect('/login?message=Houve um erro: ' + erro);
-        })
-        us_repetido = false
-        user_criado = true
-    } else {
-        console.log('nome ou email já existentes')
-        us_repetido = true
-        res.redirect('/login')
-    }
+
+        // Gerar salt único para usuário
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+            if (err) {
+                console.error("Erro ao gerar salt:", err);
+                return;
+            }
+
+            // Iniciar processo de hashing para senha do usuário
+            bcrypt.hash(req.body.senhaCadastro, salt, (err, hash) => {
+                if (err) {
+                    console.error("Erro no processo de hash:". err);
+                    return;
+                }
+
+                // Criar usuário com senha criptografada
+                Usuario.create({
+                    nome: req.body.nomeCadastro,
+                    email: req.body.emailCadastro,
+                    senha: hash,
+                    aprovado: false,
+                    foto_perfil: "/upload/fotoperfil/profile_10693213.png"
+                }).then(function () {
+                    res.redirect('/login?message=pedido enviado para analise');
+                }).catch(function (erro) {
+                    res.redirect('/login?message=Houve um erro: ' + erro);
+                })
+                    us_repetido = false
+                    user_criado = true
+
+            });
+
+        });
+
+        } else {
+            console.log('nome ou email já existentes')
+            us_repetido = true
+            res.redirect('/login')
+        }
 })
 
 // Rota controle
@@ -347,33 +371,47 @@ app.post('/addlogin', async (req, res) => {
             console.log('Usuário encontrado:', usuario, '\nStatus:', usuario.aprovado);
             if (usuario.aprovado === true) {
                 email_inexistente = false;
-                if (senha === usuario.senha) {
-                    console.log("Senha correta, redirecionando...");
-                    req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
-                    req.session.user_email = usuario.email;
-                    req.session.user_foto = usuario.foto_perfil;
 
-                    senha_incorreta = false;
-                    res.redirect('/');
-                } else {
-                    senha_incorreta = true
-                    console.log("Senha incorreta");
-                    res.redirect('/login?message=Credenciais inválidas');
-                }
+                // Comparar input com valor da senha hash armazenada
+                bcrypt.compare(senha, usuario.senha, (err, result) => {
+                    if (err) {
+                        console.error("Erro ao comparar senha input com hash:", err);
+                    }
+
+                    // Verificar se o input e a senha cadastrada são a mesma
+                    if (result) {
+                        console.log("Senha correta, redirecionando...");
+                        req.session.user_name = usuario.nome; // Armazenar nome do usuário na sessão
+                        req.session.user_email = usuario.email;
+                        req.session.user_foto = usuario.foto_perfil;
+    
+                        senha_incorreta = false;
+                        res.redirect('/');
+                    } else {
+                        senha_incorreta = true
+                        console.log("Senha incorreta");
+                        res.redirect('/login?message=Credenciais inválidas');
+                    }
+
+                });
+                
             } else {
                 console.log("Usuário não aprovado");
                 mensagem_wait = true
                 res.redirect('/login?message=Usuário em análise');
+
             }
         } else {
             email_inexistente = true;
             senha_incorreta = false;
             console.log("Usuário não encontrado");
             res.redirect('/login?message=Credenciais inválidas');
+
         }
     } catch (error) {
         console.log("Erro ao tentar fazer login:", error);
         res.redirect('/login?message=Erro ao tentar fazer login');
+
     }
 });
 
