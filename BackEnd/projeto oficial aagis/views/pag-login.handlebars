@@ -29,9 +29,7 @@
                 <h2>Login</h2>
                     <input type="email" name="email" id="loginEmail" placeholder="Email" required><br>
                     <input type="password" name="senha" id="loginPassword" placeholder="Senha" required><br>
-                    <p><a href="index.html"> Esqueceu sua senha?</a>
-                    </p>
-                   <button type="submit">Entrar</button>
+                    <button type="submit">Entrar</button>
                     <div id="errom1" class="erroMessage {{#if senha_incorreta}}show{{else}}hide{{/if}}">Senha inválida</div>
                     <div id="errom2" class="erroMessage {{#if email_inexistente}}show{{else}}hide{{/if}}">Usuário inexistente</div>
                     <div id="wait1" class="waitMessage {{#if mensagem_wait}}show{{else}}hide{{/if}}">O usuário ainda não foi aprovado</div>

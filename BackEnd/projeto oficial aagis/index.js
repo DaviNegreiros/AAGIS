@@ -518,7 +518,8 @@ app.post('/add', isLog, async (req, res) => {
         // Extrair dados do formulário
         const titulo = req.body.titulopost;       // Título da notícia
         const subtitulo = req.body.subtitulopost; // Subtítulo da notícia
-        const conteudo = req.body.conteudopost;   // Conteúdo da notícia
+        let let_conteudo = req.body.conteudopost;   // Conteúdo da notícia
+        const conteudo = let_conteudo.replace(/\n/g, '<br>');  // Formatar conteudo
         const data = req.body.date;               // Data do evento // AAAA-MM-DD
         const hora = req.body.time;               // Horário do evento // HH:MM
         const autor = req.session.user_name;      // Nome de quem postou a noticia
@@ -609,7 +610,10 @@ app.get('/editar-noticia-:id', isAdm, async (req, res) => {
             }
         })
 
-        res.render('pag-editarNoticia', { noticia: noticia, style: 'css/style-post.css' });
+        var conteudo = noticia.conteudopost;
+        conteudo = conteudo.replace(/<br>/g, '\n'); // Desformatar conteudo
+
+        res.render('pag-editarNoticia', { noticia: noticia, conteudo: conteudo, style: 'css/style-post.css' });
 
     } catch (err) {
         res.send("Erro: " + err);
@@ -625,7 +629,8 @@ app.post('/attnoticia/:id', isAdm, async (req, res) => {
     // Extrair dados do formulário
     var titulo = req.body.titulopost;
     var subtitulo = req.body.subtitulopost;
-    var conteudo = req.body.conteudopost;
+    let let_conteudo = req.body.conteudopost;
+    var conteudo = let_conteudo.replace(/\n/g, '<br>');  // Formatar conteudo
     var data = req.body.date;
     var hora = req.body.time;
     var foto_noticia_temp;
